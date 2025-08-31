@@ -6,4 +6,4 @@ Simple Directmedia Layer (SDL) 3.0 の日本語リファレンスマニュアル
 現在は3.0への移行を翻訳しただけです.
 
 オンラインでの閲覧
-* https://maruhiro-ver0.github.io/sdl3manual-ja/README-migration.html
+* https://maruhiro-ver0.github.io/sdl3manual-ja/index.html
