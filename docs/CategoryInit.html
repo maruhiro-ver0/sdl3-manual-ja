@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>初期化と終了</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - 初期化と終了
+<hr>
+<h1>初期化と終了</h1>
+<h2>概要</h2>
+<p>
+全てのプログラムはSDLを使用する前にライブラリを初期化する必要がある.
+</p>
+<p>
+ほとんどの場合は, スタートアップの近くで使用するサブシステムを示すフラグを指定してSDL_Init()を呼べばよい.
+フラグは, 使用するつもりのない機能はSDLにオペレーティングシステムの低レベルの部分をアクセスさせないためにある.
+例えば, SDLのビデオと入力は使用するが, オーディオは外部のライブラリを使用する場合は, 外部のライブラリがオーディオを完全に制御できるようにSDL_INIT_AUDIOを外せばよい.
+</p>
+<p>
+大半のアプリケーションは終了するときSDL_Quit()を呼ぶ必要がある.
+これは, SDLが確保した資源を(ほぼ)全て解放し, さらに重要なこととして, ディスプレイの解像度をアプリケーションが変更していた場合はユーザが設定していたものに戻す.
+</p>
+<p>
+SDL3アプリケーションではスタートアップでSDL_SetAppMetadata()を呼んでプログラムの詳細を設定することを強く推奨する.
+これは完全に任意だが, わずかなことで様々な助けになる(macOSメニューのAboutダイアログボックスや, システムのオーディオミキサーのアプリケーション名などを提供できる).
+もっと多くの情報を提供したいならば, SDL_SetAppMetadataProperty()の詳細を見ること.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_GetAppMetadataProperty
+<li>SDL_Init
+<li>SDL_InitSubSystem
+<li>SDL_IsMainThread
+<li>SDL_Quit
+<li>SDL_QuitSubSystem
+<li>SDL_RunOnMainThread
+<li>SDL_SetAppMetadata
+<li>SDL_SetAppMetadataProperty
+<li>SDL_WasInit
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_AppResult
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryInit">SDL3/CategoryInit - SDL Wiki</a>
+<hr>
+</body>
+</html>

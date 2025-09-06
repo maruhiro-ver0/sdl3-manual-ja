@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>アサーション</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - アサーション
+<hr>
+<h1>アサーション</h1>
+<h2>概要</h2>
+<p>
+有用なアサーション(検証)マクロ.
+</p>
+<p>
+SDLアサーションは通常のアサーションマクロと似ているが, 次の様な特徴がある:
+</p>
+<ul>
+<li>sizeofを巧妙に使うことで, 検証を無効化してコンパイルするコードから除外したとき, アサーションが参照する変数が使用されなくなってもコンパイラが警告を発しないようになっている.
+<li><code>if (x) SDL_assert(y); else do_something();</code> のような「ぶらさがりelse(dangling-else)」でも安全に使用できる.
+<li>様々な環境のCコンパイラやランタイムでも同じように動作する.
+<li>有か無しかのどちらかではなく, 複数のレベルのアサーション(SDL_assert, SDL_assert_release, SDL_assert_paranoid)が用意されている.
+<li>検証に失敗したとき様々な対応(リトライ, デバッガの呼び出し, プログラムの中断, 1回目を無視する, 無視して残りのプログラムを実行する)を提供している.
+<li>デフォルトでは可能ならばユーザにダイアログを表示するが, 検証失敗時にコールバックさせることもできる.
+<li>失敗した検証の再検証を行える. ネットワークを失敗させ, ケーブルを接続した後にもう一度テストするなどが可能.
+<li>ユーザに検証の失敗を無視させることができる. 無害な問題が発生して残りの処理を実行したい場合など.
+<li>ユーザに残りのプログラムの実行のために無視する検証をマークさせることができる. 無害な問題が発生し続ける場合など.
+<li>アプリケーションの全ての失敗した検証の統計とデータを提供する.
+<li>自動化スクリプトで制御する場合などのために, 環境変数でデフォルトのアサーションハンドラを制御できる.
+<li>Clangの静的解析の補助として使える. アナライザはSDLアサーションを常に成功として扱う(あなたが問題を解決する, そしてデバッグビルドで問題を検出するとみなすため). これはアナライザが失敗とする可能性を避けることを助ける.
+</ul>
+<p>
+使い方: あなたのコードをチェックするテストを配置して, デバッグビルドでコンパイルするだけである.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_GetAssertionHandler
+<li>SDL_GetAssertionReport
+<li>SDL_GetDefaultAssertionHandler
+<li>SDL_ReportAssertion
+<li>SDL_ResetAssertionReport
+<li>SDL_SetAssertionHandler
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_AssertionHandler
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_AssertData
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_AssertState
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_assert
+<li>SDL_assert_always
+<li>SDL_ASSERT_LEVEL
+<li>SDL_assert_paranoid
+<li>SDL_assert_release
+<li>SDL_AssertBreakpoint
+<li>SDL_disabled_assert
+<li>SDL_enabled_assert
+<li>SDL_FILE
+<li>SDL_FUNCTION
+<li>SDL_LINE
+<li>SDL_NULL_WHILE_LOOP_CONDITION
+<li>SDL_TriggerBreakpoint
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryAssert">SDL3/CategoryAssert - SDL Wiki</a>
+<hr>
+</body>
+</html>

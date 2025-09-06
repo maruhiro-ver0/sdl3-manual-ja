@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>アプリケーションのエントリーポイント</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - アプリケーションのエントリーポイント
+<hr>
+<h1>アプリケーションのエントリーポイント</h1>
+<h2>概要</h2>
+<p>
+必要な場合main()は再定義されSDLから呼ばれる.
+</p>
+<p>
+全ての環境で一貫性を保つため, アプリケーションのmain()は次の様にすること:
+</p>
+<p>
+<code>
+<pre>
+#include &lt;SDL3/SDL.h&gt;
+#include &lt;SDL3/SDL_main.h&gt;
+
+int main(int argc, char *argv[])
+{
+}
+</pre>
+</code>
+</p>
+<p>
+SDLはmain()の呼び出しに関する環境固有の処理を行う.
+</p>
+<p>
+アプリケーションがmainコールバックを使用するかをSDL_MAIN_USE_CALLBACKSマクロで設定することもできる.
+</p>
+<p>
+SDL_main.hは「シングルヘッダライブラリ」で, このヘッダをインクルードするとアプリケーションにコードが挿入され, ほとんどの場合は1度だけインクルードする必要がある.
+このヘッダはSDL.hで自動的にインクルードされない.
+</p>
+<p>
+詳細は以下を参照すること: <a href="https://wiki.libsdl.org/SDL3/README-main-functions">https://wiki.libsdl.org/SDL3/README-main-functions</a>
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AppEvent
+<li>SDL_AppInit
+<li>SDL_AppIterate
+<li>SDL_AppQuit
+<li>SDL_EnterAppMainCallbacks
+<li>SDL_GDKSuspendComplete
+<li>SDL_main
+<li>SDL_RegisterApp
+<li>SDL_RunApp
+<li>SDL_SetMainReady
+<li>SDL_UnregisterApp
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_main_func
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_MAIN_HANDLED
+<li>SDL_MAIN_USE_CALLBACKS
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryMain">SDL3/CategoryMain - SDL Wiki</a>
+<hr>
+</body>
+</html>

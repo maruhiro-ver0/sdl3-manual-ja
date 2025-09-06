@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>プロパティ</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - プロパティ
+<hr>
+<h1>プロパティ</h1>
+<h2>概要</h2>
+<p>
+プロパティとは実行中に名前を用いて書き込みや読み込みを行える変数である.
+</p>
+<p>
+全てのプロパティはプロパティグループ(SDL_PropertiesID)の一部である.
+プロパティグループはSDL_CreateProperties関数で生成し, SDL_DestroyProperties関数で破棄することができる.
+</p>
+<p>
+プロパティのプロパティグループへの書き込みとプロパティグループからの読み込みは次の関数で行える:
+</p>
+<ul>
+<li>SDL_SetPointerPropertyとSDL_GetPointerPropertyでvoid*ポインタ型の操作を行う
+<li>SDL_SetStringPropertyとSDL_GetStringPropertyで文字列型の操作を行う
+<li>SDL_SetNumberPropertyとSDL_GetNumberPropertyで64ビット符号付き整数型の操作を行う
+<li>SDL_SetFloatPropertyとSDL_GetFloatPropertyで浮動小数点型の操作を行う
+<li>SDL_SetBooleanPropertyとSDL_GetBooleanPropertyでブール型の操作を行う
+</ul>
+<p>
+プロパティはSDL_ClearPropertyでグループから取り除くことができる.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_ClearProperty
+<li>SDL_CopyProperties
+<li>SDL_CreateProperties
+<li>SDL_DestroyProperties
+<li>SDL_EnumerateProperties
+<li>SDL_GetBooleanProperty
+<li>SDL_GetFloatProperty
+<li>SDL_GetGlobalProperties
+<li>SDL_GetNumberProperty
+<li>SDL_GetPointerProperty
+<li>SDL_GetPropertyType
+<li>SDL_GetStringProperty
+<li>SDL_HasProperty
+<li>SDL_LockProperties
+<li>SDL_SetBooleanProperty
+<li>SDL_SetFloatProperty
+<li>SDL_SetNumberProperty
+<li>SDL_SetPointerProperty
+<li>SDL_SetPointerPropertyWithCleanup
+<li>SDL_SetStringProperty
+<li>SDL_UnlockProperties
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_CleanupPropertyCallback
+<li>SDL_EnumeratePropertiesCallback
+<li>SDL_PropertiesID
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_PropertyType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryProperties">SDL3/CategoryProperties - SDL Wiki</a>
+<hr>
+</body>
+</html>

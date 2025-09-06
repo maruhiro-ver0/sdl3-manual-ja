@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ログ</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ログ
+<hr>
+<h1>ログ</h1>
+<h2>概要</h2>
+<p>
+優先度と分類付きのシンプルなログメッセージを扱う.
+メッセージの重要度は, メッセージのSDL_LogPriorityで表す.
+メッセージの分類は, メッセージのSDL_LogCategoryで表す.
+全ての分類には最低優先度が設定されており, メッセージはその分類の最低優先度以上の場合のみ出力される.
+</p>
+<p>
+SDL自身のログはデフォルトの優先度未満のため, デフォルトでは出力されない.
+</p>
+<p>
+ログの詳細さはプログラム内でSDL_SetLogPriority()またはSDL_SetHint(SDL_HINT_LOGGING, ...)を使用するか, 環境変数"SDL_LOGGING"で変更できる.
+環境変数はコンマで区切った 分類=レベル でSDLアプリケーションのデフォルトログレベルを設定する.
+</p>
+<p>
+分類には番号, または"app", "error", "assert", "system", "audio", "video", "render", "input", "test"の1つ, またはその他の分類を表す * を指定できる.
+</p>
+<p>
+レベルは数値のレベル, または"trace", "verbose", "debug", "info", "warn", "error", "critical"の1つ, またはその分類を無効化する"quiet"を指定できる.
+</p>
+<p>
+全分類のログレベルを設定したい場合は, 分類を省略できる.
+</p
+<p>
+ヒントが設定されていない場合, デフォルトのログレベル環境変数は次の様になっている:
+</p>
+<p>
+app=info,assert=warn,test=verbose,*=error
+</p>
+<p>
+各環境のメッセージの出力先は次の通りである:
+</p>
+<ul>
+<li>Windows: デバッグ出力ストリーム
+<li>Android: ログ出力
+<li>その他: 標準エラー出力 (stderr)
+</ul>
+<p>
+関数が自動的に付けるため, メッセージの終端に改行(\n)を付ける必要はない.
+複数の環境での動作を考慮するため, 1回の関数呼び出しで複数行を出力したい場合でもメッセージに改行をつけるべきではない. 環境固有の異常な動作をする可能性がある.
+複数のメッセージを改行するのではなく, 1回の呼び出しは1行とすること.
+</p>
+<p>
+それぞれのログ呼び出しはアトミックで, 複数のスレッドからログ出力した場合でもログが途中で途切れることはない.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_GetDefaultLogOutputFunction
+<li>SDL_GetLogOutputFunction
+<li>SDL_GetLogPriority
+<li>SDL_Log
+<li>SDL_LogCritical
+<li>SDL_LogDebug
+<li>SDL_LogError
+<li>SDL_LogInfo
+<li>SDL_LogMessage
+<li>SDL_LogMessageV
+<li>SDL_LogTrace
+<li>SDL_LogVerbose
+<li>SDL_LogWarn
+<li>SDL_ResetLogPriorities
+<li>SDL_SetLogOutputFunction
+<li>SDL_SetLogPriorities
+<li>SDL_SetLogPriority
+<li>SDL_SetLogPriorityPrefix
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_LogOutputFunction
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_LogCategory
+<li>SDL_LogPriority
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryLog">SDL3/CategoryLog - SDL Wiki</a>
+<hr>
+</body>
+</html>
