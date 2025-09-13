@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>イベント処理</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - イベント処理
+<hr>
+<h2>概要</h2>
+<p>
+イベントキューの管理を行う.
+</p>
+<p>
+アプリケーションがSDLイベントキューを扱うことは, ごく一般的であり, 多くの場合は必須である.
+ほとんど全ての現実世界と相互作用のある有用な情報(ユーザとコンピュータやアプリケーションとの相互作用, ハードウェアの入出力, 様々な理由によるシステムの変更など)はこれを通して得られる.
+</p>
+<p>
+アプリケーションは間隔を取って, あるいは新しいフレームのたびに, 前回から新しいイベントが発生していないかチェックし, それを処理または無視する.
+一般的にはループで偽を戻すまでSDL_PollEvent()を呼ぶことで行う. (またはメインコールバックを使用する. 次のSDL_AppIterate()を呼ぶまでは, SDL_AppEvent()を呼ぶと1つずつイベントが渡される. この場合はSDL_PollEvent()をまったく使用しない.)
+</p>
+<p>
+他の処理方法も存在する: SDL_PeepEvents()を使うと, 複雑だがより詳細な処理が行える.
+SDL_WaitEvent()はイベントが発生するまでブロックする. 
+これは性能の低いハードウェア上のプログラムにとって有益になりうる.
+SDL_AddEventWatch()で新しいイベント処理のためのコールバックを設定することもできる.
+</p>
+<p>
+アプリケーションも自由に自身のイベントを生成できる: SDL_PushEventで後で取り出すためにアプリケーションがキューにイベントを入れることができる.
+SDL_RegisterEventsでこれらのイベントがシステムの他の部分で使用しないことを保証できる.
+
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AddEventWatch
+<li>SDL_EventEnabled
+<li>SDL_FilterEvents
+<li>SDL_FlushEvent
+<li>SDL_FlushEvents
+<li>SDL_GetEventDescription
+<li>SDL_GetEventFilter
+<li>SDL_GetWindowFromEvent
+<li>SDL_HasEvent
+<li>SDL_HasEvents
+<li>SDL_PeepEvents
+<li>SDL_PollEvent
+<li>SDL_PumpEvents
+<li>SDL_PushEvent
+<li>SDL_RegisterEvents
+<li>SDL_RemoveEventWatch
+<li>SDL_SetEventEnabled
+<li>SDL_SetEventFilter
+<li>SDL_WaitEvent
+<li>SDL_WaitEventTimeout
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_EventFilter
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_AudioDeviceEvent
+<li>SDL_CameraDeviceEvent
+<li>SDL_ClipboardEvent
+<li>SDL_CommonEvent
+<li>SDL_DisplayEvent
+<li>SDL_DropEvent
+<li>SDL_Event
+<li>SDL_GamepadAxisEvent
+<li>SDL_GamepadButtonEvent
+<li>SDL_GamepadDeviceEvent
+<li>SDL_GamepadSensorEvent
+<li>SDL_GamepadTouchpadEvent
+<li>SDL_JoyAxisEvent
+<li>SDL_JoyBallEvent
+<li>SDL_JoyBatteryEvent
+<li>SDL_JoyButtonEvent
+<li>SDL_JoyDeviceEvent
+<li>SDL_JoyHatEvent
+<li>SDL_KeyboardDeviceEvent
+<li>SDL_KeyboardEvent
+<li>SDL_MouseButtonEvent
+<li>SDL_MouseDeviceEvent
+<li>SDL_MouseMotionEvent
+<li>SDL_MouseWheelEvent
+<li>SDL_PenAxisEvent
+<li>SDL_PenButtonEvent
+<li>SDL_PenMotionEvent
+<li>SDL_PenProximityEvent
+<li>SDL_PenTouchEvent
+<li>SDL_QuitEvent
+<li>SDL_RenderEvent
+<li>SDL_SensorEvent
+<li>SDL_TextEditingCandidatesEvent
+<li>SDL_TextEditingEvent
+<li>SDL_TextInputEvent
+<li>SDL_TouchFingerEvent
+<li>SDL_UserEvent
+<li>SDL_WindowEvent
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_EventAction
+<li>SDL_EventType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL2/CategoryEvents">Event Handling - SDL Wiki</a>
+<hr>
+</body>
+</html>

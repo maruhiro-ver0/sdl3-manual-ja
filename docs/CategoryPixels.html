@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ピクセル形式と変換</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ピクセル形式と変換
+<hr>
+<h1>ピクセル形式と変換</h1>
+<h2>概要</h2>
+<p>
+SDLはピクセル操作の機能を提供している.
+</p>
+<p>
+これらの機能は主にこのビットは何を表しているか等のピクセル形式を扱う.
+</p>
+<p>
+ピクセルを赤, 緑, 青, さらにα値(透明度)の組み合わせとしたいだけならば非常に簡単で, 多くの場合はこれで充分である.
+</p>
+<p>
+しかし, 実際のピクセルの定義はより複雑である:
+</p>
+<p>
+ピクセルは特定の色空間で表される.
+</p>
+<p>
+色空間は表色系で異なる.
+SDLは2つの表色系, RGBとYCbCr(SDLではYUVとも呼ばれる)を認識する.
+</p>
+<p>
+RGB系には赤, 緑, 青の色チャネルがあり, これらを合わせて画面上の色とする.
+</p>
+<p>
+<a href="https://ja.wikipedia.org/wiki/RGB">https://ja.wikipedia.org/wiki/RGB</a>
+</p>
+<p>
+YCbCr系は色を輝度と赤・青彩度のオフセット値として表す.
+この表色系は人間の目は色よりも明るさに対して敏感であることを利用している.
+通常, CbとCrは輝度よりも低い分解能として圧縮されている.
+</p>
+<p>
+<a href="https://ja.wikipedia.org/wiki/YUV">https://ja.wikipedia.org/wiki/YUV</a>
+</p>
+<p>
+色情報がYCbCrで圧縮されている場合, ピクセルのYには完全な分解能があり, CrとCbはYブロックの色情報の平均値で表される.
+彩度位置は色情報のピクセル上のブロック位置を決める.
+</p>
+<p>
+色範囲はピクセルをディスプレイ上の色に変換する場合に, どの程度ピクセルを使用するかを決める.
+完全な色範囲を使用した場合, ピクセルのビット数が表せる範囲の全体が有効になる.
+狭めた色範囲を使用した場合, 歴史的な理由で, ピクセルは色を表すために数値の一部のみを使用する.
+</p>
+<p>
+原色と白色点は, 標準XYZ色空間に対する色空間における色を定義する.
+</p>
+<p>
+<a href="https://ja.wikipedia.org/wiki/CIE_1931_%E8%89%B2%E7%A9%BA%E9%96%93">https://ja.wikipedia.org/wiki/CIE_1931_色空間</a>
+</p>
+<p>
+伝送特性, または光電伝達関数(OETF)は, 色を線形空間から非線形空間の出力信号に数学的に変換する方法である.
+</p>
+<p>
+<a href="https://ja.wikipedia.org/wiki/Rec._709#%E4%BC%9D%E9%81%94%E7%89%B9%E6%80%A7">https://ja.wikipedia.org/wiki/Rec._709#伝達特性</a>
+</p>
+<p>
+行列係数はYCbCr表色系とRGB表色系の変換に使用される.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_CreatePalette
+<li>SDL_DestroyPalette
+<li>SDL_GetMasksForPixelFormat
+<li>SDL_GetPixelFormatDetails
+<li>SDL_GetPixelFormatForMasks
+<li>SDL_GetPixelFormatName
+<li>SDL_GetRGB
+<li>SDL_GetRGBA
+<li>SDL_MapRGB
+<li>SDL_MapRGBA
+<li>SDL_MapSurfaceRGB
+<li>SDL_MapSurfaceRGBA
+<li>SDL_SetPaletteColors
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_Color
+<li>SDL_FColor
+<li>SDL_Palette
+<li>SDL_PixelFormatDetails
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_ArrayOrder
+<li>SDL_BitmapOrder
+<li>SDL_ChromaLocation
+<li>SDL_ColorPrimaries
+<li>SDL_ColorRange
+<li>SDL_Colorspace
+<li>SDL_ColorType
+<li>SDL_MatrixCoefficients
+<li>SDL_PackedLayout
+<li>SDL_PackedOrder
+<li>SDL_PixelFormat
+<li>SDL_PixelType
+<li>SDL_TransferCharacteristics
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_ALPHA_OPAQUE
+<li>SDL_ALPHA_OPAQUE_FLOAT
+<li>SDL_ALPHA_TRANSPARENT
+<li>SDL_ALPHA_TRANSPARENT_FLOAT
+<li>SDL_BITSPERPIXEL
+<li>SDL_BYTESPERPIXEL
+<li>SDL_COLORSPACECHROMA
+<li>SDL_COLORSPACEMATRIX
+<li>SDL_COLORSPACEPRIMARIES
+<li>SDL_COLORSPACERANGE
+<li>SDL_COLORSPACETRANSFER
+<li>SDL_COLORSPACETYPE
+<li>SDL_DEFINE_COLORSPACE
+<li>SDL_DEFINE_PIXELFORMAT
+<li>SDL_DEFINE_PIXELFOURCC
+<li>SDL_ISCOLORSPACE_FULL_RANGE
+<li>SDL_ISCOLORSPACE_LIMITED_RANGE
+<li>SDL_ISCOLORSPACE_MATRIX_BT2020_NCL
+<li>SDL_ISCOLORSPACE_MATRIX_BT601
+<li>SDL_ISCOLORSPACE_MATRIX_BT709
+<li>SDL_ISPIXELFORMAT_10BIT
+<li>SDL_ISPIXELFORMAT_ALPHA
+<li>SDL_ISPIXELFORMAT_ARRAY
+<li>SDL_ISPIXELFORMAT_FLOAT
+<li>SDL_ISPIXELFORMAT_FOURCC
+<li>SDL_ISPIXELFORMAT_INDEXED
+<li>SDL_ISPIXELFORMAT_PACKED
+<li>SDL_PIXELFLAG
+<li>SDL_PIXELLAYOUT
+<li>SDL_PIXELORDER
+<li>SDL_PIXELTYPE
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryPixels">SDL3/CategoryPixels - SDL Wiki</a>
+<hr>
+</body>
+</html>

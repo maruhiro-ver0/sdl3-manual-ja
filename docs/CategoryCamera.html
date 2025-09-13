@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ビデオキャプチャ</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ビデオキャプチャ
+<hr>
+<h1>ビデオキャプチャ</h1>
+<h2>概要</h2>
+<p>
+ビデオキャプチャのSDLライブラリ.
+</p>
+<p>
+このAPIはウェブカメラのようにアプリケーションにビデオソースから入力を読み込ませる.
+カメラデバイスに対して, 一覧の獲得, 問い合わせ, オープンを行うことができる.
+オープンすると, ビデオから入力があるたびに新しいフレームがSDL_Surfaceオブジェクトとして提供される.
+これらのサーフェイスはSDL_Textureやメモリ上のピクセル群にすることもできる.
+</p>
+<p>
+一部の環境では, アプリケーションがカメラにアクセスしようとするとユーザに警告する.
+さらに一部の環境では, アプリケーションが映像を獲得することを許可するかをユーザに尋ねるダイアログを表示し, 拒否されることもある.
+カメラのオープンに成功しても許可が確定するまで映像は提供されない.
+アプリケーションは, カメラデバイスをオープンした後, SDL_GetCameraPermissionState()関数のポーリングでアクセス可能になるまで待つことや, SDL_EVENT_CAMERA_DEVICE_APPROVEDまたはSDL_EVENT_CAMERA_DEVICE_DENIEDイベントを待つことが可能である.
+ユーザの許可を必要としない環境では, 即座に許可される.
+</p>
+<p>
+SDLカメラは, 動画ファイル形式でエンコードした全フレームではなく, 映像を1フレームずつ提供することに注意すること.
+そのため, アプリケーションは必要なフレームをあらゆる形式に自由にエンコードできる.
+さらに, カメラハードウェアからの音声もこのAPIでは提供されない.
+多くのウェブカメラがマイクを搭載していないだけでなく, ストリーム配信からZoomまで大半のユーザはカメラとは別のマイクを使いたいだろう.
+いずれにせよ, カメラハードウェアのマイクの搭載に関わらず, 入力された音声はSDLのオーディオAPIを通して利用する.
+</p>
+<h3>キャプチャ</h3>
+<p>
+一般向けのカメラハードウェアは, デバイスをオープンした後に使用できるまで時間がかかることがある.
+一般的にほとんどのカメラアプリケーションには写真を撮るUI(photo boothの様なレビューの表示と撮影ボタン, ユーザがポーズを取るためのカウントダウン)があり, ユーザが操作するか, 長時間留まる(Pokemon Goなど)場合が多い.<p>
+</p>
+<p>
+新規にオープンしたカメラが, 真っ暗なフレームに続いて露光不足の映像を送ることは珍しいことではない.
+もし自動的に1枚のフレームを撮る場合や, ユーザにプレビューを提供せずに録画する場合は, カメラの画像を使用する前に最初の数フレームを無視するのはよい方法である(最初の数秒のフレームに価値がない場合は).
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AcquireCameraFrame
+<li>SDL_CloseCamera
+<li>SDL_GetCameraDriver
+<li>SDL_GetCameraFormat
+<li>SDL_GetCameraID
+<li>SDL_GetCameraName
+<li>SDL_GetCameraPermissionState
+<li>SDL_GetCameraPosition
+<li>SDL_GetCameraProperties
+<li>SDL_GetCameras
+<li>SDL_GetCameraSupportedFormats
+<li>SDL_GetCurrentCameraDriver
+<li>SDL_GetNumCameraDrivers
+<li>SDL_OpenCamera
+<li>SDL_ReleaseCameraFrame
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_Camera
+<li>SDL_CameraID
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_CameraSpec
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_CameraPermissionState
+<li>SDL_CameraPosition
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryCamera">SDL3/CategoryCamera - SDL Wiki</a>
+<hr>
+</body>
+</html>

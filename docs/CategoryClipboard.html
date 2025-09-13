@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>クリップボード</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - クリップボード
+<hr>
+<h1>クリップボード</h1>
+<h2>概要</h2>
+<p>
+他のプロセスからの情報の読み取りと, 自身の情報の公開の両方を行えるようにするため, SDLはシステムクリップボードへのアクセスを提供している.
+</p>
+<p>
+テキストのみでなく, SDLアプリケーションはMIMEタイプ(メディアタイプ)でデータへのアクセスと公開を行える.
+</p>
+<h3>基本的な使用(テキスト)</h3>
+<p>
+単純なテキストのクリップボードからの獲得と公開は, それぞれSDL_GetClipboardText()とSDL_SetClipboardText()を呼べば簡単に行える.
+この場合はUTF-8でエンコードされたCスタイルの文字列を扱う.
+データの変換とコードの変換はSDLが完全に管理している.
+</p>
+<h3>クリップボードコールバック (テキスト以外のデータ)</h3>
+<p>
+クリップボードにテキスト以外のデータがある場合はより複雑になる.
+システムクリップボードのデータの種類が様々であるだけでなく, 同じデータでも形式が異なる場合もある.
+例えば, 画像編集アプリケーションはユーザがグラフィックをクリップボードにコピーし, それを他のアプリケーションが使用するために.BMPや.JPG, .PNG形式で提供することができる.
+</p>
+<p>
+クリップボードデータの獲得(「貼り付け」)は, 要求するデータのMIMEタイプを伝えてSDL_GetClipboardData()を呼ぶだけである.
+しかし, 可能な形式はどうすればわかるか?
+特定のMIMEタイプのデータがクリップボードにあるかはSDL_HasClipboardData()でわかる. そしてSDL_GetClipboardMimeTypes()でMIMEタイプの一覧が得られる.
+これでアプリケーションはデータの扱い方や, どの形式に対応できるかを決めることができる.
+</p>
+<p>
+あらゆるデータのクリップボードへの設定(「コピー」)はSDL_SetClipboardDataで行える.
+アプリケーションは, この関数の呼び出しではデータではなくMIMEタイプとコールバック関数を指定する.
+アプリケーションはコールバックでデータを生成する.
+この方法により, データが実際に要求される前にデータをコピーすることなくクリップボードに巨大なデータを設定することができる.
+さらに, アプリケーションは複数の形式のコピーを事前に提供しないで複数の形式のデータを提供することができる.
+もしアプリケーションにPNGまたはJPG形式で提供したい画像があるとき, 貼り付けられない限りは, そして貼り付けられるまではどちらにもエンコードする必要はない.
+</p>
+<h3>プライマリセレクション</h3>
+<p>
+X11とWaylandには, 通常のクリップボードに加えて「プライマリセレクション」という概念がある.
+これは通常様々なアプリケーションで選択された(しかし実際にはコピーしなかった)テキストである.
+SDLはこれに関するAPI SDL_GetPrimarySelectionText()とSDL_SetPrimarySelectionText()を提供している.
+SDLはこの概念のない環境でもこれらのAPIを提供しているが, アプリケーションが後で復帰させるためにセットした文字列のコピーを保持するだけである.
+プライマリセレクションに対応していない場合, オペレーティングシステムが外部からこの文字列を変更することはない.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_ClearClipboardData
+<li>SDL_GetClipboardData
+<li>SDL_GetClipboardMimeTypes
+<li>SDL_GetClipboardText
+<li>SDL_GetPrimarySelectionText
+<li>SDL_HasClipboardData
+<li>SDL_HasClipboardText
+<li>SDL_HasPrimarySelectionText
+<li>SDL_SetClipboardData
+<li>SDL_SetClipboardText
+<li>SDL_SetPrimarySelectionText
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_ClipboardCleanupCallback
+<li>SDL_ClipboardDataCallback
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryClipboard">SDL3/CategoryClipboard - SDL Wiki</a>
+<hr>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>マウス</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - マウス
+<hr>
+<h2>概要</h2>
+<p>
+あらゆるGUIアプリケーションはマウスを扱う必要があり, SDLはマウス入力とカーソル表示を行う関数を提供している.
+</p>
+<p>
+ほとんどのマウスとの相互作用は, イベントサブシステムを通して伝えられる.
+マウスを動かすとSDL_EVENT_MOUSE_MOTIONイベントが, ボタンを押すとSDL_EVENT_MOUSE_BUTTON_DOWNイベントが発生するなどである. しかし, マウスの状態はいつでもSDL_GetMouseState()で得ることもできる.
+</p>
+<p>
+一部のゲームでは, マウス入力とマウスカーソルを関連付けないことが望ましい.
+例えばFPSでは, マウスがウィンドウの枠の外に移動してプレイヤーの動きを止めたくない.
+この場合SDL_SetWindowRelativeMouseMode()を使うと, カーソルを隠し, マウス入力するウィンドウにグラブし, マウスがどれだけ動いてもマウス入力を読み取らせることができる.
+</p>
+<p>
+システムにマウスを追跡させたいが, 自分でマウスカーソルを描きたい場合, SDL_HideCursor()とSDL_ShowCursor()を使うことができる.
+可能ならば, SDL_CreateColorCursor()で生成されたカスタムされた画像に対してSDL_SetCursor()を使用する, または単にSDL_CreateSystemCursor()でシステムカーソルを指定し, システムにカーソルを管理させる方がより効率がよいかもしれない.
+</p>
+<p>
+ユニークな使用法やマルチプレイヤーゲームを可能にするために, 多くの環境でSDLは接続された複数個のマウスを区別して認識できる.
+SDL_GetMice()で一覧を得ることができ, SDLはマウスの接続と切断があったときSDL_EVENT_MOUSE_ADDEDイベントとSDL_EVENT_MOUSE_REMOVEDイベントを発生させる.
+</p>
+<p>
+多くのアプリケーションは基本的なマウス入力のみを扱うため, SDLはタッチスクリーンやペン入力を仮想マウスデバイスとして提供する.
+そのため, デスクトップアプリケーションをコードの変更なしでタッチスクリーンのスマートフォンで動作させられるかもしれない.
+アプリケーションがマウス入力とタッチ/ペン入力を分けて扱いたい場合は, イベントをSDL_TOUCH_MOUSEID/SDL_PEN_MOUSEIDのwhichフィールドでフィルタして除外する必要がある.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_CaptureMouse
+<li>SDL_CreateColorCursor
+<li>SDL_CreateCursor
+<li>SDL_CreateSystemCursor
+<li>SDL_CursorVisible
+<li>SDL_DestroyCursor
+<li>SDL_GetCursor
+<li>SDL_GetDefaultCursor
+<li>SDL_GetGlobalMouseState
+<li>SDL_GetMice
+<li>SDL_GetMouseFocus
+<li>SDL_GetMouseNameForID
+<li>SDL_GetMouseState
+<li>SDL_GetRelativeMouseState
+<li>SDL_GetWindowMouseGrab
+<li>SDL_GetWindowMouseRect
+<li>SDL_GetWindowRelativeMouseMode
+<li>SDL_HasMouse
+<li>SDL_HideCursor
+<li>SDL_SetCursor
+<li>SDL_SetRelativeMouseTransform
+<li>SDL_SetWindowMouseGrab
+<li>SDL_SetWindowMouseRect
+<li>SDL_SetWindowRelativeMouseMode
+<li>SDL_ShowCursor
+<li>SDL_WarpMouseGlobal
+<li>SDL_WarpMouseInWindow
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_Cursor
+<li>SDL_MouseButtonFlags
+<li>SDL_MouseID
+<li>SDL_MouseMotionTransformCallback
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_MouseWheelDirection
+<li>SDL_SystemCursor
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_TOUCH_MOUSEID
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryMouse">SDL3/CategoryMouse - SDL Wiki</a>
+<hr>
+</body>
+</html>
