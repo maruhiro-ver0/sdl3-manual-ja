@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ゲームパッド</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ゲームパッド
+<hr>
+<h1>ゲームパッド</h1>
+<h2>概要</h2>
+<p>
+SDLは, ジョイスティックを単にボタン, 方向, ハットスイッチの塊として扱う低レベルジョイスティックAPIを提供している.
+もし自分でコントローラの設定画面を作るつもりならば, これは柔軟な対応ができるが, すべきことが多く, さらに現在の「ジョイスティック」のほとんどは実際には家庭用ゲーム機のようなゲームパッドであると考えられる.
+そのため, SDLは低レベルジョイスティック機能の上にゲームパッドAPIを提供している.
+</p>
+<p>
+ジョイスティックとゲームパッドの違いは, ゲームパッドはボタンと方向がデバイス上のどこにあるかがわかることである.
+ゲームパッドでは「ボタン3」や「方向2」のような番号ではなく, デバイス上の標準的な位置で扱われる. (十字キー, ショルダーボタン, トリガー, A/B/X/Y(またはX/O/Square/Triangle)のような)
+</p>
+<p>
+ジョイスティックは, SDLにデバイスの使用の詳細を伝える呪文のような文字列(これはあるハードウェアでは, ボタン2が押されると, 実際には十字キーの上などの情報である)でゲームパッドに変わる.
+</p>
+<p>
+SDLには多くの主要なコントローラの設定が組み込まれている. そしてSDLに組み込まれていない場合は, ユーザは環境変数を通して自分のコントローラの情報を追加できる.
+</p>
+<p>
+これらの関数を使うときは, SDL_INIT_GAMEPADフラグを付けてSDL_Init()を呼ぶ必要がある. これでSDLはシステムのゲームパッドをスキャンし, 正しいドライバを読み込むようになる.
+</p>
+<p>
+アプリケーションがバックグラウンドのときもゲームパッドのイベントを受信したい場合は, SDL_Init()を呼ぶ前にSDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTSヒントを設定する必要がある.
+</p>
+<p>
+ゲームパッドには, 振動, カラーLED, タッチパッド, ジャイロなどの様々な追加機能がある.
+これらの機能に対応しているかは, コントローラとOSが対応しているかによる.
+実行中にLEDと振動が利用可能かは, SDL_GetGamepadProperties()を呼び, 可不可のプロパティをチェックするとわかる.
+タッチパッドはSDL_GetNumGamepadTouchpads()を呼ぶと, ジャイロと加速度センサーはSDL_GamepadHasSensor()を呼ぶとわかる.
+</p>
+<p>
+デフォルトではSDLは最も受け入れ可能なドライバを使用しようとする. しかし, OSのドライバはSDL_hints.hにある様々なジョイスティックのヒントで調整できる.
+</p>
+<p>
+アプリケーションはゲームパッドのホットプラグインを行えるべきである.
+Xbox, Stram Deckなどの一部の環境では, 審査の必須事項である.
+macOSやWindowsなどのその他の環境では, Windows.Gaming.Inputを使っている場合, コントローラは起動時には使えず, プロセスイベントが開始された時点で使えるようになる場合がある.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AddGamepadMapping
+<li>SDL_AddGamepadMappingsFromFile
+<li>SDL_AddGamepadMappingsFromIO
+<li>SDL_CloseGamepad
+<li>SDL_GamepadConnected
+<li>SDL_GamepadEventsEnabled
+<li>SDL_GamepadHasAxis
+<li>SDL_GamepadHasButton
+<li>SDL_GamepadHasSensor
+<li>SDL_GamepadSensorEnabled
+<li>SDL_GetGamepadAppleSFSymbolsNameForAxis
+<li>SDL_GetGamepadAppleSFSymbolsNameForButton
+<li>SDL_GetGamepadAxis
+<li>SDL_GetGamepadAxisFromString
+<li>SDL_GetGamepadBindings
+<li>SDL_GetGamepadButton
+<li>SDL_GetGamepadButtonFromString
+<li>SDL_GetGamepadButtonLabel
+<li>SDL_GetGamepadButtonLabelForType
+<li>SDL_GetGamepadConnectionState
+<li>SDL_GetGamepadFirmwareVersion
+<li>SDL_GetGamepadFromID
+<li>SDL_GetGamepadFromPlayerIndex
+<li>SDL_GetGamepadGUIDForID
+<li>SDL_GetGamepadID
+<li>SDL_GetGamepadJoystick
+<li>SDL_GetGamepadMapping
+<li>SDL_GetGamepadMappingForGUID
+<li>SDL_GetGamepadMappingForID
+<li>SDL_GetGamepadMappings
+<li>SDL_GetGamepadName
+<li>SDL_GetGamepadNameForID
+<li>SDL_GetGamepadPath
+<li>SDL_GetGamepadPathForID
+<li>SDL_GetGamepadPlayerIndex
+<li>SDL_GetGamepadPlayerIndexForID
+<li>SDL_GetGamepadPowerInfo
+<li>SDL_GetGamepadProduct
+<li>SDL_GetGamepadProductForID
+<li>SDL_GetGamepadProductVersion
+<li>SDL_GetGamepadProductVersionForID
+<li>SDL_GetGamepadProperties
+<li>SDL_GetGamepads
+<li>SDL_GetGamepadSensorData
+<li>SDL_GetGamepadSensorDataRate
+<li>SDL_GetGamepadSerial
+<li>SDL_GetGamepadSteamHandle
+<li>SDL_GetGamepadStringForAxis
+<li>SDL_GetGamepadStringForButton
+<li>SDL_GetGamepadStringForType
+<li>SDL_GetGamepadTouchpadFinger
+<li>SDL_GetGamepadType
+<li>SDL_GetGamepadTypeForID
+<li>SDL_GetGamepadTypeFromString
+<li>SDL_GetGamepadVendor
+<li>SDL_GetGamepadVendorForID
+<li>SDL_GetNumGamepadTouchpadFingers
+<li>SDL_GetNumGamepadTouchpads
+<li>SDL_GetRealGamepadType
+<li>SDL_GetRealGamepadTypeForID
+<li>SDL_HasGamepad
+<li>SDL_IsGamepad
+<li>SDL_OpenGamepad
+<li>SDL_ReloadGamepadMappings
+<li>SDL_RumbleGamepad
+<li>SDL_RumbleGamepadTriggers
+<li>SDL_SendGamepadEffect
+<li>SDL_SetGamepadEventsEnabled
+<li>SDL_SetGamepadLED
+<li>SDL_SetGamepadMapping
+<li>SDL_SetGamepadPlayerIndex
+<li>SDL_SetGamepadSensorEnabled
+<li>SDL_UpdateGamepads
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_Gamepad
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_GamepadBinding
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_GamepadAxis
+<li>SDL_GamepadBindingType
+<li>SDL_GamepadButton
+<li>SDL_GamepadButtonLabel
+<li>SDL_GamepadType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryGamepad">SDL3/CategoryGamepad - SDL Wiki</a>
+<hr>
+</body>
+</html>
