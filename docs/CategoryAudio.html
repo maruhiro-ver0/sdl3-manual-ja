@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>再生と録音</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - 再生と録音
+<hr>
+<h1>再生と録音</h1>
+<h2>概要</h2>
+<p>
+SDLライブラリのオーディオ機能.
+</p>
+<p>
+SDL3では全てのオーディオはSDL_AudioStreamを中心としている.
+音声の再生, 録音, 変換, ストリーム化, バッファリング, ミックスの全ての場合でオーディオストリームを経由することになる.
+</p>
+<p>
+オーディオストリームは非常に柔軟である.
+いつでも任意の形式の任意の量のデータを受け入れることができ, どちらかの側が途中で形式が変わったとしても他の形式で出力できる.
+</p>
+<p>
+アプリケーションがオーディオデバイスを開き, それを任意の番号のオーディオストリームとバインドし, 可能ならばデータを与える.
+デバイスがさらにデータを必要とした場合は, デバイスは全てのバインドされたストリームからデータを得て, それをミックスして再生する.
+</p>
+<p>
+オーディオストリームは, アプリケーションがあらかじめ設定したコールバックを利用して必要なたびにデータを供給することもできる. これはSDL2のオーディオモデルに対応している.
+</p>
+<p>
+プログラムのデータの基本的な読み込みのために, SDLはSDL_LoadWAV(もしファイルから読み込まないならばSDL_LoadWAV_IOも)で簡単な.WAVローダも提供している.
+</p>
+<h3>論理オーディオデバイス</h3>
+<p>
+SDL3では, 物理的なデバイス(SoundBlaster 16 Proのような)を開くと, 論理デバイスIDが割り振られ, それをオーディオストリームとバインドできるようになる.
+ほとんど全ての場合, APIは論理デバイスを物理デバイスと同じように扱う.
+しかし, デバイスを開くたびに新しい論理デバイスが生成されるため, プログラムの異なる箇所(例えばVoIPライブラリ, テキスト読み上げフレームワーク, あるいはSDL上の異なる種類のミキサー)でデバイスを開いていても互いに干渉せず, 
+それぞれの論理デバイスで別々にミックスした後で1つのバッファに落とし込み, 背後で物理デバイスに供給する.
+全ての論理デバイスは必要ならばいつでも追加と削除を行える.
+SDLがOSレベルで物理デバイスを開くのは一度だけで, その後の全ての論理デバイスは内部で管理される.
+</p>
+<p>
+論理デバイスには別の利点もある:
+物理デバイスを指定せずにオープンすると, SDLは環境が変わったとき自動的にその論理デバイスを自動的に別のハードウェアに切り替える: ユーザがヘッドホンを挿した, システムのデフォルトが変わった場合などである.
+SDLはユーザに再生を途切れさせることなく論理デバイスを正しい物理デバイスに切り替えるためユーザにそのことを意識させることはない.
+アプリケーションも求めない限り切り替えを知る必要はない.
+</p>
+<h3>簡略化されたオーディオ</h3>
+<p>
+単に1つの音声源のみ必要な簡略化されたモデルの場合, SDL_OpenAudioDeviceStreamを使うことができる. これはオーディオデバイスのオープン, オーディオストリームの生成, オープンしたデバイスとストリームのバインド, オーディオデータの獲得を行うコールバックの登録(任意)を1つの関数で行える.
+この関数を使う場合, 主要なインターフェースはSDL_AudioStreamで, デバイスのハンドルはほとんど隠される.
+この関数で生成したストリームを破棄するとデバイスもクローズされる, ストリームのバインドを変えることができない, などのためである.
+この関数を使った場合の別の異なる点は, デバイスは一時停止状態から始まり, 明示的に一時停止を解除する必要があることである.
+これはSDL2からの移行を簡単にするためと, 再生が始まる前にアプリケーションがさらにセットアップを必要とする可能性があるためである.
+簡略化されていないものの場合, ストリームをデバイスにバインドする前で何も再生されないため, 一時停止解除の状態から始まる.
+</p>
+<h3>チャネルレイアウト</h3>
+<p>
+SDLに渡すオーディオデータは, 無圧縮の交互に配置されたPCMデータである.
+MP3なども自身でデコードすれば渡せるが, 直接渡すことはできない.
+データの各チャネルの配置の順序は決められている.
+</p>
+<p>
+略語:
+</p>
+<ul>
+<li>FRONT = 正面スピーカー
+<li>FL = 前面左側スピーカー
+<li>FR = 前面右側スピーカー
+<li>FC = 前面正面スピーカー
+<li>BL = 背面左側スピーカー
+<li>BR = 背面右側スピーカー
+<li>SR = サラウンド右スピーカー
+<li>SL = サラウンド左スピーカー
+<li>BC = 背面中央スピーカー
+<li>LFE = 低音スピーカー
+</ul>
+<p>
+次の一覧はメモリ上の配置順で, 例えば"FL, FR"は, 正面左側スピーカーがメモリ上の先で, その次が正面右側, その後はそれを繰り返すことを意味している.
+</p>
+<ul>
+<li>1チャネル(モノラル) レイアウト: FRONT
+<li>2チャネル(ステレオ) レイアウト: FL, FR
+<li>3チャネル(2.1) レイアウト: FL, FR, LFE
+<li>4チャネル(クアッド) レイアウト: FL, FR, BL, BR
+<li>5チャネル(4.1) レイアウト: FL, FR, LFE, BL, BR
+<li>6チャネル(5.1) レイアウト: FL, FR, FC, LFE, BL, BR (最後の2つはSL, SRの場合もある)
+<li>7チャネル(6.1) レイアウト: FL, FR, FC, LFE, BC, SL, SR
+<li>8チャネル(7.1) レイアウト: FL, FR, FC, LFE, BL, BR, SL, SR
+</ul>
+<p>
+この順序はDirectSoundと同じだが, 全ての環境に適用される. SDLは異なる順序の環境でも必要に応じてチャネルを入れ替える.
+</p>
+<p>
+様々なオーディオ処理の場合のために, SDL_AudioStreamはこの順序を変更するためのチャネルの対応付けを提供できる.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AudioDevicePaused
+<li>SDL_AudioStreamDevicePaused
+<li>SDL_BindAudioStream
+<li>SDL_BindAudioStreams
+<li>SDL_ClearAudioStream
+<li>SDL_CloseAudioDevice
+<li>SDL_ConvertAudioSamples
+<li>SDL_CreateAudioStream
+<li>SDL_DestroyAudioStream
+<li>SDL_FlushAudioStream
+<li>SDL_GetAudioDeviceChannelMap
+<li>SDL_GetAudioDeviceFormat
+<li>SDL_GetAudioDeviceGain
+<li>SDL_GetAudioDeviceName
+<li>SDL_GetAudioDriver
+<li>SDL_GetAudioFormatName
+<li>SDL_GetAudioPlaybackDevices
+<li>SDL_GetAudioRecordingDevices
+<li>SDL_GetAudioStreamAvailable
+<li>SDL_GetAudioStreamData
+<li>SDL_GetAudioStreamDevice
+<li>SDL_GetAudioStreamFormat
+<li>SDL_GetAudioStreamFrequencyRatio
+<li>SDL_GetAudioStreamGain
+<li>SDL_GetAudioStreamInputChannelMap
+<li>SDL_GetAudioStreamOutputChannelMap
+<li>SDL_GetAudioStreamProperties
+<li>SDL_GetAudioStreamQueued
+<li>SDL_GetCurrentAudioDriver
+<li>SDL_GetNumAudioDrivers
+<li>SDL_GetSilenceValueForFormat
+<li>SDL_IsAudioDevicePhysical
+<li>SDL_IsAudioDevicePlayback
+<li>SDL_LoadWAV
+<li>SDL_LoadWAV_IO
+<li>SDL_LockAudioStream
+<li>SDL_MixAudio
+<li>SDL_OpenAudioDevice
+<li>SDL_OpenAudioDeviceStream
+<li>SDL_PauseAudioDevice
+<li>SDL_PauseAudioStreamDevice
+<li>SDL_PutAudioStreamData
+<li>SDL_PutAudioStreamDataNoCopy
+<li>SDL_PutAudioStreamPlanarData
+<li>SDL_ResumeAudioDevice
+<li>SDL_ResumeAudioStreamDevice
+<li>SDL_SetAudioDeviceGain
+<li>SDL_SetAudioIterationCallbacks
+<li>SDL_SetAudioPostmixCallback
+<li>SDL_SetAudioStreamFormat
+<li>SDL_SetAudioStreamFrequencyRatio
+<li>SDL_SetAudioStreamGain
+<li>SDL_SetAudioStreamGetCallback
+<li>SDL_SetAudioStreamInputChannelMap
+<li>SDL_SetAudioStreamOutputChannelMap
+<li>SDL_SetAudioStreamPutCallback
+<li>SDL_UnbindAudioStream
+<li>SDL_UnbindAudioStreams
+<li>SDL_UnlockAudioStream
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_AudioDeviceID
+<li>SDL_AudioIterationCallback
+<li>SDL_AudioPostmixCallback
+<li>SDL_AudioStream
+<li>SDL_AudioStreamCallback
+<li>SDL_AudioStreamDataCompleteCallback
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_AudioSpec
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_AudioFormat
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_AUDIO_BITSIZE
+<li>SDL_AUDIO_BYTESIZE
+<li>SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK
+<li>SDL_AUDIO_DEVICE_DEFAULT_RECORDING
+<li>SDL_AUDIO_FRAMESIZE
+<li>SDL_AUDIO_ISBIGENDIAN
+<li>SDL_AUDIO_ISFLOAT
+<li>SDL_AUDIO_ISINT
+<li>SDL_AUDIO_ISLITTLEENDIAN
+<li>SDL_AUDIO_ISSIGNED
+<li>SDL_AUDIO_ISUNSIGNED
+<li>SDL_AUDIO_MASK_BIG_ENDIAN
+<li>SDL_AUDIO_MASK_BITSIZE
+<li>SDL_AUDIO_MASK_FLOAT
+<li>SDL_AUDIO_MASK_SIGNED
+<li>SDL_DEFINE_AUDIO_FORMAT
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryAudio">SDL3/CategoryAudio - SDL Wiki</a>
+<hr>
+</body>
+</html>
