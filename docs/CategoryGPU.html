@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>3DレンダリングとGPUコンピューティング</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - 3DレンダリングとGPUコンピューティング
+<hr>
+<h1>3DレンダリングとGPUコンピューティング</h1>
+<h2>概要</h2>
+<p>
+CPU APIは現代的なグラフィックハードウェアと対話するアプリケーションに環境に依存しない方法を提供する.
+Metal, Vulkan, Direct3D 12の形式の3Dグラフィックとコンピューティングの両方を提供する.
+</p>
+<p>
+基本的なワークフローは次のようになる:
+</p>
+<p>
+アプリケーションはSDL_CreateGPUDevice()でGPUデバイスを生成し, それをSDL_ClaimWindowForGPUDevice()でウィンドウと関連付ける――厳密には, 画像処理などのためにウィンドウを全く使わずに画面外でもレンダリングできる.
+</p>
+<p>
+次に, アプリケーションは静的データ(一度生成され, 繰り返し使われるもの)を用意する. 例:
+</p>
+<ul>
+<li>シェーダ(GPU上で動作するプログラム): SDL_CreateGPUShader()を使用する
+<li>頂点バッファ(形状データの配列)と他のレンダリングデータ: SDL_CreateGPUBuffer()とSDL_UploadToGPUBuffer()を使用する
+<li>テクスチャ(画像): SDL_CreateGPUTexture()とSDL_UploadToGPUTexture()を使用する
+<li>サンプラ(テクスチャをどのように読み込むか): SDL_CreateGPUSampler()を使用する
+<li>レンダーパイプライン(あらかじめ計算されたレンダリング過程): SDL_CreateGPUGraphicsPipeline()を使用する
+</ul>
+<p>
+レンダリングのために, アプリケーションは1つ以上のコマンドバッファをSDL_AcquireGPUCommandBuffer()で生成する.
+コマンドバッファは, バッチでGPUに送られるレンダリング命令を溜める.
+複雑なシーンは複数のコマンドバッファが使用でき, 正しい順序ならば恐らく複数スレッドに渡り並列に構成される.
+しかし, 多くのアプリケーションは1フレーム当たり1つのコマンドバッファで十分である
+</p>
+<p>
+レンダリングは, テクスチャ(別のAPIでは「レンダーターゲット」と呼ばれる)か, スワップチェーンテクスチャ(ウィンドウのコンテキストに対する特別なテクスチャ)に対して行うことができる.
+SDL_WaitAndAcquireGPUSwapchainTexture()を使用するとウィンドウに対してレンダリングできる.
+</p>
+<p>
+レンダリングは, 実際にはレンダーパスで発生し, コマンドバッファにエンコードされる.
+複数のレンダーパス(またはレンダーとコンピューティングを交互に行うパス)を1つのコマンドバッファにエンコードすることもできるが, 多くのアプリケーションは単に1つのコマンドバッファには1つのレンダーパスで十分である.
+レンダーパスは4つのカラーテクスチャと1つの深度テクスチャを同時にレンダリングすることができる.
+レンダリングするテクスチャを変更する必要がある場合, レンダーパスを終了し, 新しいレンダーパスを開始する必要がある.
+</p>
+<p>
+アプリケーションはSDL_BeginGPURenderPass()を呼ぶ. その後, 各描画で必要な過程を設定する:
+</p>
+<ul>
+<li>SDL_BindGPUGraphicsPipeline()
+<li>SDL_SetGPUViewport()
+<li>SDL_BindGPUVertexBuffers()
+<li>SDL_BindGPUVertexSamplers()
+<li>その他
+</ul>
+<p>
+その後, これらの過程の実際の描画コマンドを生成する:
+</p>
+<ul>
+<li>SDL_DrawGPUPrimitives()
+<li>SDL_DrawGPUPrimitivesIndirect()
+<li>SDL_DrawGPUIndexedPrimitivesIndirect()
+<li>その他
+</ul>
+<p>
+パスの描画コマンドが全て完了した後, アプリケーションはSDL_EndGPURenderPass()を呼ぶ必要がある.
+レンダーパスが終了すると, 全てのレンダリングに関連した過程はリセットされる.
+</p>
+<p>
+シーン全体がレンダリングされるまでは, アプリケーションは新しいレンダーパスを開始し, 同じコマンドバッファで新たに描画することができる.
+</p>
+<p>
+シーンのレンダリングコマンドが全て完了すると, アプリケーションは処理をGPUに送信するためにSDL_SubmitGPUCommandBuffer()を呼ぶ.
+</p>
+<p>
+アプリケーションがテクスチャやバッファからデータを読み戻す必要がある場合は, 多少の遅れを容認できるならば, それを効率的に行うAPIがある.
+アプリケーションがSDL_DownloadFromGPUTexture()またはSDL_DownloadFromGPUBuffer()を使い, SDL_SubmitGPUCommandBufferAndAcquireFence()でコマンドバッファを送信すると, スレッドでアプリケーションがポーリングまたは待機できるフェンスハンドルを戻す.
+フェンスがコマンドバッファの処理の完了を検知すると, ダウンロードされたデータを安全に読み込むことができる.
+このフェンスの使用を終えたとき, 必ずSDL_ReleaseGPUFence()を呼ぶこと.
+</p>
+<p>
+このAPIは「コンピューティング」にも対応している.
+アプリケーションは, コンピュートシェーダで書き込まれるコンピュートライタブルテクスチャと(または)バッファを指定してSDL_BeginGPUComputePass()を呼ぶ.
+その後, コンピュートディスパッチで必要な過程を設定する:
+</p>
+<ul>
+<li>SDL_BindGPUComputePipeline()
+<li>SDL_BindGPUComputeStorageBuffers()
+<li>SDL_BindGPUComputeStorageTextures()
+</ul>
+<p>
+その後, コンピューティング作業をGPUに送信する:
+</p>
+<ul>
+<li>SDL_DispatchGPUCompute()
+</ul>
+<p>
+高度なユーザはこれで強力なGPU駆動のワークフローを始めることができる.
+</p>
+<p>
+グラフィックとコンピューティングパイプラインは, 上で記述したようにGPU上の小さなプログラムであるシェーダの使用を必要とする.
+それぞれのバックエンド(Vulkan, Metal, D3D12)は異なるシェーダの形式を必要とする.
+GPUデバイスを生成するとき, アプリケーションはどのシェーダの形式を提供できるかをデバイスに知らせる.
+次に, 利用可能なシェーダ形式と, 実行環境で利用可能なバックエンドに依存した適切なバックエンドを選択する.
+シェーダを生成すると, アプリケーションは選択したバックエンドに正しいシェーダ形式で提供する必要がある.
+APIがこのように動作する理由を詳しく学びたいならば, 詳しく説明された<a href="https://moonside.games/posts/layers-all-the-way-down/">ブログの記事</a>がある.
+</p>
+<p>
+最もよいのは, 使用するシェーダ形式を事前にコンパイルすることだが, 簡単に使えるようにSDLはランタイムシェーダのクロスコンパイルのための別のプロジェクト<a href="https://github.com/libsdl-org/SDL_shadercross">SDL_shadercross</a>を提供している.
+オフラインの事前コンパイルのためのCLIインターフェースも備えている.
+</p>
+<p>
+これは重要な部分をいくつも省略した概要に過ぎない.
+それでもGPUプログラミングはかなり複雑だと感じたことだろう.
+シンプルな2Dグラフィックのみ必要ならば, レンダーAPIの方が簡単で, ハードウェアアクセラレーションも活用できる.
+しかし, 2DアプリケーションでもGPU APIのパフォーマンスと表現力は重要である.
+</p>
+<p>
+GPU APIの機能は幅広いハードウェアの対応と移植のしやすさに重点を置いている.
+アプリケーションが機能をチェックして場合分けしなくてもよいように設計されている.
+もし対応するハードウェアが限定された最新の機能が必要ならば, 恐らくこのAPIは向いていない.
+</p>
+<p>
+このAPIの使い方のデモは<a href="https://github.com/TheSpydog/SDL_gpu_examples">ここ</a>にある.
+</p>
+<h3>パフォーマンスに関する考察</h3>
+<p>
+レンダリングのパフォーマンスを高める基本的なヒント:
+</p>
+<ul>
+<li>レンダーパスを新たに開始するのは比較的高価である.
+できるだけパスを少なくすること.
+<li>
+過程の変更を最小限にすること.
+例えば, パイプラインのバインドは比較的安価だが, それを不必要に何百回も行うとパフォーマンスは明らかに低下する.
+フレーム内のデータの送信は可能な限り早い段階で行うこと.
+<li>リソースの生成と解放を繰り返さないこと.
+リソースの生成と解放は高価である.
+必要なものをあらかじめ生成し, 溜めておくのがよい.
+<li>大量のデータ(複数の行列)にユニフォームバッファを使わないこと.
+代わりにストレージバッファを使用すること.
+<li>サイクルを正しく使用すること.
+サイクルについては後で詳しく説明する.
+<li>ピクセルの描画量を減らすためにカリング(culling)を使用すること.
+GPUの描画が少ないほどパフォーマンスは向上する.
+カリングは非常に高度な処理だが, 単純なカリングでもパフォーマンスを大幅に向上できることはありうる.
+</ul>
+<p>
+一般的に, パフォーマンスの黄金律を覚えておくこと: 何かをすることは, 何もしないよりも高価である. ドライバに触れてはならない!
+</p>
+<h3>FAQ</h3>
+<h4>質問: レイトレーシングやメッシュシェーダのような高度な機能はいつ追加されるのか?</h4>
+<p>回答: 今すぐ最先端の機能を追加する予定はない. しかし, その機能に追加する価値があり, 複数の環境で実装可能な基盤となるAPIとするのが合理的と判断したならば, 将来的にはありうる.
+「決してない」ことはないが, 「近い将来」でもない.
+</p>
+<h4>質問: 私のシェーダが動かないのはなぜか?</h4>
+<p>
+回答: シェーダを使う際のよくあるミスは, シェーダの資源/レジスタが適切に配置されていないというものである.
+GPU APIは資源の配置に非常に厳格で, また互換性のある配置かをAPIが自動的に判断するのは困難である.
+必要なレイアウトの情報はSDL_CreateGPUShader()とSDL_CreateGPUComputePipeline()のドキュメントを参照すること.
+</p>
+<p>
+他によくあるのは, SDL_GPUShaderCreateInfoのサンプラ, テクスチャ, バッファの数が正しく設定されていない場合である.
+可能ならば, 構造体の値を手動で設定するのではなく, シェーダリフレクションを使用してシェーダから自動的に必要な情報を得ること.
+</p>
+<h4>質問: 私のアプリケーションのパフォーマンスはあまりよくない. GPU APIの間違いか?</h4>
+<p>
+回答: 違う. 詳しい回答: GPU APIは基礎的なグラフィックAPIの上にある比較的薄いレイヤーである.
+非効率なことを行った可能性が, GPUレンダリングの経験が少ない場合は特にありうる.
+上のパフォーマンスのヒントを参考にして, それに従っているか確認すること.
+さらに, RenderDocのようなツールは正しくない振る舞いの診断やパフォーマンスの問題の手助けになりうる.
+</p>
+<h3>システム要件</h3>
+<h4>Vulkan</h4>
+<p>
+SDLドライバ名: "vulkan" (SDL_CreateGPUDevice()とSDL_PROP_GPU_DEVICE_CREATE_NAME_STRINGで使用する)
+</p>
+<p>
+Windows, Linux, Nintendo Switch, 一部のAndroidに対応している.
+以下の拡張が行われたVulkan 1.0と対応したデバイスが必要である:
+</p>
+<ul>
+<li>VK_KHR_swapchain
+<li>VK_KHR_maintenance1
+<li>independentBlend
+<li>imageCubeArray
+<li>depthClamp
+<li>shaderClipDistance
+<li>drawIndirectFirstInstance
+<li>sampleRateShading
+</ul>
+<h4>D3D12</h4>
+<p>
+SDLドライバ名: "direct3d12"
+</p>
+<p>
+Windows 10以降, Xbox One (GDK), Xbox Series X|S (GDK)に対応している.
+DirectX 12 Feature Level 11_0とResource Binding Tier 2またはそれ以上に対応したGPUが必要である.
+</p>
+<h4>Metal</h4>
+<p>
+SDLドライバ名: "metal"
+</p>
+<p>
+macOS 10.14以降, iOS/tvOS 13.0以降に対応している. オペレーティングシステムと合ったハードウェアが必要である:
+</p>
+<ul>
+<li>macOSの場合, Apple SiliconまたはIntel Mac2 family GPU
+<li>iOS/tvOSの場合, A9 GPUまたはそれ以降
+<li>iOSシミュレータとtvOSシミュレータには対応していない
+</ul>
+<h3>座標系</h3>
+<p>
+GPU APIは, D3D12とMetalに合わせて左手系の座標系を採用している. 特に:
+</p>
+<ul>
+<li>デバイス正規化座標系: 左下隅のXY座標は(-1.0, -1.0)で, 右上のXY座標は(1.0, 1.0)である. Z座標の範囲は[0.0, 1.0]で, 0が水平面上
+<li>ビューポート座標系: 左上隅のXY座標は(0, 0)で, 右下隅のXY座標は(viewportWidth, viewportHeight)に拡張される. +Yが下
+<li>テクスチャ座標系: 左上隅のXY座標は(0, 0)で, 右下隅のXY座標は(1.0, 1.0)にに拡張される. +Yが下
+</ul>
+<p>
+バックエンドのドライバが異なる座標系(例えばVulkanのデバイス正規化座標系は+Yが下)の場合でも, SDLは背後で自動的に座標系を変換するため, 座標を入れ替える処理を自身で行う必要はない.
+</p>
+<h3>ユニフォームデータ</h3>
+<p>
+ユニフォームはシェーダに渡されるデータである. ユニフォームデータはシェーダの全ての実行に渡り同一である.
+</p>
+<p>
+1シェーダステージ(頂点, フラグメント, コンピューティング)につき4つのユニフォームスロットが利用できる.
+ステージのスロットに入れられたユニフォームデータは, 再びスロットに入れる関数を呼ぶまでコマンドバッファに値が維持される.
+</p>
+<p>
+例えば, スロット0にバインドされたユニフォームからカメラ行列として読み込むために頂点シェーダを書き込むことができる.
+コマンドバッファに最初に入れられたカメラ行列は, 各サブシーケンスの描画の呼び出しのたびに使われる.
+</p>
+<p>
+レンダリングやコンピューティングパスの間にユニフォームデータを入れるのは適切な方法である.
+</p>
+<p>
+ユニフォームは少ないデータを入れるのが最もよい.
+複数の行列を1回の呼び出しで入れたいならば, 代わりにストレージバッファの使用を考えるべきだろう.
+</p>
+<h3>サイクルに関する注意</h3>
+<p>
+コマンドバッファを使う場合, 命令は即座には実行されない――コマンドバッファが送信された後, しばらくしてから実行される.
+</p>
+<p>
+リソースが待ち状態または処理中のコマンドバッファで使用されている場合, これを「バインドされている」と見なす.
+リソースが待ち状態または処理中のコマンドバッファで使用されなくなった場合, これを「バインドされていない」と見なす.
+</p>
+<p>
+データリソースがバインドされているとき, 送信中のコマンドバッファをフェンスで待っていない限り, いつデータのバインドが解除されるかは不定である.
+しかし, これはリソースの使用を自分で監視しなければならないということではない.
+</p>
+<p>
+リソースの書き込みに関連する全ての関数と構造体には, ブール値の"cycle"が存在する.
+SDL_GPUTransferBuffer, SDL_GPUBuffer, SDL_GPUTextureは, 効率化のため全て内部リソースのリングバッファを使用している.
+cycleが真の場合, リソースがバインドされていれば, サイクルは次のバインドされていない内部リソースへと移る. 利用可能なリソースがなければ, 新しいリソースが生成される.
+これは適切にサイクルされている限り, 複雑な状態遷移の追跡と同期に困難する必要がないことを意味する.
+</p>
+<p>
+例: SDL_MapGPUTransferBuffer()を呼びテクスチャデータを書き込み, SDL_UnmapGPUTransferBuffer()を呼び, 次にSDL_UploadToGPUTexture()を呼ぶとする.
+次にバッファにテクスチャをバッファに書き込むとき, cycleパラメータを真にすると, まだ送信されていないデータを上書きしてしまう心配はない.
+</p>
+<p>
+別の例: 毎フレームのレンダーパスで1つのテクスチャを使用している場合, フレーム間でデータの依存関係が発生しうる.
+SDL_GPUColorTargetInfo構造体のcycleに真を設定すると, このデータ依存を避けることができる.
+</p>
+<p>
+サイクルが既にバインドされたデータを未定義にすることはない.
+サイクル中, リソースの全てのデータはデータが再び書き込まれるまでは, 後のコマンドからは未定義と見なされる.
+未定義のデータを読み込まないように注意する必要がある.
+</p>
+<p>
+テクスチャをサイクルする場合, たとえ呼び出しでテクスチャの一部のみ使用する場合でもテクスチャ全体がサイクルされる.
+よって, サイクルの後はテクスチャ全体が未定義と見なすべきである.
+</p>
+<p>
+また, 最初にサイクル外のコマンドで参照されたデータのセクションを上書きしないように注意する必要がある.
+サイクル外でリソースにバインドされた参照されていないデータを上書きするのはよいが, 既に参照されたデータのセクションを上書きすると予期しない結果となる.
+</p>
+<h3>デバッグ</h3>
+<p>
+GPUを使用していると, 通常のデバッガでは追跡できない問題に遭遇するだろう――例えば, コンパイルしたが何も表示されない, または実行中にシェーダが失敗するなどである.
+</p>
+<p>
+このような場合のデバッグのために, 各描画の呼び出し, バインドされたリソース, メモリバッファ等のGPUフレーム全体の調査を可視化できるツールが存在する:
+</p>
+<ul>
+<li>Windows/Linuxの場合, RenderDocを使用する
+<li>MacOS(Metal)の場合, Xcodeに組み込まれたデバッガを使用する
+(XCodeを開き, Debug→Debug Executable...へ移行して, あなたのアプリケーションを選択し, "Options"ウィンドウの"GPU Frame Capture"を"Metal"に設定する. アプリケーションを実行し, 下にある小さなMetalアイコンをクリックするとフレームをキャプチャする)
+</ul>
+<p>
+それとは別に,元のGPUバックエンドのより詳細なエラーメッセージを受信する追加のデバッグレイヤを有効にしたいだろう:
+</p>
+<ul>
+<li>D3D12の場合, デバッグレイヤはオプションで, "Windows Settings → System → Optional features"でインストールし, "Graphics Tools"オプションで追加する.
+<li>Vulkanの場合, WindowsとLinuxならばVulkan SDKをインストールする必要がり, 通常はvulkan-validation-layersシステムパッケージがインストールされている必要がある.
+<li>Metalの場合, 出力されたエラーと警告の詳細を受信するにはアプリケーションをXCodeから実行すればよい.
+</ul>
+<p>
+実行中に問題に遭遇した, または画面に予期しない出力があった場合は, RenderDocのようなツールを使うことを躊躇してはならない.
+素早いGPUフレームの調査は, このような問題の重要な部分の修正の助けになる.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AcquireGPUCommandBuffer
+<li>SDL_AcquireGPUSwapchainTexture
+<li>SDL_BeginGPUComputePass
+<li>SDL_BeginGPUCopyPass
+<li>SDL_BeginGPURenderPass
+<li>SDL_BindGPUComputePipeline
+<li>SDL_BindGPUComputeSamplers
+<li>SDL_BindGPUComputeStorageBuffers
+<li>SDL_BindGPUComputeStorageTextures
+<li>SDL_BindGPUFragmentSamplers
+<li>SDL_BindGPUFragmentStorageBuffers
+<li>SDL_BindGPUFragmentStorageTextures
+<li>SDL_BindGPUGraphicsPipeline
+<li>SDL_BindGPUIndexBuffer
+<li>SDL_BindGPUVertexBuffers
+<li>SDL_BindGPUVertexSamplers
+<li>SDL_BindGPUVertexStorageBuffers
+<li>SDL_BindGPUVertexStorageTextures
+<li>SDL_BlitGPUTexture
+<li>SDL_CalculateGPUTextureFormatSize
+<li>SDL_CancelGPUCommandBuffer
+<li>SDL_ClaimWindowForGPUDevice
+<li>SDL_CopyGPUBufferToBuffer
+<li>SDL_CopyGPUTextureToTexture
+<li>SDL_CreateGPUBuffer
+<li>SDL_CreateGPUComputePipeline
+<li>SDL_CreateGPUDevice
+<li>SDL_CreateGPUDeviceWithProperties
+<li>SDL_CreateGPUGraphicsPipeline
+<li>SDL_CreateGPUSampler
+<li>SDL_CreateGPUShader
+<li>SDL_CreateGPUTexture
+<li>SDL_CreateGPUTransferBuffer
+<li>SDL_DestroyGPUDevice
+<li>SDL_DispatchGPUCompute
+<li>SDL_DispatchGPUComputeIndirect
+<li>SDL_DownloadFromGPUBuffer
+<li>SDL_DownloadFromGPUTexture
+<li>SDL_DrawGPUIndexedPrimitives
+<li>SDL_DrawGPUIndexedPrimitivesIndirect
+<li>SDL_DrawGPUPrimitives
+<li>SDL_DrawGPUPrimitivesIndirect
+<li>SDL_EndGPUComputePass
+<li>SDL_EndGPUCopyPass
+<li>SDL_EndGPURenderPass
+<li>SDL_GDKResumeGPU
+<li>SDL_GDKSuspendGPU
+<li>SDL_GenerateMipmapsForGPUTexture
+<li>SDL_GetGPUDeviceDriver
+<li>SDL_GetGPUDeviceProperties
+<li>SDL_GetGPUDriver
+<li>SDL_GetGPUShaderFormats
+<li>SDL_GetGPUSwapchainTextureFormat
+<li>SDL_GetGPUTextureFormatFromPixelFormat
+<li>SDL_GetNumGPUDrivers
+<li>SDL_GetPixelFormatFromGPUTextureFormat
+<li>SDL_GPUSupportsProperties
+<li>SDL_GPUSupportsShaderFormats
+<li>SDL_GPUTextureFormatTexelBlockSize
+<li>SDL_GPUTextureSupportsFormat
+<li>SDL_GPUTextureSupportsSampleCount
+<li>SDL_InsertGPUDebugLabel
+<li>SDL_MapGPUTransferBuffer
+<li>SDL_PopGPUDebugGroup
+<li>SDL_PushGPUComputeUniformData
+<li>SDL_PushGPUDebugGroup
+<li>SDL_PushGPUFragmentUniformData
+<li>SDL_PushGPUVertexUniformData
+<li>SDL_QueryGPUFence
+<li>SDL_ReleaseGPUBuffer
+<li>SDL_ReleaseGPUComputePipeline
+<li>SDL_ReleaseGPUFence
+<li>SDL_ReleaseGPUGraphicsPipeline
+<li>SDL_ReleaseGPUSampler
+<li>SDL_ReleaseGPUShader
+<li>SDL_ReleaseGPUTexture
+<li>SDL_ReleaseGPUTransferBuffer
+<li>SDL_ReleaseWindowFromGPUDevice
+<li>SDL_SetGPUAllowedFramesInFlight
+<li>SDL_SetGPUBlendConstants
+<li>SDL_SetGPUBufferName
+<li>SDL_SetGPUScissor
+<li>SDL_SetGPUStencilReference
+<li>SDL_SetGPUSwapchainParameters
+<li>SDL_SetGPUTextureName
+<li>SDL_SetGPUViewport
+<li>SDL_SubmitGPUCommandBuffer
+<li>SDL_SubmitGPUCommandBufferAndAcquireFence
+<li>SDL_UnmapGPUTransferBuffer
+<li>SDL_UploadToGPUBuffer
+<li>SDL_UploadToGPUTexture
+<li>SDL_WaitAndAcquireGPUSwapchainTexture
+<li>SDL_WaitForGPUFences
+<li>SDL_WaitForGPUIdle
+<li>SDL_WaitForGPUSwapchain
+<li>SDL_WindowSupportsGPUPresentMode
+<li>SDL_WindowSupportsGPUSwapchainComposition
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_GPUBuffer
+<li>SDL_GPUBufferUsageFlags
+<li>SDL_GPUColorComponentFlags
+<li>SDL_GPUCommandBuffer
+<li>SDL_GPUComputePass
+<li>SDL_GPUComputePipeline
+<li>SDL_GPUCopyPass
+<li>SDL_GPUDevice
+<li>SDL_GPUFence
+<li>SDL_GPUGraphicsPipeline
+<li>SDL_GPURenderPass
+<li>SDL_GPUSampler
+<li>SDL_GPUShader
+<li>SDL_GPUShaderFormat
+<li>SDL_GPUTexture
+<li>SDL_GPUTextureUsageFlags
+<li>SDL_GPUTransferBuffer
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_GPUBlitInfo
+<li>SDL_GPUBlitRegion
+<li>SDL_GPUBufferBinding
+<li>SDL_GPUBufferCreateInfo
+<li>SDL_GPUBufferLocation
+<li>SDL_GPUBufferRegion
+<li>SDL_GPUColorTargetBlendState
+<li>SDL_GPUColorTargetDescription
+<li>SDL_GPUColorTargetInfo
+<li>SDL_GPUComputePipelineCreateInfo
+<li>SDL_GPUDepthStencilState
+<li>SDL_GPUDepthStencilTargetInfo
+<li>SDL_GPUGraphicsPipelineCreateInfo
+<li>SDL_GPUGraphicsPipelineTargetInfo
+<li>SDL_GPUIndexedIndirectDrawCommand
+<li>SDL_GPUIndirectDispatchCommand
+<li>SDL_GPUIndirectDrawCommand
+<li>SDL_GPUMultisampleState
+<li>SDL_GPURasterizerState
+<li>SDL_GPUSamplerCreateInfo
+<li>SDL_GPUShaderCreateInfo
+<li>SDL_GPUStencilOpState
+<li>SDL_GPUStorageBufferReadWriteBinding
+<li>SDL_GPUStorageTextureReadWriteBinding
+<li>SDL_GPUTextureCreateInfo
+<li>SDL_GPUTextureLocation
+<li>SDL_GPUTextureRegion
+<li>SDL_GPUTextureSamplerBinding
+<li>SDL_GPUTextureTransferInfo
+<li>SDL_GPUTransferBufferCreateInfo
+<li>SDL_GPUTransferBufferLocation
+<li>SDL_GPUVertexAttribute
+<li>SDL_GPUVertexBufferDescription
+<li>SDL_GPUVertexInputState
+<li>SDL_GPUViewport
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_GPUBlendFactor
+<li>SDL_GPUBlendOp
+<li>SDL_GPUCompareOp
+<li>SDL_GPUCubeMapFace
+<li>SDL_GPUCullMode
+<li>SDL_GPUFillMode
+<li>SDL_GPUFilter
+<li>SDL_GPUFrontFace
+<li>SDL_GPUIndexElementSize
+<li>SDL_GPULoadOp
+<li>SDL_GPUPresentMode
+<li>SDL_GPUPrimitiveType
+<li>SDL_GPUSampleCount
+<li>SDL_GPUSamplerAddressMode
+<li>SDL_GPUSamplerMipmapMode
+<li>SDL_GPUShaderStage
+<li>SDL_GPUStencilOp
+<li>SDL_GPUStoreOp
+<li>SDL_GPUSwapchainComposition
+<li>SDL_GPUTextureFormat
+<li>SDL_GPUTextureType
+<li>SDL_GPUTransferBufferUsage
+<li>SDL_GPUVertexElementFormat
+<li>SDL_GPUVertexInputRate
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryGPU">SDL3/CategoryGPU - SDL Wiki</a>
+<hr>
+</body>
+</html>
