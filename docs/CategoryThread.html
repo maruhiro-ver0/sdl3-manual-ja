@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>スレッド</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - スレッド
+<hr>
+<h1>スレッド</h1>
+<h2>概要</h2>
+<p>
+SDLは異なる環境にまたがったスレッド管理関数を提供している.
+ほとんどがスレッドの開始, 優先度の設定, 終了に関するものである.
+</p>
+<p>
+さらに, スレッド局所記憶(スレッドごとに異なるが, 単一のキーでアクセスできるデータ)にも対応している.
+</p>
+<p>
+スレッドに対応していない環境(pthreadsなしでビルドしたEmscriptenのような)でも, これらの関数は存在するが, SDL_CreateThread()のような関数は何もせず失敗を報告する.
+</p>
+<p>
+スレッドを使うつもりならば, <a href="CategoryMutex.html">同期プリミティブ</a>も同様によく理解する必要がある.
+</p>
+<p>
+SDL APIのこの部分はスレッドの管理を行うが, アプリケーションも安全にスレッドを管理するためにロックが必要になる.
+その部分は<a href="CategoryMutex.html">同期プリミティブ</a>にある.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_CleanupTLS
+<li>SDL_CreateThread
+<li>SDL_CreateThreadWithProperties
+<li>SDL_DetachThread
+<li>SDL_GetCurrentThreadID
+<li>SDL_GetThreadID
+<li>SDL_GetThreadName
+<li>SDL_GetThreadState
+<li>SDL_GetTLS
+<li>SDL_SetCurrentThreadPriority
+<li>SDL_SetTLS
+<li>SDL_WaitThread
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_Thread
+<li>SDL_ThreadFunction
+<li>SDL_ThreadID
+<li>SDL_TLSDestructorCallback
+<li>SDL_TLSID
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_ThreadPriority
+<li>SDL_ThreadState
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryThread">SDL3/CategoryThread - SDL Wiki</a>
+<hr>
+</body>
+</html>

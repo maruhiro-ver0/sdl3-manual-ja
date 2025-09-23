@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL2.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>アトミック操作</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 2.0 API(機能別)</a> - アトミック操作
+<hr>
+<h1>アトミック操作</h1>
+<h2>概要</h2>
+<p>
+アトミック(不可分)操作.
+</p>
+<p>
+重要: もしあなたがロックしない並列プログラミングに精通していないのであれば, この分類で使うのはアトミックロックと参照カウントのみにして, それ以外は完全なミューテックスでデータ構造を守るべきだ.
+</p>
+<p>
+<strong>これは本当に危険である!</strong>
+</p>
+<p>
+ロックしないプログラミングとその問題についてはここで取り上げられている: <a href="https://learn.microsoft.com/en-us/windows/win32/dxtecharts/lockless-programming">https://learn.microsoft.com/en-us/windows/win32/dxtecharts/lockless-programming</a>
+</p>
+<p>
+参考になる情報はここにもある:
+<ul>
+<li><a href="http://www.1024cores.net/home/lock-free-algorithms">http://www.1024cores.net/home/lock-free-algorithms</a>
+<li><a href="http://preshing.com/">http://preshing.com/</a>
+</ul>
+</p>
+<p>
+これらの操作は, プロセッサ固有のアトミック操作を実際に使って実装しているかもしれないし, そうでないかもしれない.
+もし可能であれば, 本当のプロセッサのアトミック操作で実装されている.
+可能でなければ, アトミック操作可能なロックを使って実装されている.
+</p>
+<p>
+メモリを操作するアトミック操作は全てメモリバリアである.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AddAtomicInt
+<li>SDL_AddAtomicU32
+<li>SDL_CompareAndSwapAtomicInt
+<li>SDL_CompareAndSwapAtomicPointer
+<li>SDL_CompareAndSwapAtomicU32
+<li>SDL_GetAtomicInt
+<li>SDL_GetAtomicPointer
+<li>SDL_GetAtomicU32
+<li>SDL_LockSpinlock
+<li>SDL_MemoryBarrierAcquireFunction
+<li>SDL_MemoryBarrierReleaseFunction
+<li>SDL_SetAtomicInt
+<li>SDL_SetAtomicPointer
+<li>SDL_SetAtomicU32
+<li>SDL_TryLockSpinlock
+<li>SDL_UnlockSpinlock
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_SpinLock
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_AtomicInt
+<li>SDL_AtomicU32
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_AtomicDecRef
+<li>SDL_AtomicIncRef
+<li>SDL_CompilerBarrier
+<li>SDL_CPUPauseInstruction
+<li>SDL_MemoryBarrierAcquire
+<li>SDL_MemoryBarrierRelease
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryAtomic">SDL3/CategoryAtomic - SDL Wiki</a>
+<hr>
+</body>
+</html>

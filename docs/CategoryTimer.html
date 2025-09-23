@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>タイマ</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - タイマ
+<hr>
+<h1>タイマ</h1>
+<h2>概要</h2>
+<p>
+SDLは時間管理機能を提供している.
+これは(通常は)短い間隔の時間を扱うとき便利である.
+</p>
+<p>
+<a href="CategoryTime">日時</a>が提供する日付・時刻の管理と混同しないこと.
+</p>
+<p>
+この分類のAPIが扱うのは, 経過時間(SDL_GetTicks(), SDL_GetPerformanceCounter()), スレッドを設定した時間スリープさせる(SDL_Delay(), SDL_DelayNS(), SDL_DelayPrecise()), 設定した時間が経過したときコールバックする(SDL_AddTimer()等)である.
+</p>
+<p>
+SDL_SECONDS_TO_NS()のような, ある単位の時間に変換する便利なマクロも存在する.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AddTimer
+<li>SDL_AddTimerNS
+<li>SDL_Delay
+<li>SDL_DelayNS
+<li>SDL_DelayPrecise
+<li>SDL_GetPerformanceCounter
+<li>SDL_GetPerformanceFrequency
+<li>SDL_GetTicks
+<li>SDL_GetTicksNS
+<li>SDL_RemoveTimer
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_NSTimerCallback
+<li>SDL_TimerCallback
+<li>SDL_TimerID
+</ol>
+<h2>マクロ</h2>
+<ol>
+<li>SDL_MS_PER_SECOND
+<li>SDL_MS_TO_NS
+<li>SDL_NS_PER_MS
+<li>SDL_NS_PER_SECOND
+<li>SDL_NS_PER_US
+<li>SDL_NS_TO_MS
+<li>SDL_NS_TO_SECONDS
+<li>SDL_NS_TO_US
+<li>SDL_SECONDS_TO_NS
+<li>SDL_US_PER_SECOND
+<li>SDL_US_TO_NS
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryTimer">SDL3/CategoryTimer - SDL Wiki</a>
+<hr>
+</body>
+</html>
