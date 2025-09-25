@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ファイルシステム</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ファイルシステム
+<hr>
+<h1>ファイルシステム</h1>
+<h2>概要</h2>
+<p>
+SDLはシステムのファイルシステムのテストと操作のためにAPIを提供している.
+これはディレクトリの操作と, 実際のファイルへの入出力以外(これは<a href="CategoryIOStream.html">I/Oストリーム</a>と<a href="CategoryAsyncIO.html">非同期I/O</a>で行う)に対応している.
+</p>
+<p>
+必要なパスを得る関数が存在する:
+<ul>
+<li>アプリケーションのデータはどこにあるか? SDL_GetBasePath()
+<li>安全にファイルを書き込める場所はどこか? SDL_GetPrefPath()
+<li>ダウンロード, デスクトップ, 音楽のようなパスはどこか? SDL_GetUserFolder()
+<li>このパスは何であるか? SDL_GetPathInfo()
+<li>このフォルダには何があるか? SDL_EnumerateDirectory()
+<li>このフォルダにはワイルドカードと一致する何があるか? SDL_GlobDirectory()
+<li>カレントディレクトリは何か SDL_GetCurrentDirectory()
+</ul>
+</p>
+<p>
+ディレクトリツリーを操作(名称変更, 削除, ファイルのコピー)する関数も存在する.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_CopyFile
+<li>SDL_CreateDirectory
+<li>SDL_EnumerateDirectory
+<li>SDL_GetBasePath
+<li>SDL_GetCurrentDirectory
+<li>SDL_GetPathInfo
+<li>SDL_GetPrefPath
+<li>SDL_GetUserFolder
+<li>SDL_GlobDirectory
+<li>SDL_RemovePath
+<li>SDL_RenamePath
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_EnumerateDirectoryCallback
+<li>SDL_GlobFlags
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_PathInfo
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_EnumerationResult
+<li>SDL_Folder
+<li>SDL_PathType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryFilesystem">SDL3/CategoryFilesystem - SDL Wiki</a>
+<hr>
+</body>
+</html>
