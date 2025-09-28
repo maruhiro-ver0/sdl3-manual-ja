@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>非同期I/O</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - 非同期I/O
+<hr>
+<h1>非同期I/O</h1>
+<h2>概要</h2>
+<p>
+SDLはI/Oを非同期に行う手段を提供している.
+これは, アプリケーションのファイルの読み込みや書き込みを, 実際にデータを転送するまで待たせずに行うことができる. 入力力を要求する関数は, 完了するまでブロックすることはしない.
+</p>
+<p>
+代わりに, データはバックグラウンドで転送され, アプリケーションは空いた時間に結果をチェックする.
+</p>
+<p>
+ファイルの読み書きを同期的に行うよりも複雑になるが, より効率的で, ハードディスクが追い付けない場合でもフレームレートを落とさず処理すること等ができる.
+</p>
+<p>
+一般的な非同期I/Oの使い方:
+</p>
+<ul>
+<li>1つ以上のSDL_AsyncIOQueueを生成する
+<li>SDL_AsyncIOFromFileでファイルを開く
+<li>そのファイルのI/Oタスクを, SDL_ReadAsyncIOまたはSDL_WriteAsyncIOで開始し, これらのタスクをキューに入れる
+<li>しばらくしてから, SDL_GetAsyncIOResultでブロックせずにキューを見てタスクの完了をチェックする. タスクは様々な順序で成功または失敗する
+<li>全てのタスクが完了したらSDL_CloseAsyncIOでファイルをクローズする. この場合もデータをディスクに掃き出すためにタスクが生成される
+</ul>
+<p>
+全ての動作はシングルスレッドでブロックなしで行われるが, バックグラウンドスレッドでスリープして新しい結果が届くまでキューを待たせることもできる.
+</p>
+<ul>
+<li>タスクが完了するまで効率よくブロックするため, SDL_WaitAsyncIOResultを1つ以上のスレッドから呼ぶ
+<li>シャットダウンのときは, SDL_SignalAsyncIOQueueでスリープ中のスレッドをタスクが完了していなくてもブロック解除する
+</ul>
+<p>
+そして, 同期処理のSDL_LoadFileに対応したSDL_LoadFileAsyncが便利な関数として提供されている.
+これはバッファの確保し, 全ファイルデータを読み込み, 終端にNULを追加する. これも結果は後でチェックする.
+</p>
+<p>
+この機能のために, SDLは背後で動作環境の新しい効率的なAPIを使用している. 例えば, Linuxのio_uringや, Windows 11のIoRingである.
+これらの機能が使えない場合, SDLはアプリケーションをブロックせずに同期処理を管理する別のスレッドプールに作業を渡す.
+</p>
+<h3>効率のよい方法</h3>
+<p>
+単純な非ブロッキングI/O(ディスクの回転を待つことでフレームを失わせないように, 単に準備ができたらデータが欲しいようなアプリケーション)は, どのような場合でもうまく使うことができる.
+この場合, 単に必要なときSDL_ReadAsyncIOや, あるいはSDL_LoadFileAsyncを呼ぶ.
+1フレームごとに, SDL_GetAsyncIOResultを呼んでタスクの完了をチェックし, 届いたデータの処理を行えばよい.
+</p>
+<p>
+1つのプログラムの2か所でI/Oが必要な場合, それぞれにキューを生成することは正しい.
+これにより, 一方が誤って他方の完了したタスクを消費することを防ぐことができる.
+それぞれのキューに資源が必要となるが, 大きなコストではない.
+しかし, タスクごとにキューを作ってはならない.
+1つのキューに多くのタスクを入れる方がよい.
+タスクは, 要求した順番ではなく, 完了した順番に報告される. そのため, 一般的にはタスクをどの順序で開始するかは問題にならない.
+</p>
+<p>
+1つの非同期I/Oキューは, 複数のスレッドで共有でき, また1つのスレッドで複数のキューを持つこともできる.
+しかし, 最も効率がよい(効率のみを目標とするならば)のは, 1つのスレッドには1つのキューとして, 複数スレッドで平行して作業を行い, 各スレッドで開始し消費するタスクを各キューに渡す方法である.
+新しいインターフェースが使える現代的な環境では, この方法で同じキューへのアクセスによるスレッド間の競合がなく, ストレージからアプリケーションへの可能な限り効率的なデータの流れを維持することができる.
+</p>
+<p>
+書き込まれたデータは, クローズを行うタスクが完了するまで物理メディアに書き込まれる保証はない.
+SDL_CloseAsyncIOのflush引数を真にして呼び出し成功しても, 掃き出されていなければ不運なタイミングによる電源断などでデータが失われる可能性がある.
+しかし, アプリケーションの必要に応じて, 掃き出しには時間がかかる場合や不要な場合もある.
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_AsyncIOFromFile
+<li>SDL_CloseAsyncIO
+<li>SDL_CreateAsyncIOQueue
+<li>SDL_DestroyAsyncIOQueue
+<li>SDL_GetAsyncIOResult
+<li>SDL_GetAsyncIOSize
+<li>SDL_LoadFileAsync
+<li>SDL_ReadAsyncIO
+<li>SDL_SignalAsyncIOQueue
+<li>SDL_WaitAsyncIOResult
+<li>SDL_WriteAsyncIO
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_AsyncIO
+<li>SDL_AsyncIOQueue
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_AsyncIOOutcome
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_AsyncIOResult
+<li>SDL_AsyncIOTaskType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryAsyncIO">SDL3/CategoryAsyncIO - SDL Wiki</a>
+<hr>
+</body>
+</html>
