@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>プロセス</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - プロセス
+<hr>
+<h1>プロセス</h1>
+<h2>概要</h2>
+<p>
+プロセスの制御をサポートする.
+</p>
+<p>
+これらの関数は, 環境をまたいだOSレベルのプロセスの生成と管理を提供する.
+</p>
+<p>
+SDL_CreateProcess()でサブプロセスを生成し, SDL_ReadProcess()やSDL_GetProcessInput()とSDL_GetProcessOutput()で読み込みと書き込みを行える.
+プロセス間の入力のチェイニングのような高度な機能が必要な場合は, SDL_CreateProcessWithProperties()を使うことができる.
+</p>
+<p>
+生成したプロセスの状態はSDL_WaitProcess()で得ることができ, プロセスの終了はSDL_KillProcess()で行える.
+</p>
+<p>
+プロセスを終了させても, 自身で終了していても, あるいは実行中でも, 後処理のためにSDL_DestroyProcess()を呼ぶのを忘れないこと. 
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_CreateProcess
+<li>SDL_CreateProcessWithProperties
+<li>SDL_DestroyProcess
+<li>SDL_GetProcessInput
+<li>SDL_GetProcessOutput
+<li>SDL_GetProcessProperties
+<li>SDL_KillProcess
+<li>SDL_ReadProcess
+<li>SDL_WaitProcess
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_Process
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_ProcessIO
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryProcess">SDL3/CategoryProcess - SDL Wiki</a>
+<hr>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="ApiByCategory.html" title="1つ上">
+<title>ファイルダイアログ</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - ファイルダイアログ
+<hr>
+<h1>ファイルダイアログ</h1>
+<h2>概要</h2>
+<p>
+ファイルダイアログのサポート.
+</p>
+<p>
+SDLはファイルダイアログを提供しており, ユーザはシステムのGUIインターフェースでファイルを選択できる.
+「開く」ダイアログ, 「保存」ダイアログ, フォルダ選択ダイアログが存在する.
+アプリケーションは, 特定のファイルをフィルタする, ユーザが複数のファイルを選択できるようにするなどの詳細を設定することができる
+</p>
+<p>
+ファイルダイアログの表示はブロッキングしないので注意すること.
+コントロールはアプリケーションに即座に戻り, その後にユーザが選択したときコールバックが呼ばれる(別のスレッドの可能性もある).
+</p>
+<h2>関数</h2>
+<ol>
+<li>SDL_ShowFileDialogWithProperties
+<li>SDL_ShowOpenFileDialog
+<li>SDL_ShowOpenFolderDialog
+<li>SDL_ShowSaveFileDialog
+</ol>
+<h2>型</h2>
+<ol>
+<li>SDL_DialogFileCallback
+</ol>
+<h2>構造体</h2>
+<ol>
+<li>SDL_DialogFileFilter
+</ol>
+<h2>列挙体</h2>
+<ol>
+<li>SDL_FileDialogType
+</ol>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/CategoryDialog">SDL3/CategoryDialog - SDL Wiki</a>
+<hr>
+</body>
+</html>
