@@ -478,7 +478,7 @@ SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">この�
 <ul>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_MIX_MAXVOLUME.html">SDL_MIX_MAXVOLUME</a> - ミキサーの音量はfloat型の0.0から1.0となった
 </ul>
-<h2><a name="#sdl_cpuinfoh">SDL_cpuinfo.h (CPU仕様の検知)</a></h2>
+<h2><a name="#sdl_cpuinfoh">SDL_cpuinfo.h (CPU機能の検知)</a></h2>
 <p>
 組み込み関数ヘッダ(mmintrin.h等)は&lt;SDL3/SDL_intrin.h&gt;に移され, 自動的にはSDL.hに含まれなくなった.
 </p>
@@ -1164,7 +1164,7 @@ ALSAドライバの場合は<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO
 </ul>
 <h2><a name="#sdl_inith">SDL_init.h (初期化)</a></h2>
 <p>
-Haiku OSで, SDLは<a href="https://wiki.libsdl.org/SDL3/SDL_Init">SDL_Init()</a>でカレントワークディレクトリに実行ファイルのパスを設定しないようになった.
+Haiku OSで, SDLは<a href="SDL_Init.html">SDL_Init()</a>でカレントワークディレクトリに実行ファイルのパスを設定しないようになった.
 この機能が必要な場合は, 最も簡単な方法はSDL_Initを呼んだ後に次のコードを追加することである:
 <code>
 <pre>
@@ -2343,7 +2343,7 @@ SDL_setenv()はスレッドセーフではないため名称が<a href="https://
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ConvertSurface.html">SDL_ConvertSurface</a>の未使用だった引数flagsは削除された.
 </p>
 <p>
-<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurface.html">SDL_CreateRGBSurface()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurfaceWithFormat.html">SDL_CreateRGBSurfaceWithFormat()</a>は新しい関数<a href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">SDL_CreateSurface()</a>に統合された.
+<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurface.html">SDL_CreateRGBSurface()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurfaceWithFormat.html">SDL_CreateRGBSurfaceWithFormat()</a>は新しい関数<a href="SDL_CreateSurface.html">SDL_CreateSurface()</a>に統合された.
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurfaceFrom.html">SDL_CreateRGBSurfaceFrom()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_CreateRGBSurfaceWithFormatFrom.html">SDL_CreateRGBSurfaceWithFormatFrom()</a>は新しい関数<a href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">SDL_CreateSurfaceFrom()</a>に統合され, 引数の順序は<a href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">SDL_CreateSurface()</a>との一貫性のため変更された.
 </p>
 <p>
@@ -2759,7 +2759,7 @@ SDL_HINT_VIDEO_DRIVERで特定のビデオドライバを選択できる.
 </pre>
 </code>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_CreateWindow">SDL_CreateWindow()</a>は単純化され, ウィンドウの座標を取らないようになった.
+<a href="SDL_CreateWindow.html">SDL_CreateWindow()</a>は単純化され, ウィンドウの座標を取らないようになった.
 生成時にウィンドウのプロパティを設定する必要がある場合は, <a href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">SDL_CreateWindowWithProperties()</a>を使うこと. 例:
 <code>
 <pre>
@@ -2786,10 +2786,10 @@ SDL_HINT_VIDEO_DRIVERで特定のビデオドライバを選択できる.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_WindowFlags.html">SDL_WINDOW_SHOWN</a>フラグは削除された.
-ウィンドウはデフォルトで表示され, 表示しないウィンドウは<a href="https://wiki.libsdl.org/SDL3/SDL_WindowFlags">SDL_WINDOW_HIDDEN</a>フラグで生成できる.
+ウィンドウはデフォルトで表示され, 表示しないウィンドウは<a href="SDL_WindowFlags.html">SDL_WINDOW_HIDDEN</a>フラグで生成できる.
 </p>
 <p>
-<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_WindowFlags.html">SDL_WINDOW_SKIP_TASKBAR</a>フラグは<a href="https://wiki.libsdl.org/SDL3/SDL_WindowFlags">SDL_WINDOW_UTILITY</a>フラグに置き換えられた. 機能は変わらない.
+<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_WindowFlags.html">SDL_WINDOW_SKIP_TASKBAR</a>フラグは<a href="SDL_WindowFlags.html">SDL_WINDOW_UTILITY</a>フラグに置き換えられた. 機能は変わらない.
 </p>
 <p>
 <a href="https://wiki.libsdl.org/SDL3/SDL_DisplayMode">SDL_DisplayMode</a>にピクセル密度が追加された. この値はディスプレイモードのサイズよりもピクセルサイズが大きいとき1.0を超える値を取りうる.

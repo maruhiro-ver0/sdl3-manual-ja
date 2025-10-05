@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryInit.html" title="1つ上">
+<title>SDL_MAIN_USE_CALLBACKS</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryMain.html">アプリケーションのエントリーポイント</a> - SDL_MAIN_USE_CALLBACKS
+<hr>
+<h1>SDL_MAIN_USE_CALLBACKS</h1>
+mainの代わりにmainコールバックを使用することをSDLに知らせるマクロ
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_main.h">SDL3/SDL_main.h</a>
+<h2>構文</h2>
+<code>#define SDL_MAIN_USE_CALLBACKS 1</code>
+<h2>詳細</h2>
+<p>
+SDL自身はこのマクロを定義しないが, 定義されているかをSDL_main.hでチェックしている.
+定義されている場合, SDLはアプリケーションが自身で<a href="SDL_AppEven.html">SDL_AppEven</a>t, <a href="SDL_AppIterate.html">SDL_AppIterate</a>, <a href="SDL_AppQuit.html">SDL_AppQuit</a>を作成していると見なす.
+この場合, アプリケーションはmain関数を作成してはならない. その場合, ビルドは失敗する.
+</p>
+<p>
+詳細は<a href="https://wiki.libsdl.org/SDL3/README-main-functions">README-main-functions</a>(またはソースツリーの<a href="https://github.com/libsdl-org/SDL/blob/main/docs/README-main-functions.md">docs/README-main-functions.md</a>)を参照すること.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_AppInit.html">SDL_AppInit</a>
+<li><a href="SDL_AppEvent.html">SDL_AppEvent</a>
+<li><a href="SDL_AppIterate.html">SDL_AppIterate</a>
+<li><a href="SDL_AppQuit.html">SDL_AppQuit</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_MAIN_USE_CALLBACKS">SDL_MAIN_USE_CALLBACKS - SDL Wiki</a>
+<hr>
+</body>
+</html>

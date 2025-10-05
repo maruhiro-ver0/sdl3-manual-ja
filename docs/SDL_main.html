@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryMain.html" title="1つ上">
+<title>SDL_main</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryMain.html">アプリケーションのエントリーポイント</a> - SDL_main
+<hr>
+<h1>SDL_main</h1>
+アプリケーションのプログラムエントリー関数
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_main.h">SDL3/SDL_main.h</a>
+<h2>構文</h2>
+<code>int SDL_main(int argc, char *argv[]);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td>int</td><td>argc</td><td>ANSI-Cスタイルのmain関数のargc</td></tr>
+<tr><td>char **</td><td>argv</td><td>ANSI-Cスタイルのmain関数のargv</td></tr>
+</table>
+<h2>戻り値</h2>
+<p>
+(int) ANSI-C main関数の<code>return code;</code>を戻す.
+一般的に, 0のときプログラムが正常に終了したとみなされ, 0以外の小さな値のときエラーと見なされる.
+</p>
+<h2>詳細</h2>
+<p>
+アプリケーションは直接この関数を作成してはならない. 代わりにANSI-C main関数を作成する必要がある.
+SDLがmainが実行される前にスタートアップコードを挿入する必要がある, または実際にはその環境が"main"という名前の関数を使わない場合, SDLはマクロでmainをSDL_mainに再定義してSDL自身のメインとしている.
+</p>
+<p>
+アプリケーションは, そのmain関数のあるファイルと同じファイルにSDL_main.hをインクルードする必要がある.
+そして, mainが再定義されている可能性があるため, そのファイルではmainシンボルを別の個所で使用してはならない.
+</p>
+<p>
+<a href="SDL_MAIN_USE_CALLBACKS.html">SDL_MAIN_USE_CALLBACKS</a>を使用していない場合のみ, この関数はアプリケーションで使用される.
+</p>
+<p>
+プログラムのスタートアップは非常に複雑な議題である.
+詳細は<a href="https://wiki.libsdl.org/SDL3/README-main-functions">README-main-functions</a>(またはソースツリーの<a href="https://github.com/libsdl-org/SDL/blob/main/docs/README-main-functions.md">docs/README-main-functions.md</a>)を参照すること.
+</p>
+<h2>スレッドセーフ</h2>
+これはプログラムのエントリーポイントである.
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_main">SDL_main - SDL Wiki</a>
+<hr>
+</body>
+</html>

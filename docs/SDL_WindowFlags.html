@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_WindowFlags</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_WindowFlags
+<hr>
+<h1>SDL_WindowFlags</h1>
+ウィンドウ状態フラグの型
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<p>
+<code>typedef Uint64 SDL_WindowFlags;</code>
+</p>
+<table border="1">
+<tr><td>SDL_WINDOW_FULLSCREEN</td><td>SDL_UINT64_C(0x0000000000000001)</td><td>デスクトップの解像度でのフルスクリーン</td></tr>
+<tr><td>SDL_WINDOW_OPENGL</td><td>SDL_UINT64_C(0x0000000000000002)</td><td>OpenGLコンテキストで利用可能</td></tr>
+<tr><td>SDL_WINDOW_OCCLUDEDL</td><td>SDL_UINT64_C(0x0000000000000004)</td><td>下になっている</td></tr>
+<tr><td>SDL_WINDOW_HIDDEN</td><td>SDL_UINT64_C(0x0000000000000008)</td><td>デスクトップ上になく, タスクバー/ドック/ウィンドウリストにも表示されない. <a href="SDL_ShowWindow.html">SDL_ShowWindow()</a>で表示できる</td></tr>
+<tr><td>SDL_WINDOW_BORDERLESS</td><td>SDL_UINT64_C(0x0000000000000010)</td><td>枠がない</td></tr>
+<tr><td>SDL_WINDOW_RESIZABLE</td><td>SDL_UINT64_C(0x0000000000000020)</td><td>大きさを変えられる</td></tr>
+<tr><td>SDL_WINDOW_MINIMIZED</td><td>SDL_UINT64_C(0x0000000000000040)</td><td>最小化されている</td></tr>
+<tr><td>SDL_WINDOW_MAXIMIZED</td><td>SDL_UINT64_C(0x0000000000000080)</td><td>最大化されている</td></tr>
+<tr><td>SDL_WINDOW_MOUSE_GRABBED</td><td>SDL_UINT64_C(0x0000000000000100)</td><td>ウィンドウはマウス入力をグラブしている</td></tr>
+<tr><td>SDL_WINDOW_INPUT_FOCUS</td><td>SDL_UINT64_C(0x0000000000000200)</td><td>入力のフォーカスがある</td></tr>
+<tr><td>SDL_WINDOW_MOUSE_FOCUS</td><td>SDL_UINT64_C(0x0000000000000400)</td><td>マウスのフォーカスがある</td></tr>
+<tr><td>SDL_WINDOW_EXTERNAL</td><td>SDL_UINT64_C(0x0000000000000800)</td><td>SDL以外によって生成された</td></tr>
+<tr><td>SDL_WINDOW_MODAL</td><td>SDL_UINT64_C(0x0000000000001000)</td><td>モーダル</td></tr>
+<tr><td>SDL_WINDOW_HIGH_PIXEL_DENSITY</td><td>SDL_UINT64_C(0x0000000000002000)</td><td>可能ならば高DPIバッファを使用する</td></tr>
+<tr><td>SDL_WINDOW_MOUSE_CAPTURE</td><td>SDL_UINT64_C(0x0000000000004000)</td><td>ウィンドウはマウスを捕捉している(INPUT_GRABBEDとは無関係)</td></tr>
+<tr><td>SDL_WINDOW_MOUSE_RELATIVE_MODE</td><td>SDL_UINT64_C(0x0000000000008000)</td><td>相対モード</td></tr>
+<tr><td>SDL_WINDOW_ALWAYS_ON_TOP</td><td>SDL_UINT64_C(0x0000000000010000)</td><td>ウィンドウは常に他の上にある</td></tr>
+<tr><td>SDL_WINDOW_UTILITY</td><td>SDL_UINT64_C(0x0000000000020000)</td><td>ウィンドウはユーティリティウィンドウとして扱われる. タスクバーやウィンドウリストに表示されない</td></tr>
+<tr><td>SDL_WINDOW_TOOLTIP</td><td>SDL_UINT64_C(0x0000000000040000)</td><td>ウィンドウはツールチップとして扱われる. マウスやキーボードにフォーカスされず, 親ウィンドウを必要とする</td></tr>
+<tr><td>SDL_WINDOW_POPUP_MENU</td><td>SDL_UINT64_C(0x0000000000080000)</td><td>ウィンドウはポップアップメニューとして扱われる. 親ウィンドウを必要とする</td></tr>
+<tr><td>SDL_WINDOW_KEYBOARD_GRABBED</td><td>SDL_UINT64_C(0x0000000000100000)</td><td>ウィンドウはキーボード入力をグラブしている</td></tr>
+<tr><td>SDL_WINDOW_VULKAN</td><td>SDL_UINT64_C(0x0000000010000000)</td><td>Vulkanサーフェイスで利用可能</td></tr>
+<tr><td>SDL_WINDOW_METAL</td><td>SDL_UINT64_C(0x0000000020000000)</td><td>Metal viewで利用可能</td></tr>
+<tr><td>SDL_WINDOW_TRANSPARENT</td><td>SDL_UINT64_C(0x0000000040000000)</td><td>透過バッファを持つ</td></tr>
+<tr><td>SDL_WINDOW_NOT_FOCUSABLE</td><td>SDL_UINT64_C(0x0000000080000000)</td><td>フォーカスできない</td></tr>
+</table>
+<h2>詳細</h2>
+<p>
+これらは多くのウィンドウ状態の真/偽, オン/オフをカバーしている.
+<a href="SDL_CreateWindow.html">SDL_CreateWindow()</a>で設定した後で変更できない項目や, 生成後にアプリケーションで変更できる項目や, アプリケーション外のユーザやシステムの設定で変更されている項目がある.
+</p>
+<p>
+SDL_WINDOW_RESIZABLEでウィンドウを生成すると, SDLは, 一部のコンポジットは自動的に行うが, デスクトップの利用可能領域に合うようにウィンドウをコンポジットの推奨サイズに強制的に変更する.
+ウィンドウを特定のサイズで生成したい場合は, 生成した後で<a href="SDL_SetWindowResizable.html">SDL_SetWindowResizable</a>を使用すること.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_GetWindowFlags.html">SDL_GetWindowFlags</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_WindowFlags">SDL_WindowFlags - SDL Wiki</a><br>
+<hr>
+</body>
+</html>

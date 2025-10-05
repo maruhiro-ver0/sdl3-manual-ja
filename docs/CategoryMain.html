@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 SDLはmain()の呼び出しに関する環境固有の処理を行う.
 </p>
 <p>
-アプリケーションがmainコールバックを使用するかをSDL_MAIN_USE_CALLBACKSマクロで設定することもできる.
+アプリケーションがmainコールバックを使用するかを<a href="SDL_MAIN_USE_CALLBACKS.html">SDL_MAIN_USE_CALLBACKSマクロ</a>で設定することもできる.
 </p>
 <p>
 SDL_main.hは「シングルヘッダライブラリ」で, このヘッダをインクルードするとアプリケーションにコードが挿入され, ほとんどの場合は1度だけインクルードする必要がある.
@@ -51,7 +51,7 @@ SDL_main.hは「シングルヘッダライブラリ」で, このヘッダを�
 <li>SDL_AppQuit
 <li>SDL_EnterAppMainCallbacks
 <li>SDL_GDKSuspendComplete
-<li>SDL_main
+<li><a href="SDL_main.html">SDL_main</a> - アプリケーションのプログラムエントリー関数
 <li>SDL_RegisterApp
 <li>SDL_RunApp
 <li>SDL_SetMainReady
@@ -59,12 +59,12 @@ SDL_main.hは「シングルヘッダライブラリ」で, このヘッダを�
 </ol>
 <h2>型</h2>
 <ol>
-<li>SDL_main_func
+<li><a href="SDL_main_func.html">SDL_main_func</a> - アプリケーションのmain()関数のプロトタイプ型
 </ol>
 <h2>マクロ</h2>
 <ol>
 <li>SDL_MAIN_HANDLED
-<li>SDL_MAIN_USE_CALLBACKS
+<li><a href="SDL_MAIN_USE_CALLBACKS.html">SDL_MAIN_USE_CALLBACKS</a> - mainの代わりにmainコールバックを使用することをSDLに知らせるマクロ
 </ol>
 <h2>SDL Wikiへのリンク</h2>
 <a href="https://wiki.libsdl.org/SDL3/CategoryMain">SDL3/CategoryMain - SDL Wiki</a>
