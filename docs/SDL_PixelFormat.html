@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryPixels.html" title="1つ上">
+<title>SDL_PixelFormat</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryPixels.html">ピクセル形式と変換</a> - SDL_PixelFormat
+<hr>
+<h1>SDL_PixelFormat</h1>
+ピクセル形式の列挙体
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_pixels.h">SDL3/SDL_pixels.h</a>
+<h2>値</h2>
+<table border="1">
+<tr><td>SDL_PIXELFORMAT_UNKNOWN</td><td>0</td><td>不明</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX1LSB</td><td>0x11100100u</td><td>下位から詰められた1ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX1MSB</td><td>0x11200100u</td><td>上位から詰められた1ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX2LSB</td><td>0x1c100200u</td><td>下位から詰められた2ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX2MSB</td><td>0x1c200200u</td><td>上位から詰められた2ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX4LSB</td><td>0x12100400u</td><td>下位から詰められた4ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX4MSB</td><td>0x12200400u</td><td>上位から詰められた4ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_INDEX8</td><td>0x13000801u</td><td>8ビットインデックス付きピクセル</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB332</td><td>0x14110801u</td><td>赤3ビット, 緑3ビット, 青2ビットの順の8ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XRGB4444</td><td>0x15120c02u</td><td>パッディング4ビット, 赤4ビット, 緑4ビット, 青4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XBGR4444</td><td>0x15520c02u</td><td>パッディング4ビット, 青4ビット, 緑4ビット, 赤4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XRGB1555</td><td>0x15130f02u</td><td>パッディング1ビット, 赤5ビット, 緑5ビット, 青5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XBGR1555</td><td>0x15530f02u</td><td>パッディング1ビット, 青5ビット, 緑5ビット, 赤5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB4444</td><td>0x15321002u</td><td>α4ビット, 赤4ビット, 緑4ビット, 青4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA4444</td><td>0x15421002u</td><td>赤4ビット, 緑4ビット, 青4ビット, α4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR4444</td><td>0x15721002u</td><td>α4ビット, 青4ビット, 緑4ビット, 赤4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA4444</td><td>0x15821002u</td><td>青4ビット, 緑4ビット, 赤4ビット, α4ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB1555</td><td>0x15331002u</td><td>α1ビット, 赤5ビット, 緑5ビット, 青5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA5551</td><td>0x15441002u</td><td>赤5ビット, 緑5ビット, 青5ビット, α1ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR1555</td><td>0x15731002u</td><td>α1ビット, 青5ビット, 緑5ビット, 赤5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA5551</td><td>0x15841002u</td><td>青5ビット, 緑5ビット, 赤5ビット, α1ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB565</td><td>0x15151002u</td><td>赤5ビット, 緑6ビット, 青5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGR565</td><td>0x15551002u</td><td>青5ビット, 緑6ビット, 赤5ビットの順の16ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB24</td><td>0x17101803u</td><td>赤1バイト, 緑1バイト, 青1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGR24</td><td>0x17401803u</td><td>青1バイト, 緑1バイト, 赤1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_XRGB8888</td><td>0x16161804u</td><td>パッディング8ビット, 赤8ビット, 緑8ビット, 青8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBX8888</td><td>0x16261804u</td><td>赤8ビット, 緑8ビット, 青8ビット, パッディング8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XBGR8888</td><td>0x16561804u</td><td>パッディング8ビット, 青8ビット, 緑8ビット, 赤8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRX8888</td><td>0x16661804u</td><td>青8ビット, 緑8ビット, 赤8ビット, パッディング8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB8888</td><td>0x16362004u</td><td>α8ビット, 赤8ビット, 緑8ビット, 青8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA8888</td><td>0x16462004u</td><td>赤8ビット, 緑8ビット, 青8ビット, α8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR8888</td><td>0x16762004u</td><td>α8ビット, 青8ビット, 緑8ビット, 赤8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA8888</td><td>0x16862004u</td><td>青8ビット, 緑8ビット, 赤8ビット, α8ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XRGB2101010</td><td>0x16172004u</td><td>パッディング2ビット, 赤10ビット, 緑10ビット, 青10ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_XBGR2101010</td><td>0x16572004u</td><td>パッディング2ビット, 青10ビット, 緑10ビット, 赤10ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB2101010</td><td>0x16372004u</td><td>α2ビット, 赤10ビット, 緑10ビット, 青10ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR2101010</td><td>0x16772004u</td><td>α2ビット, 青10ビット, 緑10ビット, 赤10ビットの順の32ビット整数</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB48</td><td>0x18103006u</td><td>赤2バイト, 緑2バイト, 青2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGR48</td><td>0x18403006u</td><td>青2バイト, 緑2バイト, 赤2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA64</td><td>0x18204008u</td><td>赤2バイト, 緑2バイト, 青2バイト, α2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB64</td><td>0x18304008u</td><td>α2バイト, 赤2バイト, 緑2バイト, 青2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA64</td><td>0x18504008u</td><td>青2バイト, 緑2バイト, 赤2バイト, α2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR64</td><td>0x18604008u</td><td>α2バイト, 青2バイト, 緑2バイト, 赤2バイトの順の2バイト整数列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB48_FLOAT</td><td>0x1a103006u</td><td>赤2バイト, 緑2バイト, 青2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGR48_FLOAT</td><td>0x1a403006u</td><td>青2バイト, 緑2バイト, 赤2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA64_FLOAT</td><td>0x1a204008u</td><td>赤2バイト, 緑2バイト, 青2バイト, α2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB64_FLOAT</td><td>0x1a304008u</td><td>α2バイト, 赤2バイト, 緑2バイト, 青2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA64_FLOAT</td><td>0x1a504008u</td><td>青2バイト, 緑2バイト, 赤2バイト, α2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR64_FLOAT</td><td>0x1a604008u</td><td>α2バイト, 青2バイト, 緑2バイト, 赤2バイトの順の半精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGB96_FLOAT</td><td>0x1b10600cu</td><td>赤4バイト, 緑4バイト, 青4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGR96_FLOAT</td><td>0x1b40600cu</td><td>青4バイト, 緑4バイト, 赤4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA128_FLOAT</td><td>0x1b208010u</td><td>赤4バイト, 緑4バイト, 青4バイト, α4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB128_FLOAT</td><td>0x1b308010u</td><td>α4バイト, 赤4バイト, 緑4バイト, 青4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA128_FLOAT</td><td>0x1b508010u</td><td>青4バイト, 緑4バイト, 赤4バイト, α4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR128_FLOAT</td><td>0x1b608010u</td><td>α4バイト, 青4バイト, 緑4バイト, 赤4バイトの順の単精度浮動小数点列</td></tr>
+<tr><td>SDL_PIXELFORMAT_YV12</td><td>0x32315659u</td><td>プレーンモード: Y + V + U (3プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_IYUV</td><td>0x56555949u</td><td>プレーンモード: Y + U + V (3プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_YUY2</td><td>0x32595559u</td><td>パックモード: Y0+U0+Y1+V0 (1プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_UYVY</td><td>0x59565955u</td><td>パックモード: U0+Y0+V0+Y1 (1プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_YVYU</td><td>0x55595659u</td><td>パックモード: Y0+V0+Y1+U0 (1プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_NV12</td><td>0x3231564eu</td><td>プレーンモード: Y + U/Vインターリーブ (2プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_NV21</td><td>0x3132564eu</td><td>プレーンモード: Y + V/Uインターリーブ (2プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_P010</td><td>0x30313050u</td><td>プレーンモード: Y + U/Vインターリーブ (2プレーン)</td></tr>
+<tr><td>SDL_PIXELFORMAT_EXTERNAL_OES</td><td>0x2053454fu</td><td>Androidビデオテクスチャ形式</td></tr>
+<tr><td>SDL_PIXELFORMAT_MJPG</td><td>0x47504a4du</td><td>モーションJPEG</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBA32</td><td></td><td>赤1バイト, 緑1バイト, 青1バイト, α1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ARGB32</td><td></td><td>α1バイト, 赤1バイト, 緑1バイト, 青1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRA32</td><td></td><td>1バイト, 緑1バイト, 赤1バイト, α1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_ABGR32</td><td></td><td>α1バイト, 青1バイト, 緑1バイト, 赤1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_RGBX32</td><td></td><td>赤1バイト, 緑1バイト, 青1バイト, パッディング1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_XRGB32</td><td></td><td>パッディング1バイト, 赤1バイト, 緑1バイト, 青1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_BGRX32</td><td></td><td>青1バイト, 緑1バイト, 赤1バイト, パッディング1バイトの順のバイト列</td></tr>
+<tr><td>SDL_PIXELFORMAT_XBGR32</td><td></td><td>パッディング1バイト, 青1バイト, 緑1バイト, 赤1バイトの順のバイト列</td></tr>
+</table>
+<h2>詳細</h2>
+<p>
+SDLのピクセル形式の名前は, 次のような規則に従っている:
+</p>
+<ul>
+<li>RGB24やABGR32のような成分の順序と1つのビット数による名前は, 名前の通りのバイト順でエンコードされエンディアン非依存である.
+例えばRGB24ならば, ピクセルは赤, 緑, 青の順序の3バイトでエンコードされている. ABGR32ならば, ピクセルはα, 青, 緑, 赤の順序の4バイトでエンコードされている.
+メモリやディスク上でバイトの順序が重要な場合は, これらの名前のものを使用する.
+<li>ARGB8888やXRGB1555のような成分ごとのビット数がある名前は, 各成分がその環境のエンディアンの整数の中に「詰め込まれて」いる.
+例えばARGB8888ならば, 32ビットの整数で, その中のそれぞれの値は上位ビット側がαで, 下位ビット側が青である.
+x86のようなリトルエンディアンのCPUならば, 下位側のビットがメモリ上では先頭に配置されるが, s390xのようなビッグエンディアンのCPUならば, 上位側のビットが先頭に配置される.
+その環境のエンディアンの整数の各成分のビットの位置が重要な場合は, これらの名前のものを使用する.
+<li>INDEX4LSBのようなインデックスの形式の場合, ピクセルは, パレットの指定されたビット数のインデックスで, 可能ならば各バイトに複数のピクセルが詰め込まれている.
+LSB形式では, 最初(最も左)のピクセルはバイトの下位から格納される. MSB形式では, 上位から格納される.
+INDEX8は, ピクセルはバイトを全て満たすのでLSB/MSBは存在しない.
+</ul>
+<p>
+RGBA32のような32ビットのバイト配列のエンコードは, その環境のエンディアンに合った8888エンコードの別名である.
+例えばRGBA32は, リトルエンディアンのCPUならばABGR8888の別名で, ビッグエンディアンのCPUならばRGBA8888の別名である.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">SDL_PixelFormat - SDL Wiki</a><br>
+<hr>
+</body>
+</html>
