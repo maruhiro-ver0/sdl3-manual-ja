@@ -10,6 +10,7 @@
 <body>
 <a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - イベント処理
 <hr>
+<h1>イベント処理</h1>
 <h2>概要</h2>
 <p>
 イベントキューの管理を行う.
@@ -20,7 +21,7 @@
 </p>
 <p>
 アプリケーションは間隔を取って, あるいは新しいフレームのたびに, 前回から新しいイベントが発生していないかチェックし, それを処理または無視する.
-一般的にはループで偽を戻すまでSDL_PollEvent()を呼ぶことで行う. (またはメインコールバックを使用する. 次のSDL_AppIterate()を呼ぶまでは, SDL_AppEvent()を呼ぶと1つずつイベントが渡される. この場合はSDL_PollEvent()をまったく使用しない.)
+一般的にはループで偽を戻すまで<a href="SDL_PollEvent.html">SDL_PollEvent()</a>を呼ぶことで行う. (またはメインコールバックを使用する. 次のSDL_AppIterate()を呼ぶまでは, SDL_AppEvent()を呼ぶと1つずつイベントが渡される. この場合は<a href="SDL_PollEvent.html">SDL_PollEvent()</a>をまったく使用しない.)
 </p>
 <p>
 他の処理方法も存在する: SDL_PeepEvents()を使うと, 複雑だがより詳細な処理が行える.
@@ -46,7 +47,7 @@ SDL_RegisterEventsでこれらのイベントがシステムの他の部分で�
 <li>SDL_HasEvent
 <li>SDL_HasEvents
 <li>SDL_PeepEvents
-<li>SDL_PollEvent
+<li><a href="SDL_PollEvent.html">SDL_PollEvent</a> - 未処理のイベントをキューから得る
 <li>SDL_PumpEvents
 <li>SDL_PushEvent
 <li>SDL_RegisterEvents
@@ -68,7 +69,7 @@ SDL_RegisterEventsでこれらのイベントがシステムの他の部分で�
 <li>SDL_CommonEvent
 <li>SDL_DisplayEvent
 <li>SDL_DropEvent
-<li>SDL_Event
+<li><a href="SDL_Event.html">SDL_Event</a> - 異なる種類のイベントの情報を持つ共用体 
 <li>SDL_GamepadAxisEvent
 <li>SDL_GamepadButtonEvent
 <li>SDL_GamepadDeviceEvent
