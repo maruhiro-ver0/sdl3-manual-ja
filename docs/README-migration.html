@@ -2304,16 +2304,16 @@ SDL_setenv()はスレッドセーフではないため名称が<a href="https://
 </ul>
 <h2><a name="#sdl_surfaceh">SDL_surface.h (サーフェイスの生成と単純な描画)</a></h2>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_Surface">SDL_Surface</a>は簡素化され, 内部の詳細は公開された構造ではなくなった.
+<a href="SDL_Surface.html">SDL_Surface</a>は簡素化され, 内部の詳細は公開された構造ではなくなった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_Surface">SDL_Surfaceのformatメンバ</a>は<a href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">ピクセル形式の列挙体</a>の値となった.
+<a href="SDL_Surface.html">SDL_Surfaceのformatメンバ</a>は<a href="SDL_PixelFormat.html">ピクセル形式の列挙体</a>の値となった.
 ピクセル形式の完全な詳細は<code>SDL_GetPixelFormatDetails(surface-&gt;format)</code>で得ることができる.
 サーフェイスに関連付けられたパレットは<a href="https://wiki.libsdl.org/SDL3/SDL_GetSurfacePalette">SDL_GetSurfacePalette()</a>で得ることができる.
 クリップ枠は<a href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceClipRect">SDL_GetSurfaceClipRect()</a>で得ることができる.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_Surface">SDL_Surfaceのuserdataメンバ</a>はより汎用的なプロパティインターフェースに置き換えられた. これは<a href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">SDL_GetSurfaceProperties()</a>で問い合わせることができる.
+<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_Surface">SDL_Surfaceのuserdataメンバ</a>はより汎用的なプロパティインターフェースに置き換えられた. これは<a href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">SDL_GetSurfaceProperties()</a>で問い合わせることができる.
 </p>
 <p>
 インデックス形式のサーフェイスはデフォルトでパレットを持たないようになった.
@@ -2392,7 +2392,7 @@ SDL_setenv()はスレッドセーフではないため名称が<a href="https://
 拡大率付きの<a href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">SDL_BlitSurfaceScaled()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUncheckedScaled">SDL_BlitSurfaceUncheckedScaled()</a>が追加された.
 </p>
 <p>
-API関数のピクセル形式の<a href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">SDL_PixelFormat</a>は, Uint32ではなく列挙体の値となった.
+API関数のピクセル形式の<a href="SDL_PixelFormat.html">SDL_PixelFormat</a>は, Uint32ではなく列挙体の値となった.
 </p>
 <p>
 <a href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorKey">SDL_SetSurfaceColorKey()</a>はbool値でカラーキーの有効無効を設定できるようになった.
