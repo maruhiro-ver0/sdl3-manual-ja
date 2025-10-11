@@ -523,17 +523,17 @@ SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">この�
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_KeyboardEvent.html">SDL_PRESSEDとSDL_RELEASED</a>は削除された.
 ほとんどの場合, これらを使っている部分はそれぞれ真または偽に置き換えることができる.
-この値を持つキーボードイベント構造体の<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_KeyboardEvent.html">stateメンバ</a>は, bool型の<a href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">downメンバ</a>に変更された. 例えば, <code>event.key.state</code>は, 現在は<code>event.key.down</code>である.
+この値を持つキーボードイベント構造体の<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_KeyboardEvent.html">stateメンバ</a>は, bool型の<a href="SDL_KeyboardEvent.html">downメンバ</a>に変更された. 例えば, <code>event.key.state</code>は, 現在は<code>event.key.down</code>である.
 </p>
 <p>
-SDL_Event構造体のtimestampメンバは, <a href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">SDL_GetTicksNS()</a>で設定されるナノ秒単位となった.
+<a href="SDL_CommonEvent.html">SDL_Event構造体のtimestampメンバ</a>は, <a href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">SDL_GetTicksNS()</a>で設定されるナノ秒単位となった.
 </p>
 <p>
 <a href="https://wiki.libsdl.org/SDL3/SDL_SensorEvent">センサーイベント</a>のtimestamp_usメンバの名前はsensor_timestampに変更され, ナノ秒単位となった.
 この値は可能ならばハードウェアによって設定されるため, <a href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">SDL_GetTicksNS()</a>で得た値とは恐らく同期しない.
 </p>
 <p>
-SDL_PushEvent()にイベントを渡す前にevent.common.timestampメンバを設定する必要がある.
+<a href="https://wiki.libsdl.org/SDL3/SDL_PushEvent">SDL_PushEvent()</a>にイベントを渡す前にevent.common.timestampメンバを設定する必要がある.
 timestampが0ならば, SDL_GetTicksNS()で値が設定される.
 </p>
 <p>
@@ -564,7 +564,7 @@ SDL_EVENT_WINDOW_SIZE_CHANGEDは削除された.
 ウィンドウバッファサイズの変更はSDL_EVENT_WINDOW_PIXEL_SIZE_CHANGEDで検知することができる.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">キーボードイベント</a>の, 中間の段階だった<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_KeyboardEvent.html">keysymメンバ</a>は削除され, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_Keysym.html">sym</a>の名前は<a href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">key</a>に変更された.
+<a href="SDL_KeyboardEvent.html">キーボードイベント</a>の, 中間の段階だった<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_KeyboardEvent.html">keysymメンバ</a>は削除され, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_Keysym.html">sym</a>の名前は<a href="SDL_KeyboardEvent.html">key</a>に変更された.
 </p>
 <p>
 このようだったコードは:

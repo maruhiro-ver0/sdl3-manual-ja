@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryEvents.html" title="1つ上">
+<title>SDL_KeyboardEvent</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryEvents.html">イベント処理</a> - SDL_KeyboardEvent
+<hr>
+<h1>SDL_KeyboardEvent</h1>
+キーボードイベントの構造体(event.key.*)
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_events.h">SDL3/SDL_events.h</a>
+<h2>フィールド</h2>
+<table border="1">
+<tr><td><a href="SDL_EventType.html">SDL_EventType</a></td><td>type</td><td>SDL_EVENT_KEY_DOWN または SDL_EVENT_KEY_UP</td></tr>
+<tr><td>Uint32</td><td>reserved</td><td>予約</td></tr>
+<tr><td>Uint64</td><td>timestamp</td><td>イベントのナノ秒単位のタイムスタンプ. SDL_GetTicksNS()で設定</td></tr>
+<tr><td>Uint32</td><td>windowID</td><td>フォーカスのあるウィンドウ (存在すれば)</td></tr>
+<tr><td><a href="SDL_KeyboardID.html">SDL_KeyboardID</a></td><td>which</td><td>キーボードインスタンスID. 0のとき不明または仮想キーボード</td></tr>
+<tr><td><a href="SDL_Scancode.html">SDL_Scancode</a></td><td>scancode</td><td>物理キーコード</td></tr>
+<tr><td><a href="SDL_Keycode.html">SDL_Keycode</a></td><td>key</td><td>仮想キーコード</td></tr>
+<tr><td><a href="SDL_Keymod.html">SDL_Keymod</a></td><td>mod</td><td>現在の修飾キー</td></tr>
+<tr><td>Uint16</td><td>raw</td><td>このイベントの環境に依存したスキャンコード</td></tr>
+<tr><td>bool</td><td>down</td><td>キーが離されたとき真</td></tr>
+<tr><td>bool</td><td>repeat</td><td>キーリピートのとき真</td></tr>
+</table>
+<h2>詳細</h2>
+<p>
+<code>key</code>は, 押されたキーの<code>scancode</code>から, 現在のキーボードレイアウトと<a href="SDL_HINT_KEYCODE_OPTIONS.html">SDL_HINT_KEYCODE_OPTIONSオプション</a>の設定を使って生成した<a href="SDL_Keycode.html">SDL_Keycode</a>である.
+<a href="SDL_HINT_KEYCODE_OPTIONS.html">SDL_HINT_KEYCODE_OPTIONS</a>を無視した現在のキーレイアウトのスキャンコードと修飾キーと一致する<a href="SDL_Keycode.html">SDL_Keycode</a>は, <a href="SDL_GetKeyFromScancode.html">SDL_GetKeyFromScancode()</a>で直接得られる.
+</p>
+<h3>バージョン</h3>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_GetKeyFromScancode.html">SDL_GetKeyFromScancode</a>
+<li><a href="SDL_HINT_KEYCODE_OPTIONS.html">SDL_HINT_KEYCODE_OPTIONS</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">SDL_KeyboardEvent - SDL Wiki</a><br>
+<hr>
+</body>
+</html>

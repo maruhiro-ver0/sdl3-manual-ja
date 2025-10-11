@@ -16,8 +16,8 @@
 プロパティとは実行中に名前を用いて書き込みや読み込みを行える変数である.
 </p>
 <p>
-全てのプロパティはプロパティグループ(SDL_PropertiesID)の一部である.
-プロパティグループはSDL_CreateProperties関数で生成し, SDL_DestroyProperties関数で破棄することができる.
+全てのプロパティはプロパティグループ(<a href="SDL_PropertiesID.html">SDL_PropertiesID</a>)の一部である.
+プロパティグループは<a href="SDL_CreateProperties.html">SDL_CreateProperties関数</a>で生成し, <a href="SDL_DestroyProperties.html">SDL_DestroyProperties関数</a>で破棄することができる.
 </p>
 <p>
 プロパティのプロパティグループへの書き込みとプロパティグループからの読み込みは次の関数で行える:
@@ -25,7 +25,7 @@
 <ul>
 <li>SDL_SetPointerPropertyとSDL_GetPointerPropertyでvoid*ポインタ型の操作を行う
 <li>SDL_SetStringPropertyとSDL_GetStringPropertyで文字列型の操作を行う
-<li>SDL_SetNumberPropertyとSDL_GetNumberPropertyで64ビット符号付き整数型の操作を行う
+<li><a href="SDL_SetNumberProperty.html">SDL_SetNumberProperty</a>と<a href="SDL_GetNumberProperty.html">SDL_GetNumberProperty</a>で64ビット符号付き整数型の操作を行う
 <li>SDL_SetFloatPropertyとSDL_GetFloatPropertyで浮動小数点型の操作を行う
 <li>SDL_SetBooleanPropertyとSDL_GetBooleanPropertyでブール型の操作を行う
 </ul>
@@ -36,13 +36,13 @@
 <ol>
 <li>SDL_ClearProperty
 <li>SDL_CopyProperties
-<li>SDL_CreateProperties
-<li>SDL_DestroyProperties
+<li><a href="SDL_CreateProperties.html">SDL_CreateProperties</a> - プロパティグループを生成する
+<li><a href="SDL_DestroyProperties.html">SDL_DestroyProperties</a> - プロパティグループを破棄する
 <li>SDL_EnumerateProperties
 <li>SDL_GetBooleanProperty
 <li>SDL_GetFloatProperty
 <li>SDL_GetGlobalProperties
-<li>SDL_GetNumberProperty
+<li><a href="SDL_GetNumberProperty.html">SDL_GetNumberProperty</a> - プロパティグループから数値プロパティを得る 
 <li>SDL_GetPointerProperty
 <li>SDL_GetPropertyType
 <li>SDL_GetStringProperty
@@ -50,7 +50,7 @@
 <li>SDL_LockProperties
 <li>SDL_SetBooleanProperty
 <li>SDL_SetFloatProperty
-<li>SDL_SetNumberProperty
+<li><a href="SDL_SetNumberProperty.html">SDL_SetNumberProperty</a> - プロパティグループの数値プロパティを設定する
 <li>SDL_SetPointerProperty
 <li>SDL_SetPointerPropertyWithCleanup
 <li>SDL_SetStringProperty
@@ -60,7 +60,7 @@
 <ol>
 <li>SDL_CleanupPropertyCallback
 <li>SDL_EnumeratePropertiesCallback
-<li>SDL_PropertiesID
+<li><a href="SDL_PropertiesID.html">SDL_PropertiesID</a> - SDLプロパティグループID
 </ol>
 <h2>列挙体</h2>
 <ol>

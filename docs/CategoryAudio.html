@@ -16,7 +16,7 @@
 SDLライブラリのオーディオ機能.
 </p>
 <p>
-SDL3では全てのオーディオはSDL_AudioStreamを中心としている.
+SDL3では全てのオーディオは<a href="SDL_AudioStream.html">SDL_AudioStream</a>を中心としている.
 音声の再生, 録音, 変換, ストリーム化, バッファリング, ミックスの全ての場合でオーディオストリームを経由することになる.
 </p>
 <p>
@@ -51,7 +51,7 @@ SDLはユーザに再生を途切れさせることなく論理デバイスを�
 <h3>簡略化されたオーディオ</h3>
 <p>
 単に1つの音声源のみ必要な簡略化されたモデルの場合, SDL_OpenAudioDeviceStreamを使うことができる. これはオーディオデバイスのオープン, オーディオストリームの生成, オープンしたデバイスとストリームのバインド, オーディオデータの獲得を行うコールバックの登録(任意)を1つの関数で行える.
-この関数を使う場合, 主要なインターフェースはSDL_AudioStreamで, デバイスのハンドルはほとんど隠される.
+この関数を使う場合, 主要なインターフェースは<a href="SDL_AudioStream.html">SDL_AudioStream</a>で, デバイスのハンドルはほとんど隠される.
 この関数で生成したストリームを破棄するとデバイスもクローズされる, ストリームのバインドを変えることができない, などのためである.
 この関数を使った場合の別の異なる点は, デバイスは一時停止状態から始まり, 明示的に一時停止を解除する必要があることである.
 これはSDL2からの移行を簡単にするためと, 再生が始まる前にアプリケーションがさらにセットアップを必要とする可能性があるためである.
@@ -95,7 +95,7 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 この順序はDirectSoundと同じだが, 全ての環境に適用される. SDLは異なる順序の環境でも必要に応じてチャネルを入れ替える.
 </p>
 <p>
-様々なオーディオ処理の場合のために, SDL_AudioStreamはこの順序を変更するためのチャネルの対応付けを提供できる.
+様々なオーディオ処理の場合のために, <a href="SDL_AudioStream.html">SDL_AudioStream</a>はこの順序を変更するためのチャネルの対応付けを提供できる.
 </p>
 <h2>関数</h2>
 <ol>
@@ -106,8 +106,8 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 <li>SDL_ClearAudioStream
 <li>SDL_CloseAudioDevice
 <li>SDL_ConvertAudioSamples
-<li>SDL_CreateAudioStream
-<li>SDL_DestroyAudioStream
+<li><a href="SDL_CreateAudioStream.html">SDL_CreateAudioStream</a> - オーディオストリームを生成する 
+<li><a href="SDL_DestroyAudioStream.html">SDL_DestroyAudioStream</a> - オーディオストリームを破棄する
 <li>SDL_FlushAudioStream
 <li>SDL_GetAudioDeviceChannelMap
 <li>SDL_GetAudioDeviceFormat
@@ -164,17 +164,17 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 <li>SDL_AudioDeviceID
 <li>SDL_AudioIterationCallback
 <li>SDL_AudioPostmixCallback
-<li>SDL_AudioStream
+<li><a href="SDL_AudioStream.html">SDL_AudioStream</a> - オーディオストリームを表す不透明型
 <li>SDL_AudioStreamCallback
 <li>SDL_AudioStreamDataCompleteCallback
 </ol>
 <h2>構造体</h2>
 <ol>
-<li>SDL_AudioSpec
+<li><a href="SDL_AudioSpec.html">SDL_AudioSpec</a> - オーディオデータの形式を表す構造体
 </ol>
 <h2>列挙体</h2>
 <ol>
-<li>SDL_AudioFormat
+<li><a href="SDL_AudioFormat.html">SDL_AudioFormat</a> - オーディオ形式の列挙体
 </ol>
 <h2>マクロ</h2>
 <ol>
