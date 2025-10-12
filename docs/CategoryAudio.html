@@ -50,7 +50,7 @@ SDLはユーザに再生を途切れさせることなく論理デバイスを�
 </p>
 <h3>簡略化されたオーディオ</h3>
 <p>
-単に1つの音声源のみ必要な簡略化されたモデルの場合, SDL_OpenAudioDeviceStreamを使うことができる. これはオーディオデバイスのオープン, オーディオストリームの生成, オープンしたデバイスとストリームのバインド, オーディオデータの獲得を行うコールバックの登録(任意)を1つの関数で行える.
+単に1つの音声源のみ必要な簡略化されたモデルの場合, <a href="SDL_OpenAudioDeviceStream.html">SDL_OpenAudioDeviceStream</a>を使うことができる. これはオーディオデバイスのオープン, オーディオストリームの生成, オープンしたデバイスとストリームのバインド, オーディオデータの獲得を行うコールバックの登録(任意)を1つの関数で行える.
 この関数を使う場合, 主要なインターフェースは<a href="SDL_AudioStream.html">SDL_AudioStream</a>で, デバイスのハンドルはほとんど隠される.
 この関数で生成したストリームを破棄するとデバイスもクローズされる, ストリームのバインドを変えることができない, などのためである.
 この関数を使った場合の別の異なる点は, デバイスは一時停止状態から始まり, 明示的に一時停止を解除する必要があることである.
@@ -104,7 +104,7 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 <li>SDL_BindAudioStream
 <li>SDL_BindAudioStreams
 <li>SDL_ClearAudioStream
-<li>SDL_CloseAudioDevice
+<li><a href="SDL_CloseAudioDevice.html">SDL_CloseAudioDevice</a> - オーディオデバイスをクローズする 
 <li>SDL_ConvertAudioSamples
 <li><a href="SDL_CreateAudioStream.html">SDL_CreateAudioStream</a> - オーディオストリームを生成する 
 <li><a href="SDL_DestroyAudioStream.html">SDL_DestroyAudioStream</a> - オーディオストリームを破棄する
@@ -118,7 +118,7 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 <li>SDL_GetAudioPlaybackDevices
 <li>SDL_GetAudioRecordingDevices
 <li>SDL_GetAudioStreamAvailable
-<li>SDL_GetAudioStreamData
+<li><a href="SDL_GetAudioStreamData.html">SDL_GetAudioStreamData</a>- ストリームから変換/再サンプリングされたデータを得る
 <li>SDL_GetAudioStreamDevice
 <li>SDL_GetAudioStreamFormat
 <li>SDL_GetAudioStreamFrequencyRatio
@@ -136,15 +136,15 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 <li>SDL_LoadWAV_IO
 <li>SDL_LockAudioStream
 <li>SDL_MixAudio
-<li>SDL_OpenAudioDevice
-<li>SDL_OpenAudioDeviceStream
+<li><a href="SDL_OpenAudioDevice.html">SDL_OpenAudioDevice</a> - オーディオデバイスをオープンする 
+<li><a href="SDL_OpenAudioDeviceStream.html">SDL_OpenAudioDeviceStream</a> - 簡単のため典型的なオーディオの初期化を一度に行う関数
 <li>SDL_PauseAudioDevice
-<li>SDL_PauseAudioStreamDevice
-<li>SDL_PutAudioStreamData
+<li><a href="SDL_PauseAudioStreamDevice.html">SDL_PauseAudioStreamDevice</a> - オーディオデバイスに関連付けられたオーディオストリームの再生を一時停止する
+<li><a href="SDL_PutAudioStreamData.html">SDL_PutAudioStreamData</a> - ストリームにデータを追加する
 <li>SDL_PutAudioStreamDataNoCopy
 <li>SDL_PutAudioStreamPlanarData
 <li>SDL_ResumeAudioDevice
-<li>SDL_ResumeAudioStreamDevice
+<li><a href="SDL_ResumeAudioStreamDevice.html">SDL_ResumeAudioStreamDevice</a> - オーディオデバイスに関連付けられたオーディオストリームの一時停止を解除する
 <li>SDL_SetAudioDeviceGain
 <li>SDL_SetAudioIterationCallbacks
 <li>SDL_SetAudioPostmixCallback
@@ -161,11 +161,11 @@ MP3なども自身でデコードすれば渡せるが, 直接渡すことはで
 </ol>
 <h2>型</h2>
 <ol>
-<li>SDL_AudioDeviceID
+<li><a href="SDL_AudioDeviceID.html">SDL_AudioDeviceID</a> - オーディオデバイスインスタンスIDの型
 <li>SDL_AudioIterationCallback
 <li>SDL_AudioPostmixCallback
 <li><a href="SDL_AudioStream.html">SDL_AudioStream</a> - オーディオストリームを表す不透明型
-<li>SDL_AudioStreamCallback
+<li><a href="SDL_AudioStreamCallback.html">SDL_AudioStreamCallback</a> - SDL_AudioStreamからデータを受け取ったとき呼ばれるコールバック関数の型 
 <li>SDL_AudioStreamDataCompleteCallback
 </ol>
 <h2>構造体</h2>

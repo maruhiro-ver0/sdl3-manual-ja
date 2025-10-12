@@ -158,7 +158,7 @@ vimユーザは<a href="https://github.com/editorconfig/editorconfig-vim">editor
 <h2><a name="#sdl_audioh">SDL_audio.h (再生と録音)</a></h2>
 <p>
 SDL3の音声サブシステムはSDL2とは大きく異なる.
-コールバックは音声再生の主要な方法ではなくなり, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">SDL_AudioStream</a>とデバイスを紐づけるようになった.
+コールバックは音声再生の主要な方法ではなくなり, <a href="SDL_AudioStream.html">SDL_AudioStream</a>とデバイスを紐づけるようになった.
 しかし, 必要ならばコールバックの方法も残されている.
 </p>
 <p>
@@ -166,11 +166,11 @@ SDL3の音声サブシステムはSDL2とは大きく異なる.
 </p>
 <p>
 ユーザにとって都合がよいように, SDL3では初期化せずにデバイスをオープンしても暗黙的に音声サブシステムを初期化しないようになった.
-必要な時点で明示的に<code><a href="https://wiki.libsdl.org/SDL3/SDL_Init">SDL_Init</a>(<a href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">SDL_INIT_AUDIO</a>)</code>を呼ぶこと.
+必要な時点で明示的に<code><a href="SDL_Init.html">SDL_Init</a>(<a href="SDL_InitFlags.html">SDL_INIT_AUDIO</a>)</code>を呼ぶこと.
 </p>
 <p>
 SDL2は録音デバイスを"capture"デバイス, スピーカーへの再生を"output"デバイスと呼んでいた.
-SDLでは, 明確にするため用語を"recording"デバイスと"playback"デバイスに改めた.
+SDLでは, 明確にするため用語を"recording(録音)"デバイスと"playback(再生)"デバイスに改めた.
 </p>
 <p>
 SDL3音声サブシステムはSDL2よりも強化されている.
@@ -239,20 +239,20 @@ SDL2でコールバックの代わりに<a href="https://maruhiro-ver0.github.io
     SDL_PutAudioStreamData(stream, buf, buflen);
 </pre>
 </code>
-この例は録音にも適用できる. 単純に<a href="https://wiki.libsdl.org/SDL3/SDL_PutAudioStreamData">SDL_PutAudioStreamData</a>を<a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamData">SDL_GetAudioStreamData</a>に置き換えるだけである.
+この例は録音にも適用できる. 単純に<a href="SDL_PutAudioStreamData.html">SDL_PutAudioStreamData</a>を<a href="SDL_GetAudioStreamData.html">SDL_GetAudioStreamData</a>に置き換えるだけである.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioInit.html">SDL_AudioInit()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioQuit.html">SDL_AudioQuit()</a>は削除された.
-代わりに<a href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">SDL_InitSubSystem()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">SDL_QuitSubSystem()</a>の引数に<a href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">SDL_INIT_AUDIO</a>を渡すことができる. これはサブシステムの参照カウントを増減させる.
+代わりに<a href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">SDL_InitSubSystem()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">SDL_QuitSubSystem()</a>の引数に<a href="SDL_InitFlags.html">SDL_INIT_AUDIO</a>を渡すことができる. これはサブシステムの参照カウントを増減させる.
 特定の音声ドライバは<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DRIVER">SDL_AUDIO_DRIVERヒント</a>で選択できる.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_OpenAudioDevice.html">SDL_AUDIO_ALLOW_*フラグ</a>は削除され, 
-代わりにオーディオデバイスへの音声形式として要求できるようになったが, 最終的な違いは<a href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">SDL_AudioStream</a>が管理する.
+代わりにオーディオデバイスへの音声形式として要求できるようになったが, 最終的な違いは<a href="SDL_AudioStream.html">SDL_AudioStream</a>が管理する.
 アプリケーションが「許可」の変更に対応する必要がある場合は, 最終的な形式を<a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceFormat">SDL_GetAudioDeviceFormat()</a>で得ることができる.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">SDL_AudioDeviceID</a>は, オープンしたオーディオデバイス(「論理」デバイス)と, システムに存在するハードウェアのインスタンスID(「物理」デバイス)の両方を表すようになった.
+<a href="SDL_AudioDeviceID.html">SDL_AudioDeviceID</a>は, オープンしたオーディオデバイス(「論理」デバイス)と, システムに存在するハードウェアのインスタンスID(「物理」デバイス)の両方を表すようになった.
 デバイスインスタンスとデバイスのインデックス番号の違いはなくなり, 論理デバイスと物理デバイスはAPIレベルでほぼ同一となった.
 </p>
 <p>
@@ -268,7 +268,7 @@ SDL3では, バックエンドで対応していた多くの任意のデバイ�
 エンドユーザは環境変数に必要なデバイス名を設定することができるので, アプリケーションはそれに対応する必要はない.
 </p>
 <p>
-デバイスインデックス番号とiscaptureパラメータを渡された多くの関数は, 単に<a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">SDL_AudioDeviceID</a>を渡されるようになり, 全てのデバイスはユニークになり, 再生デバイスと録音デバイスの一覧のインデックス番号は別になった.
+デバイスインデックス番号とiscaptureパラメータを渡された多くの関数は, 単に<a href="SDL_AudioDeviceID.html">SDL_AudioDeviceID</a>を渡されるようになり, 全てのデバイスはユニークになり, 再生デバイスと録音デバイスの一覧のインデックス番号は別になった.
 </p>
 <p>
 デバイスのインデックス番号を用いてオーディオデバイスを反復処理するのではなく, 新しい関数<a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">SDL_GetAudioPlaybackDevices()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">SDL_GetAudioRecordingDevices()</a>も存在する.
@@ -294,29 +294,29 @@ SDL3では, バックエンドで対応していた多くの任意のデバイ�
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_LockAudioDevice.html">SDL_LockAudioDevice()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_UnlockAudioDevice.html">SDL_UnlockAudioDevice()</a>は削除された. 別スレッドのコールバックを保護する必要がないためである.
-SDL音声サブシステムと<a href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">SDL_AudioStream</a>の内部のロックは存在するため, 音声ストリームはどのスレッドから使っても安全である.
+SDL音声サブシステムと<a href="SDL_AudioStream.html">SDL_AudioStream</a>の内部のロックは存在するため, 音声ストリームはどのスレッドから使っても安全である.
 アプリケーションがコールバックを特定のストリームに割り当てる場合, 必要ならば<a href="https://wiki.libsdl.org/SDL3/SDL_LockAudioStream">SDL_LockAudioStream()</a>でストリームをロックすることができる.
 </p>
 <p>
 <a href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioDevice">SDL_PauseAudioDevice()</a>は常にデバイスを一時停止するようになり, 第2引数を受けなくなった. 再開する場合は, <a href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioDevice">SDL_ResumeAudioDevice()</a>を使うこと.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">SDL_OpenAudioDevice()</a>でオープンしたオーディオデバイスは一時停止状態で開始しないようになった. ストリームと紐づけない限り処理が始まらないためである.
+<a href="SDL_OpenAudioDevice.html">SDL_OpenAudioDevice()</a>でオープンしたオーディオデバイスは一時停止状態で開始しないようになった. ストリームと紐づけない限り処理が始まらないためである.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_GetAudioDeviceStatus.html">SDL_GetAudioDeviceStatus()</a>は削除され, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDevicePaused">SDL_AudioDevicePaused()</a>となった.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_QueueAudio.html">SDL_QueueAudio()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DequeueAudio.html">SDL_DequeueAudio()</a>, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ClearQueuedAudio.html">SDL_ClearQueuedAudio()</a>, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_GetQueuedAudioSize.html">SDL_GetQueuedAudioSize()</a>は削除された.
-<a href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">SDL_AudioStream</a>とデバイスの紐づけはこれと同じ機能を持っている.
+<a href="SDL_AudioStream.html">SDL_AudioStream</a>とデバイスの紐づけはこれと同じ機能を持っている.
 </p>
 <p>
 チャネルを扱うAPIのチャネル番号はUint8だったが, intとなった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_AudioSpec">SDL_AudioSpec</a>の機能は縮小され, 形式, チャネル数, サンプリングレートのみを扱うようになった.
-<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioSpec.html">SDL_AudioSpec</a>から削除されたsilenceメンバ(無音の値)は<a href="https://wiki.libsdl.org/SDL3/SDL_GetSilenceValueForFormat">SDL_GetSilenceValueForFormat()</a>で得ることができる.
-削除されたsamplesメンバ(音声バッファの長さ)はSDL3が管理するようになった. デバイスの遅れと処理量を調整したい場合は, 新たにオープンするデバイスのサンプルを<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DEVICE_SAMPLE_FRAMES">SDL_HINT_AUDIO_DEVICE_SAMPLE_FRAMESヒント</a>で強制的に設定できるが, リスクを避けるためデフォルト値から変更すべきではない. 
+<a href="SDL_AudioSpec.html">SDL_AudioSpec</a>の機能は縮小され, 形式, チャネル数, サンプリングレートのみを扱うようになった.
+SDL_AudioSpecから削除された<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioSpec.html">silenceメンバ</a>(無音の値)は<a href="https://wiki.libsdl.org/SDL3/SDL_GetSilenceValueForFormat">SDL_GetSilenceValueForFormat()</a>で得ることができる.
+削除された<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioSpec.html">samplesメンバ</a>(音声バッファの長さ)はSDL3が管理するようになった. デバイスの遅れと処理量を調整したい場合は, 新たにオープンするデバイスのサンプルを<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DEVICE_SAMPLE_FRAMES">SDL_HINT_AUDIO_DEVICE_SAMPLE_FRAMESヒント</a>で強制的に設定できるが, リスクを避けるためデフォルト値から変更すべきではない. 
 他のSDL2の<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioSpec.html">SDL_AudioSpec</a>メンバは現在では無関係である.
 </p>
 <p>
@@ -339,10 +339,10 @@ SDL音声サブシステムと<a href="https://wiki.libsdl.org/SDL3/SDL_AudioStr
 </p>
 <p>
 多くのSDLの関数と同様に<a href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV_IO">SDL_LoadWAV_IO()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV">SDL_LoadWAV()</a>はbool値を戻すようになった.
-<a href="https://wiki.libsdl.org/SDL3/SDL_AudioSpec">SDL_AudioSpec</a>へのポインタは戻さない.
+<a href="SDL_AudioSpec.html">SDL_AudioSpec</a>へのポインタは戻さない.
 </p>
 <p>
-<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioCVT.html">SDL_AudioCVT</a>は削除され, 代わりに<a href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">SDL_AudioStream</a>(切り出された音声データ)または<a href="https://wiki.libsdl.org/SDL3/SDL_ConvertAudioSamples">SDL_ConvertAudioSamples()</a>関数(一度の呼び出しで音声バッファ上の全てを変換)が使えるようになった.
+<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioCVT.html">SDL_AudioCVT</a>は削除され, 代わりに<a href="SDL_AudioStream.html">SDL_AudioStream</a>(切り出された音声データ)または<a href="https://wiki.libsdl.org/SDL3/SDL_ConvertAudioSamples">SDL_ConvertAudioSamples()</a>関数(一度の呼び出しで音声バッファ上の全てを変換)が使えるようになった.
 </p>
 <p>
 このようだったコードは:
@@ -403,7 +403,7 @@ U16音声データに対応するため, 実行時に変換する必要がある
 </p>
 <p>
 SDL2では, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStream.html">SDL_AudioStream</a>は入力されるとき(<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamPut.html">SDL_AudioStreamPut()</a>で)変換/再サンプリングされた.<br>
-SDL3では, 要求があればこれを行う(<a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamData">SDL_GetAudioStreamData()</a>で行う. これはSDL2では<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamGet">SDL_AudioStreamGet()</a>だった).
+SDL3では, 要求があったときこれを行う(<a href="SDL_GetAudioStreamData.html">SDL_GetAudioStreamData()</a>で行う. これはSDL2では<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamGet">SDL_AudioStreamGet()</a>だった).
 AudioStreamを使う場合でもほぼ同じだが, 処理の段階が異なるので注意すること.
 </p>
 <p>
@@ -411,9 +411,9 @@ SDL2では, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStre
 SDL3では, 他の音声ストリームAPIと合わせるため, <a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamAvailable">SDL_GetAudioStreamAvailable()</a>は-1を戻しエラー文字列を設定する.
 </p>
 <p>
-SDL2では, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioDeviceEvent.html">SDL_AUDIODEVICEREMOVEDイベント</a>はオープンされたデバイスが取り除かれたときwhichメンバにその<a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">SDL_AudioDeviceID</a>が設定されて発生したが, 後のバージョンでは, アプリケーションに利用可能なデバイスの一覧の更新を伝えるため, オープンされていないデバイスでもwhichメンバが0で発生した.<br>
-SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">このイベント</a>は同じだが, 0ではなく物理デバイスの<a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">SDL_AudioDeviceID</a>が設定されるようになった.
-この取り除かれた物理デバイスを<a href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">SDL_OpenAudioDevice()</a>でオープンしていた論理デバイスに対しては, 別にイベントが発生する.
+SDL2では, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioDeviceEvent.html">SDL_AUDIODEVICEREMOVEDイベント</a>はオープンされたデバイスが取り除かれたときwhichメンバにその<a href="SDL_AudioDeviceID.html">SDL_AudioDeviceID</a>が設定されて発生したが, 後のバージョンでは, アプリケーションに利用可能なデバイスの一覧の更新を伝えるため, オープンされていないデバイスでもwhichメンバが0で発生した.<br>
+SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">このイベント</a>は同じだが, 0ではなく物理デバイスの<a href="SDL_AudioDeviceID.html">SDL_AudioDeviceID</a>が設定されるようになった.
+この取り除かれた物理デバイスを<a href="SDL_OpenAudioDevice.html">SDL_OpenAudioDevice()</a>でオープンしていた論理デバイスに対しては, 別にイベントが発生する.
 </p>
 <p>
 以下の関数の名前は次の様に変更された:
@@ -422,12 +422,12 @@ SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">この�
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamAvailable.html">SDL_AudioStreamAvailable()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamAvailable">SDL_GetAudioStreamAvailable()</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamClear.html">SDL_AudioStreamClear()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_ClearAudioStream">SDL_ClearAudioStream()</a>, bool値を戻す
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamFlush.html">SDL_AudioStreamFlush()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_FlushAudioStream">SDL_FlushAudioStream()</a>, bool値を戻す
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamGet.html">SDL_AudioStreamGet()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamData">SDL_GetAudioStreamData()</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamPut.html">SDL_AudioStreamPut()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_PutAudioStreamData">SDL_PutAudioStreamData()</a>, bool値を戻す
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_FreeAudioStream.html">SDL_FreeAudioStream()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_DestroyAudioStream">SDL_DestroyAudioStream()</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamGet.html">SDL_AudioStreamGet()</a> → <a href="SDL_GetAudioStreamData.html">SDL_GetAudioStreamData()</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioStreamPut.html">SDL_AudioStreamPut()</a> → <a href="SDL_PutAudioStreamData.html">SDL_PutAudioStreamData()</a>, bool値を戻す
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_FreeAudioStream.html">SDL_FreeAudioStream()</a> → <a href="SDL_DestroyAudioStream.html">SDL_DestroyAudioStream()</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_LoadWAV_RW.html">SDL_LoadWAV_RW()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV_IO">SDL_LoadWAV_IO()</a>, bool値を戻す
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_MixAudioFormat.html">SDL_MixAudioFormat()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_MixAudio">SDL_MixAudio()</a>, bool値を戻す
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_NewAudioStream.html">SDL_NewAudioStream()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_CreateAudioStream">SDL_CreateAudioStream()</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_NewAudioStream.html">SDL_NewAudioStream()</a> → <a href="SDL_CreateAudioStream.html">SDL_CreateAudioStream()</a>
 </ul>
 <p>
 以下の関数は削除された
