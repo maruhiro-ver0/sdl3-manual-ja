@@ -164,16 +164,16 @@ SDL_EVENT_USERはSDLが使用しないイベント番号の先頭に過ぎない
 <h3><a id="table">イベントの種類と共用体のメンバの関係</a></h3>
 <table border="1">
 <tr><th>イベントの種類(typeメンバ)</th><th>イベント構造体</th><th>SDL_Eventフィールド</th></tr>
-<tr><td>SDL_EVENT_AUDIO_DEVICE_ADDED<br>SDL_EVENT_AUDIO_DEVICE_REMOVED</td><td><a href="SDL_AudioDeviceEvent.html">SDL_AudioDeviceEvent</a></td><td>adevice</td></tr>
-<tr><td>SDL_EVENT_CAMERA_DEVICE_ADDED<br>SDL_EVENT_CAMERA_DEVICE_APPROVED<br>など</td><td><a href="SDL_CameraDeviceEvent.html">SDL_CameraDeviceEvent</a></td><td>cdevice</td></tr>
+<tr><td>SDL_EVENT_AUDIO_DEVICE_ADDED<br>SDL_EVENT_AUDIO_DEVICE_REMOVED<br>SDL_EVENT_AUDIO_DEVICE_FORMAT_CHANGED</td><td><a href="SDL_AudioDeviceEvent.html">SDL_AudioDeviceEvent</a></td><td>adevice</td></tr>
+<tr><td>SDL_EVENT_CAMERA_DEVICE_ADDED<br>SDL_EVENT_CAMERA_DEVICE_REMOVED<br>SDL_EVENT_CAMERA_DEVICE_APPROVED<br>SDL_EVENT_CAMERA_DEVICE_DENIED</td><td><a href="SDL_CameraDeviceEvent.html">SDL_CameraDeviceEvent</a></td><td>cdevice</td></tr>
 <tr><td>SDL_EVENT_CLIPBOARD_UPDATE</td><td><a href="SDL_ClipboardEvent.html">SDL_ClipboardEvent</a></td><td>clipboard</td></tr>
-<tr><td>SDL_EVENT_DISPLAY_ADDED<br>SDL_EVENT_DISPLAY_REMOVED<br>など</td><td><a href="SDL_DisplayEvent.html">SDL_DisplayEvent</a></td><td>display</td></tr>
+<tr><td>SDL_EVENT_DISPLAY_ORIENTATION<br>SDL_EVENT_DISPLAY_ADDED<br>SDL_EVENT_DISPLAY_REMOVED<br>SDL_EVENT_DISPLAY_MOVED<br>SDL_EVENT_DISPLAY_DESKTOP_MODE_CHANGED<br>SDL_EVENT_DISPLAY_CURRENT_MODE_CHANGED<br>SDL_EVENT_DISPLAY_CONTENT_SCALE_CHANGED<br>SDL_EVENT_DISPLAY_USABLE_BOUNDS_CHANGED</td><td><a href="SDL_DisplayEvent.html">SDL_DisplayEvent</a></td><td>display</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_ADDED<br>SDL_EVENT_GAMEPAD_REMOVED<br>SDL_EVENT_GAMEPAD_REMAPPED<br>など</td><td><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a></td><td>gdevice</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_AXIS_MOTION</td><td><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a></td><td>gaxis</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_BUTTON_DOWN<br>SDL_EVENT_GAMEPAD_BUTTON_UP</td><td><a href="SDL_GamepadButtonEvent.html">SDL_GamepadButtonEvent</a></td><td>gbutton</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_DOWN<br>SDL_EVENT_GAMEPAD_TOUCHPAD_MOTION<br>など</td><td><a href="SDL_GamepadTouchpadEvent.html">SDL_GamepadTouchpadEvent</a></td><td>gtouchpad</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_SENSOR_UPDATE</td><td><a href="SDL_GamepadSensorEvent.html">SDL_ControllerSensorEvent</a></td><td>gsensor</td></tr>
-<tr><td>SDL_EVENT_DROP_BEGIN<br>SDL_EVENT_DROP_FILE<br>SDL_EVENT_DROP_TEXT<br>など</td><td><a href="SDL_DropEvent.html">SDL_DropEvent</a></td><td>drop</td></tr>
+<tr><td>SDL_EVENT_DROP_BEGIN<br>SDL_EVENT_DROP_FILE<br>SDL_EVENT_DROP_TEXT<br>SDL_EVENT_DROP_COMPLETE<br>SDL_EVENT_DROP_POSITION</td><td><a href="SDL_DropEvent.html">SDL_DropEvent</a></td><td>drop</td></tr>
 <tr><td>SDL_EVENT_FINGER_MOTION<br>SDL_EVENT_FINGER_DOWN<br>SDL_EVENT_FINGER_UP</td><td><a href="SDL_TouchFingerEvent.html">SDL_TouchFingerEvent</a></td><td>tfinger</td></tr>
 <tr><td>SDL_EVENT_KEYBOARD_ADDED<br>SDL_EVENT_KEYBOARD_REMOVED</td><td><a href="SDL_KeyboardDeviceEvent.html">SDL_KeyboardDeviceEvent</a></td><td>kdevice</td></tr>
 <tr><td>SDL_EVENT_KEY_DOWN<br>SDL_EVENT_KEY_UP</td><td><a href="SDL_KeyboardEvent.html">SDL_KeyboardEvent</a></td><td>key</td></tr>
@@ -198,7 +198,7 @@ SDL_EVENT_USERはSDLが使用しないイベント番号の先頭に過ぎない
 <tr><td>SDL_EVENT_TEXT_EDITING_CANDIDATES</td><td><a href="SDL_TextEditingCandidatesEvent.html">SDL_TextEditingCandidatesEvent</a></td><td>edit_candidates</td></tr>
 <tr><td>SDL_EVENT_TEXT_INPUT</td><td><a href="SDL_TextInputEvent.html">SDL_TextInputEvent</a></td><td>text</td></tr>
 <tr><td>SDL_EVENT_USER</td><td><a href="SDL_UserEvent.html">SDL_UserEvent</a></td><td>user</td></tr>
-<tr><td>SDL_EVENT_WINDOW_RESIZED<br>SDL_EVENT_WINDOW_MOVED<br>など</td><td><a href="SDL_WindowEvent.html">SDL_WindowEvent</a></td><td>window</td></tr>
+<tr><td>SDL_EVENT_WINDOW_SHOWN<br>SDL_EVENT_WINDOW_HIDDEN<br>SDL_EVENT_WINDOW_EXPOSED<br>SDL_EVENT_WINDOW_MOVED<br>SDL_EVENT_WINDOW_RESIZED<br>SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED<br>SDL_EVENT_WINDOW_METAL_VIEW_RESIZED<br>SDL_EVENT_WINDOW_MINIMIZED<br>SDL_EVENT_WINDOW_MAXIMIZED<br>SDL_EVENT_WINDOW_RESTORED<br>SDL_EVENT_WINDOW_MOUSE_ENTER<br>SDL_EVENT_WINDOW_MOUSE_LEAVE<br>SDL_EVENT_WINDOW_FOCUS_GAINED<br>SDL_EVENT_WINDOW_FOCUS_LOST<br>SDL_EVENT_WINDOW_CLOSE_REQUESTED<br>SDL_EVENT_WINDOW_HIT_TEST<br>SDL_EVENT_WINDOW_ICCPROF_CHANGED<br>SDL_EVENT_WINDOW_DISPLAY_CHANGED<br>SDL_EVENT_WINDOW_DISPLAY_SCALE_CHANGED<br>SDL_EVENT_WINDOW_SAFE_AREA_CHANGED<br>SDL_EVENT_WINDOW_OCCLUDED<br>SDL_EVENT_WINDOW_ENTER_FULLSCREEN<br>SDL_EVENT_WINDOW_LEAVE_FULLSCREEN<br>SDL_EVENT_WINDOW_DESTROYED<br>SDL_EVENT_WINDOW_HDR_STATE_CHANGED</td><td><a href="SDL_WindowEvent.html">SDL_WindowEvent</a></td><td>window</td></tr>
 <tr><td>その他のイベント</td><td><a href="SDL_CommonEvent.html">SDL_CommonEvent</a></td><td>common</td></tr>
 </table>
 <h2>SDL Wikiへのリンク</h2>

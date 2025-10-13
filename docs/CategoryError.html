@@ -17,12 +17,12 @@ SDLの簡単なエラーメッセージルーチンである.
 </p>
 <p>
 ほとんどのアプリケーションはこれらのAPIの内の1つの関数しか使わない.
-SDL関数が失敗したとき, SDL_GetError()で問題を表す人間が読むことができる文字列を得ることができる.
+SDL関数が失敗したとき, <a href="SDL_GetError.html">SDL_GetError()</a>で問題を表す人間が読むことができる文字列を得ることができる.
 </p>
 <p>
 この文字列はスレッドごとに管理されている.
 また, アプリケーションがエラーを設定することもできる. これは別のアプリケーションでも使用できるようにしたSDL上のライブラリを作成する場合によく使用される.
-文字列はSDL_SetError()で設定できる.
+文字列は<a href="SDL_SetError.html">SDL_SetError()</a>で設定できる.
 </p>
 <p>
 一般的には, 成功のとき真, 失敗のとき偽を戻す関数を作成したとき, 失敗したときにこれを用いてエラーを設定する:
@@ -37,20 +37,20 @@ if (something_went_wrong) {
 </code>
 </p>
 <p>
-失敗して既にSDL_SetError()が呼ばれていることがわかっている場合は, 単に偽を戻すだけとすることもよく行われる. このようにするとエラーが伝搬する.
+失敗して既に<a href="SDL_SetError.html">SDL_SetError()</a>が呼ばれていることがわかっている場合は, 単に偽を戻すだけとすることもよく行われる. このようにするとエラーが伝搬する.
 </p>
 <h2>関数</h2>
 <ol>
-<li>SDL_ClearError
-<li>SDL_GetError
-<li>SDL_OutOfMemory
-<li>SDL_SetError
-<li>SDL_SetErrorV
+<li><a href="SDL_ClearError.html">SDL_ClearError</a> - エラーメッセージを消去する
+<li><a href="SDL_GetError.html">SDL_GetError</a> - 現在のスレッドで最後に発生したエラーのメッセージを得る
+<li><a href="SDL_OutOfMemory.html">SDL_OutOfMemory</a> - メモリの確保に失敗したことを表すエラーを設定する
+<li><a href="SDL_SetError.html">SDL_SetError</a> - 現在のスレッドのSDLエラーメッセージを設定する
+<li><a href="SDL_SetErrorV.html">SDL_SetErrorV</a> - 現在のスレッドのSDLエラーメッセージを設定する
 </ol>
 <h2>マクロ</h2>
 <ol>
-<li>SDL_InvalidParamError
-<li>SDL_Unsupported
+<li><a href="SDL_InvalidParamError.html">SDL_InvalidParamError</a> - 不正な操作をしたとき一般的なエラーを報告するためのマクロ
+<li><a href="SDL_Unsupported.html">SDL_Unsupported</a> - 対応外の操作をしたとき一般的なエラーを報告するためのマクロ
 </ol>
 <h2>SDL Wikiへのリンク</h2>
 <a href="https://wiki.libsdl.org/SDL3/CategoryError">SDL3/CategoryError - SDL Wiki</a>
