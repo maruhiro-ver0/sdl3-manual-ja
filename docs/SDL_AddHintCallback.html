@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryHints.html" title="1つ上">
+<title>SDL_AddHintCallback</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryHints.html">ヒント</a> - SDL_AddHintCallback
+<hr>
+<h1>SDL_AddHintCallback</h1>
+指定のヒントを監視する関数を追加する
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_hints.h">SDL3/SDL_hints.h</a>
+<h2>構文</h2>
+<code>bool SDL_AddHintCallback(const char *name, SDL_HintCallback callback, void *userdata);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td>const char *</a><td>name</td><td>監視するヒント</td></tr>
+<tr><td><a href="SDL_HintCallback.html">SDL_HintCallback</a></td><td>callback</td><td>ヒントの値が変わったとき呼ぶ<a href="SDL_HintCallback.html">SDL_HintCallback</a>関数</td></tr>
+<tr><td>void *</td><td>userdata</td><td>コールバック関数に渡すポインタ</td></tr>
+</table>
+<h2>戻り値</h2>
+<p>
+(bool) 成功のとき真, 失敗のとき偽を戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+</p>
+<h2>明細</h2>
+<p>
+コールバック関数は, <strong>この関数を</strong>呼んだとき初期値を与えるために呼ばれ, さらにヒントの値が変わるたびに呼ばれる.
+</p>
+<h2>スレッドセーフ</h2>
+この関数はどのスレッドからも安全に呼べる.
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_RemoveHintCallback.html">SDL_RemoveHintCallback</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_AddHintCallback">SDL_AddHintCallback - SDL Wiki</a>
+<hr>
+</body>
+</html>
