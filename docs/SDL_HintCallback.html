@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryHints.html" title="1つ上">
+<title>SDL_AddHintCallback</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryHints.html">ヒント</a> - SDL_AddHintCallback
+<hr>
+<h1>SDL_AddHintCallback</h1>
+ヒントの値の変化の通知するために使用されるコールバックの型
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_hints.h">SDL3/SDL_hints.h</a>
+<h2>構文</h2>
+<code>typedef void(SDLCALL *SDL_HintCallback)(void *userdata, const char *name, const char *oldValue, const char *newValue);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td>void *</td><td>userdata</td><td><a href="SDL_AddHintCallback.html">SDL_AddHintCallback()</a>のuserdataに渡したポインタ</td></tr>
+<tr><td>const char *</td><td>name</td><td><a href="SDL_AddHintCallback.html">SDL_AddHintCallback</a>のnameに渡した名前</td></tr>
+<tr><td>const char *</td><td>oldValue</td><td>変更前のヒントの値</td></tr>
+<tr><td>const char *</td><td>newValue</td><td>これから設定されるヒントの値</td></tr>
+</td></tr>
+</table>
+<h2>明細</h2>
+<p>
+コールバック関数は, <a href="SDL_AddHintCallback.html">SDL_AddHintCallback</a>が呼ばれたとき初期値を与えるために呼ばれ, さらにヒントの値が変わるたびに呼ばれる.
+</p>
+<h2>スレッドセーフ</h2>
+このコールバックはヒントに新しい値が設定されたどのスレッドからも呼ばれる.
+SDLはこのスレッドを呼ぶときヒントサブシステムをロックする.
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_AddHintCallback.html">SDL_AddHintCallback</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_AddHintCallback">SDL_AddHintCallback - SDL Wiki</a>
+<hr>
+</body>
+</html>
