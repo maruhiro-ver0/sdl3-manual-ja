@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryEvents.html" title="1つ上">
+<title>SDL_PenButtonEvent</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryEvents.html">イベント処理</a> - SDL_PenButtonEvent
+<hr>
+<h1>SDL_PenButtonEvent</h1>
+感圧式ペンボタンイベントの構造体(event.pbutton.*)
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_events.h">SDL3/SDL_events.h</a>
+<h2>フィールド</h2>
+<table border="1">
+<tr><td><a href="SDL_EventType.html">SDL_EventType</a></td><td>type</td><td>SDL_EVENT_PEN_BUTTON_DOWN, SDL_EVENT_PEN_BUTTON_UP</td></tr>
+<tr><td>Uint32</td><td>reserved</td><td>予約</td></tr>
+<tr><td>Uint64</td><td>timestamp</td><td>イベントのナノ秒単位のタイムスタンプ. <a href="SDL_GetTicksNS.html">SDL_GetTicksNS()</a>で設定</td></tr>
+<tr><td><a href="SDL_WindowID.html">SDL_WindowID</a></td><td>windowID</td><td>マウスフォーカルのあるウィンドウ(存在すれば)</tr>
+<tr><td><a href="SDL_PenID.html">SDL_PenID</a></td><td>which</td><td>ペンインスタンスID</tr>
+<tr><td><a href="SDL_PenInputFlags.html">SDL_PenInputFlags</a></td><td>pen_state</td><td>イベント発生時のペン入力完了状態</tr>
+<tr><td>float</td><td>x</td><td>ウィンドウからのX座標</tr>
+<tr><td>float</td><td>y</td><td>ウィンドウからのY座標</tr>
+<tr><td>Uint8</td><td>button</td><td>ペンボタンのインデックス番号(最初のボタンが1)</tr>
+<tr><td>bool</td><td>down</td><td>ボタンが押されたとき1</tr>
+</table>
+<h2>詳細</h2>
+<p>
+これはユーザがクリックしたペンのボタンのイベントである.
+描画のためにペン自体を押し付けた場合はSDL_EVENT_PEN_DOWNイベントが発生する.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_PenButtonEvent">SDL_PenButtonEvent - SDL Wiki</a><br>
+<hr>
+</body>
+</html>

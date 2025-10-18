@@ -73,44 +73,44 @@
 <tr><th colspan="3" align="center">キーボードのイベント</th></tr>
 <tr><td><a href="SDL_KeyboardEvent.html">SDL_EVENT_KEY_DOWN</a></td><td>0x300</td><td>キーが押された</th></tr>
 <tr><td><a href="SDL_KeyboardEvent.html">SDL_EVENT_KEY_UP</a></td><td></td><td>キーが離された</th></tr>
-<tr><td>SDL_EVENT_TEXT_EDITING</td><td></td><td>キーボードでテキストを編集している</th></tr>
-<tr><td>SDL_EVENT_TEXT_INPUT</td><td></td><td>キーボードでテキストが入力された</th></tr>
+<tr><td><a href="SDL_TextEditingEvent.html">SDL_EVENT_TEXT_EDITING</a></td><td></td><td>変換中のテキストを編集している</th></tr>
+<tr><td><a href="SDL_TextInputEvent.html">SDL_EVENT_TEXT_INPUT</a></td><td></td><td>キーボードでテキストが入力された</th></tr>
 <tr><td>SDL_EVENT_KEYMAP_CHANGED</td><td></td><td>入力言語やキーボードレイアウトの変更のようなシステムイベントが原因でキーマップが変わった</th></tr>
 <tr><td><a href="SDL_KeyboardDeviceEvent.html">SDL_EVENT_KEYBOARD_ADDED</a></td><td></td><td>キーボードがシステムに接続された</th></tr>
 <tr><td><a href="SDL_KeyboardDeviceEvent.html">SDL_EVENT_KEYBOARD_REMOVED</a></td><td></td><td>キーボードがシステムから切断された</th></tr>
-<tr><td>SDL_EVENT_TEXT_EDITING_CANDIDATES</td><td></td><td>キーボードでテキストの候補を編集している</th></tr>
+<tr><td>SDL_EVENT_TEXT_EDITING_CANDIDATES</td><td></td><td>テキストの変換候補を選択している</th></tr>
 <tr><td>SDL_EVENT_SCREEN_KEYBOARD_SHOWN</td><td></td><td>スクリーンキーボードが表示された</th></tr>
 <tr><td>SDL_EVENT_SCREEN_KEYBOARD_HIDDEN</td><td></td><td>スクリーンキーボードが非表示になった</th></tr>
 <tr><th colspan="3" align="center">マウスのイベント</th></tr>
-<tr><td>SDL_EVENT_MOUSE_MOTION</td><td>0x400</td><td>マウスが動いた</td></tr>
-<tr><td>SDL_EVENT_MOUSE_BUTTON_DOWN</td><td></td><td>マウスのボタンが押された</td></tr>
-<tr><td>SDL_EVENT_MOUSE_BUTTON_UP</td><td></td><td>マウスのボタンが離された</td></tr>
-<tr><td>SDL_EVENT_MOUSE_WHEEL</td><td></td><td>マウスのホイールが動いた</td></tr>
-<tr><td>SDL_EVENT_MOUSE_ADDED</td><td></td><td>マウスがシステムに接続された</td></tr>
-<tr><td>SDL_EVENT_MOUSE_REMOVED</td><td></td><td>マウスがシステムから切断された</td></tr>
+<tr><td><a href="SDL_MouseMotionEvent.html">SDL_EVENT_MOUSE_MOTION</a></td><td>0x400</td><td>マウスが動いた</td></tr>
+<tr><td><a href="SDL_MouseButtonEvent.html">SDL_EVENT_MOUSE_BUTTON_DOWN</a></td><td></td><td>マウスのボタンが押された</td></tr>
+<tr><td><a href="SDL_MouseButtonEvent.html">SDL_EVENT_MOUSE_BUTTON_UP</a></td><td></td><td>マウスのボタンが離された</td></tr>
+<tr><td><a href="SDL_MouseWheelEvent.html">SDL_EVENT_MOUSE_WHEEL</a></td><td></td><td>マウスのホイールが動いた</td></tr>
+<tr><td><a href="SDL_MouseDeviceEvent.html">SDL_EVENT_MOUSE_ADDED</a></td><td></td><td>マウスがシステムに接続された</td></tr>
+<tr><td><a href="SDL_MouseDeviceEvent.html">SDL_EVENT_MOUSE_REMOVED</a></td><td></td><td>マウスがシステムから切断された</td></tr>
 <tr><th colspan="3" align="center">ジョイスティックのイベント</th></tr>
-<tr><td>SDL_EVENT_JOYSTICK_AXIS_MOTION</td><td>0x600</td><td>ジョイスティクが動いた</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_BALL_MOTION</td><td></td><td>ジョイスティクのトラックボールが動いた</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_HAT_MOTION</td><td></td><td>ジョイスティックのハットが変わった</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_BUTTON_DOWN</td><td></td><td>ジョイスティックのボタンが押された</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_BUTTON_UP</td><td></td><td>ジョイスティックのボタンが離された</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_ADDED</td><td></td><td>ジョイスティックが接続された</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_REMOVED</td><td></td><td>ジョイスティックが切断された</td></tr>
+<tr><td><a href="SDL_JoyAxisEvent.html">SDL_EVENT_JOYSTICK_AXIS_MOTION</a></td><td>0x600</td><td>ジョイスティクが動いた</td></tr>
+<tr><td><a href="SDL_JoyBallEvent.html">SDL_EVENT_JOYSTICK_BALL_MOTION</a></td><td></td><td>ジョイスティクのトラックボールが動いた</td></tr>
+<tr><td><a href="SDL_JoyHatEvent.html">SDL_EVENT_JOYSTICK_HAT_MOTION</a></td><td></td><td>ジョイスティックのハットが変わった</td></tr>
+<tr><td><a href="SDL_JoyButtonEvent.html">SDL_EVENT_JOYSTICK_BUTTON_DOWN</a></td><td></td><td>ジョイスティックのボタンが押された</td></tr>
+<tr><td><a href="SDL_JoyButtonEvent.html">SDL_EVENT_JOYSTICK_BUTTON_UP</a></td><td></td><td>ジョイスティックのボタンが離された</td></tr>
+<tr><td><a href="SDL_JoyDeviceEvent.html">SDL_EVENT_JOYSTICK_ADDED</a></td><td></td><td>ジョイスティックが接続された</td></tr>
+<tr><td><a href="SDL_JoyDeviceEvent.html">SDL_EVENT_JOYSTICK_REMOVED</a></td><td></td><td>ジョイスティックが切断された</td></tr>
 <tr><td>SDL_EVENT_JOYSTICK_BATTERY_UPDATED</td><td></td><td>ジョイスティックのバッテリー残量が変化した</td></tr>
-<tr><td>SDL_EVENT_JOYSTICK_UPDATE_COMPLETE</td><td></td><td>ジョイスティックの更新が完了した</td></tr>
+<tr><td><a href="SDL_JoyDeviceEvent.html">SDL_EVENT_JOYSTICK_UPDATE_COMPLETE</a></td><td></td><td>ジョイスティックの更新が完了した</td></tr>
 <tr><th colspan="3" align="center">ゲームパッドのイベント</th></tr>
-<tr><td>SDL_EVENT_GAMEPAD_AXIS_MOTION</td><td>0x650</td><td>ゲームパッドが動いた</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_BUTTON_DOWN</td><td></td><td>ゲームパッドのボタンが押された</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_BUTTON_UP</td><td></td><td>ゲームパッドのボタンが離された</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_ADDED</td><td></td><td>ゲームパッドが接続された</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_EMOVED</td><td></td><td>ゲームパッドが切断された</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_REMAPPED</td><td></td><td>ゲームパッドのマッピングが変わった</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_DOWN</td><td></td><td>ゲームパッドのタッチパッドに指をつけた</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_MOTION</td><td></td><td>ゲームパッドのタッチパッドから指を離した</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_UP</td><td></td><td>ゲームパッドのタッチパッド上で指を動かした</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_SENSOR_UPDATE</td><td></td><td>ゲームパッドのセンサー状態が変わった</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_UPDATE_COMPLETE</td><td></td><td>ゲームパッドの更新が完了した</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_STEAM_HANDLE_UPDATED</td><td></td><td>ゲームパッドのSteamハンドラが変わった</td></tr>
+<tr><td><a href="SDL_GamepadAxisEvent.html">SDL_EVENT_GAMEPAD_AXIS_MOTION</a></td><td>0x650</td><td>ゲームパッドが動いた</td></tr>
+<tr><td><a href="SDL_GamepadButtonEvent.html">SDL_EVENT_GAMEPAD_BUTTON_DOWN</a></td><td></td><td>ゲームパッドのボタンが押された</td></tr>
+<tr><td><a href="SDL_GamepadButtonEvent.html">SDL_EVENT_GAMEPAD_BUTTON_UP</a></td><td></td><td>ゲームパッドのボタンが離された</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_ADDED</a></td><td></td><td>ゲームパッドが接続された</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_REMOVED</a></td><td></td><td>ゲームパッドが切断された</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_REMAPPED</a></td><td></td><td>ゲームパッドのマッピングが変わった</td></tr>
+<tr><td><a href="SDL_GamepadTouchpadEvent.html">SDL_EVENT_GAMEPAD_TOUCHPAD_DOWN</a></td><td></td><td>ゲームパッドのタッチパッドに指をつけた</td></tr>
+<tr><td><a href="SDL_GamepadTouchpadEvent.html">SDL_EVENT_GAMEPAD_TOUCHPAD_MOTION</a></td><td></td><td>ゲームパッドのタッチパッドから指を離した</td></tr>
+<tr><td><a href="SDL_GamepadTouchpadEvent.html">SDL_EVENT_GAMEPAD_TOUCHPAD_UP</a></td><td></td><td>ゲームパッドのタッチパッド上で指を動かした</td></tr>
+<tr><td><a href="SDL_GamepadSensorEvent.html">SDL_EVENT_GAMEPAD_SENSOR_UPDATE</a></td><td></td><td>ゲームパッドのセンサー状態が変わった</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_UPDATE_COMPLETE</a></td><td></td><td>ゲームパッドの更新が完了した</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_STEAM_HANDLE_UPDATED</a></td><td></td><td>ゲームパッドのSteamハンドラが変わった</td></tr>
 <tr><th colspan="3" align="center">タッチのイベント</th></tr>
 <tr><td>SDL_EVENT_FINGER_DOWN</td><td>0x700</td><td>デバイスに指をつけた</td></tr>
 <tr><td>SDL_EVENT_FINGER_UP</td><td></td><td>デバイスから指を離した</td></tr>
@@ -130,31 +130,31 @@
 <tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_TEXT</a></td><td></td><td>text/plainのドラッグアンドドロップイベント</td></tr>
 <tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_BEGIN</a></td><td></td><td>新しいグループのドロップが始まった (NULLファイル名)</td></tr>
 <tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_COMPLETE</a></td><td></td><td>現在のグループのドロップが終わった (NULLファイル名)</td></tr>
-<tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_POSITION</a></td><td></td>ウィンドウ上で動いた位置</td><td></tr>
+<tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_POSITION</a></td><td></td><td>ウィンドウ上で動いた位置</td></tr>
 <tr><th colspan="3" align="center">オーディオホットプラグ(活線挿抜)のイベント</th></tr>
 <tr><td><a href="SDL_AudioDeviceEvent.html">SDL_EVENT_AUDIO_DEVICE_ADDED</a></td><td>0x1100</td><td>オーディオデバイスが接続された</td></tr>
 <tr><td><a href="SDL_AudioDeviceEvent.html">SDL_EVENT_AUDIO_DEVICE_REMOVED</a></td><td></td><td>オーディオデバイスが切断された</td></tr>
 <tr><td><a href="SDL_AudioDeviceEvent.html">SDL_EVENT_AUDIO_DEVICE_FORMAT_CHANGED</a></td><td></td><td>システムによってオーディオデバイスの形式が変わった</td></tr>
 <tr><th colspan="3" align="center">センサーのイベント</th></tr>
-<tr><td>SDL_EVENT_SENSOR_UPDATE</td><td>0x1200</td><td>センサー状態が変わった</td></tr>
+<tr><td><a href="SDL_SensorEvent.html">SDL_EVENT_SENSOR_UPDATE</a></td><td>0x1200</td><td>センサー状態が変わった</td></tr>
 <tr><th colspan="3" align="center">ペンのイベント</th></tr>
-<tr><td>SDL_EVENT_PEN_PROXIMITY_IN</td><td>0x1300</td><td>感圧式ペンが利用可能になった</td></tr>
-<tr><td>SDL_EVENT_PEN_PROXIMITY_OUT</td><td></td><td>感圧式ペンが利用不能になった</td></tr>
-<tr><td>SDL_EVENT_PEN_DOWN</td><td></td><td>感圧式ペンが表面に触れた</td></tr>
-<tr><td>SDL_EVENT_PEN_UP</td><td></td><td>感圧式ペンが表面から離れた</td></tr>
-<tr><td>SDL_EVENT_PEN_BUTTON_DOWN</td><td></td><td>感圧式ペンのボタンを押した</td></tr>
-<tr><td>SDL_EVENT_PEN_BUTTON_UP</td><td></td><td>感圧式ペンのボタンを離した</td></tr>
-<tr><td>SDL_EVENT_PEN_MOTION</td><td></td><td>感圧式ペンをタブレット上で動かした</td></tr>
-<tr><td>SDL_EVENT_PEN_AXIS</td><td></td><td>感圧式ペンの角度/筆圧/その他が変わった</td></tr>
+<tr><td><a href="SDL_PenProximityEvent.html">SDL_EVENT_PEN_PROXIMITY_IN</a></td><td>0x1300</td><td>感圧式ペンが利用可能になった</td></tr>
+<tr><td><a href="SDL_PenProximityEvent.html">SDL_EVENT_PEN_PROXIMITY_OUT</a></td><td></td><td>感圧式ペンが利用不能になった</td></tr>
+<tr><td><a href="SDL_PenTouchEvent.html">SDL_EVENT_PEN_DOWN</a></td><td></td><td>感圧式ペンが表面に触れた</td></tr>
+<tr><td><a href="SDL_PenTouchEvent.html">SDL_EVENT_PEN_UP</a></td><td></td><td>感圧式ペンが表面から離れた</td></tr>
+<tr><td><a href="SDL_PenButtonEvent.html">SDL_EVENT_PEN_BUTTON_DOWN</a></td><td></td><td>感圧式ペンのボタンを押した</td></tr>
+<tr><td><a href="SDL_PenButtonEvent.html">SDL_EVENT_PEN_BUTTON_UP</a></td><td></td><td>感圧式ペンのボタンを離した</td></tr>
+<tr><td><a href="SDL_PenMotionEvent.html">SDL_EVENT_PEN_MOTION</a></td><td></td><td>感圧式ペンをタブレット上で動かした</td></tr>
+<tr><td><a href="SDL_PenAxisEvent.html">SDL_EVENT_PEN_AXIS</a></td><td></td><td>感圧式ペンの角度/筆圧/その他が変わった</td></tr>
 <tr><th colspan="3" align="center">カメラホットプラグ(活線挿抜)のイベント</th></tr>
 <tr><td><a href="SDL_CameraDeviceEvent.html">SDL_EVENT_CAMERA_DEVICE_ADDED</a></td><td>0x1400</td><td>カメラが接続された</th></tr>
 <tr><td><a href="SDL_CameraDeviceEvent.html">SDL_EVENT_CAMERA_DEVICE_REMOVED</a></td><td></td><td>カメラが切断された</th></tr>
 <tr><td><a href="SDL_CameraDeviceEvent.html">SDL_EVENT_CAMERA_DEVICE_APPROVED</a></td><td></td><td>ユーザによってカメラの使用が許可された</th></tr>
 <tr><td><a href="SDL_CameraDeviceEvent.html">SDL_EVENT_CAMERA_DEVICE_DENIED</a></td><td></td><td>ユーザによってカメラの使用が拒否された</th></tr>
 <tr><th colspan="3" align="center">レンダラのイベント</th></tr>
-<tr><td>SDL_EVENT_RENDER_TARGETS_RESET</td><td>0x2000</td><td>レンダラの対象がリセットされコンテキストを更新する必要がある</td></tr>
-<tr><td>SDL_EVENT_RENDER_DEVICE_RESET</td><td></td><td>デバイスがリセットされ全てのテクスチャを再生成する必要がある</td></tr>
-<tr><td>SDL_EVENT_RENDER_DEVICE_LOST</td><td></td><td>デバイスが失われ回復不能となった</td></tr>
+<tr><td><a href="SDL_RenderEvent.html">SDL_EVENT_RENDER_TARGETS_RESET</a></td><td>0x2000</td><td>レンダラの対象がリセットされコンテキストを更新する必要がある</td></tr>
+<tr><td><a href="SDL_RenderEvent.html">SDL_EVENT_RENDER_DEVICE_RESET</a></td><td></td><td>デバイスがリセットされ全てのテクスチャを再生成する必要がある</td></tr>
+<tr><td><a href="SDL_RenderEvent.html">SDL_EVENT_RENDER_DEVICE_LOST</a></td><td></td><td>デバイスが失われ回復不能となった</td></tr>
 <tr><th colspan="3" align="center">私用予約イベント</th></tr>
 <tr><td>SDL_EVENT_PRIVATE0</td><td>0x4000</td></td><td></tr>
 <tr><td>SDL_EVENT_PRIVATE1</td><td></td></td><td></tr>

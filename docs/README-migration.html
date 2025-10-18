@@ -243,7 +243,7 @@ SDL2でコールバックの代わりに<a href="https://maruhiro-ver0.github.io
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioInit.html">SDL_AudioInit()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioQuit.html">SDL_AudioQuit()</a>は削除された.
-代わりに<a href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">SDL_InitSubSystem()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">SDL_QuitSubSystem()</a>の引数に<a href="SDL_InitFlags.html">SDL_INIT_AUDIO</a>を渡すことができる. これはサブシステムの参照カウントを増減させる.
+代わりに<a href="SDL_InitSubSystem.html">SDL_InitSubSystem()</a>と<a href="SDL_QuitSubSystem.html">SDL_QuitSubSystem()</a>の引数に<a href="SDL_InitFlags.html">SDL_INIT_AUDIO</a>を渡すことができる. これはサブシステムの参照カウントを増減させる.
 特定の音声ドライバは<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DRIVER">SDL_AUDIO_DRIVERヒント</a>で選択できる.
 </p>
 <p>
@@ -1060,7 +1060,7 @@ SDL3の代わりの計画もない.
 環境変数SDL_VIDEODRIVERとSDL_AUDIODRIVERの名前はSDL_VIDEO_DRIVERとSDL_AUDIO_DRIVERに変更された. しかし, フォールバックとして古い名前にも対応している.
 </p>
 <p>
-環境変数SDL_VIDEO_X11_WMCLASSとSDL_VIDEO_WAYLAND_WMCLASSは削除され, <a href="https://wiki.libsdl.org/SDL3/SDL_SetAppMetadata">SDL_SetAppMetadata()</a>のappindentifier引数, または<a href="https://wiki.libsdl.org/SDL3/SDL_SetAppMetadataProperty">SDL_SetAppMetadataProperty()</a>のSDL_PROP_APP_METADATA_IDENTIFIER_STRINGの設定に置き換えられた.
+環境変数SDL_VIDEO_X11_WMCLASSとSDL_VIDEO_WAYLAND_WMCLASSは削除され, <a href="SDL_SetAppMetadata.html">SDL_SetAppMetadata()</a>のappindentifier引数, または<a href="https://wiki.libsdl.org/SDL3/SDL_SetAppMetadataProperty">SDL_SetAppMetadataProperty()</a>のSDL_PROP_APP_METADATA_IDENTIFIER_STRINGの設定に置き換えられた.
 </p>
 <p>
 環境変数AUDIODEVはOSSとNetBSDのオーディオドライバのオーディオデバイスの場合のみ使用されるようになった.
@@ -1072,7 +1072,7 @@ ALSAドライバの場合は<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO
 <ul>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_ALLOW_TOPMOST.html">SDL_HINT_ALLOW_TOPMOST</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOW_ALLOW_TOPMOST">SDL_HINT_WINDOW_ALLOW_TOPMOST</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_AUDIODRIVER.html">SDL_HINT_AUDIODRIVER</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DRIVER">SDL_HINT_AUDIO_DRIVER</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_DIRECTINPUT_ENABLED.html">SDL_HINT_DIRECTINPUT_ENABLED</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_DIRECTINPUT">SDL_HINT_JOYSTICK_DIRECTINPUT"</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_DIRECTINPUT_ENABLED.html">SDL_HINT_DIRECTINPUT_ENABLED</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_DIRECTINPUT">SDL_HINT_JOYSTICK_DIRECTINPUT</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_GDK_TEXTINPUT_DEFAULT.html">SDL_HINT_GDK_TEXTINPUT_DEFAULT</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_GDK_TEXTINPUT_DEFAULT_TEXT">SDL_HINT_GDK_TEXTINPUT_DEFAULT_TEXT</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_JOYSTICK_GAMECUBE_RUMBLE_BRAKE.html">SDL_HINT_JOYSTICK_GAMECUBE_RUMBLE_BRAKE</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_GAMECUBE_RUMBLE_BRAKE">SDL_HINT_JOYSTICK_HIDAPI_GAMECUBE_RUMBLE_BRAKE</a>
 <li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE.html">SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_ENHANCED_REPORTS">SDL_HINT_JOYSTICK_ENHANCED_REPORTS</a>
@@ -1154,13 +1154,13 @@ ALSAドライバの場合は<a href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO
 以下の関数は削除された:
 </p>
 <ul>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ClearHints.html">SDL_ClearHints()</a> - <a href="https://wiki.libsdl.org/SDL3/SDL_ResetHints">SDL_ResetHints()</a>に置き換えられた
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ClearHints.html">SDL_ClearHints()</a> - <a href="SDL_ResetHints.html">SDL_ResetHints()</a>に置き換えられた
 </ul>
 <p>
 以下の関数の名前は次の様に変更された:
 </p>
 <ul>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DelHintCallback.html">SDL_DelHintCallback()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_RemoveHintCallback">SDL_RemoveHintCallback()</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DelHintCallback.html">SDL_DelHintCallback()</a> → <a href="SDL_RemoveHintCallback.html">SDL_RemoveHintCallback()</a>
 </ul>
 <h2><a name="#sdl_inith">SDL_init.h (初期化)</a></h2>
 <p>
@@ -2732,12 +2732,12 @@ SDLは既にSDL_HINT_VIDEO_DRIVERはでは大文字小文字を無視する.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_VideoInit.html">SDL_VideoInit()</a>と<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_VideoQuit.html">SDL_VideoQuit()</a>は削除された.
-代わりに<a href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">SDL_InitSubSystem()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">SDL_QuitSubSystem()</a>をSDL_INIT_VIDEOで呼ぶこと. これで参照カウンタを正常にカウントできる.
+代わりに<a href="SDL_InitSubSystem.html">SDL_InitSubSystem()</a>と<a href="SDL_QuitSubSystem.html">SDL_QuitSubSystem()</a>をSDL_INIT_VIDEOで呼ぶこと. これで参照カウンタを正常にカウントできる.
 SDL_HINT_VIDEO_DRIVERで特定のビデオドライバを選択できる.
 </p>
 <p>
-ディスプレイのインデックス番号を反復処理するのではなく, 新しい関数<a href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">SDL_GetDisplays()</a>でディスプレイの一覧を得ることもできる.
-ディスプレイのインデックス番号を渡していたディスプレイ関数は<a href="https://wiki.libsdl.org/SDL3/SDL_DisplayID">SDL_DisplayID</a>を取るようになった. 不正なディスプレイIDは0である.
+ディスプレイのインデックス番号を反復処理するのではなく, 新しい関数<a href="SDL_GetDisplays.html">SDL_GetDisplays()</a>でディスプレイの一覧を得ることもできる.
+ディスプレイのインデックス番号を渡していたディスプレイ関数は<a href="SDL_DisplayID.html">SDL_DisplayID</a>を取るようになった. 不正なディスプレイIDは0である.
 <code>
 <pre>
     {
@@ -2760,7 +2760,7 @@ SDL_HINT_VIDEO_DRIVERで特定のビデオドライバを選択できる.
 </code>
 <p>
 <a href="SDL_CreateWindow.html">SDL_CreateWindow()</a>は単純化され, ウィンドウの座標を取らないようになった.
-生成時にウィンドウのプロパティを設定する必要がある場合は, <a href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">SDL_CreateWindowWithProperties()</a>を使うこと. 例:
+生成時にウィンドウのプロパティを設定する必要がある場合は, <a href="SDL_CreateWindowWithProperties.html">SDL_CreateWindowWithProperties()</a>を使うこと. 例:
 <code>
 <pre>
     SDL_PropertiesID props = SDL_CreateProperties();

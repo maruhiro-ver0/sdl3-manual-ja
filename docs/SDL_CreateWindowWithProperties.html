@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_CreateWindowWithProperties</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_CreateWindowWithProperties
+<hr>
+<h1>SDL_CreateWindowWithProperties</h1>
+プロパティを指定してウィンドウを生成する
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<code>SDL_Window * SDL_CreateWindowWithProperties(SDL_PropertiesID props);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td><a href="SDL_PropertiesID.html">SDL_PropertiesID</a></td><td>props</td><td>設定するプロパティ</td></tr>
+</table>
+<h2>戻り値</h2>
+<p>
+(<a href="SDL_Window.html">SDL_Window</a> *) 生成されたウィンドウを戻す.
+失敗のときNULLを戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+</p>
+<h2>詳細</h2>
+<p>
+ウィンドウのサイズはデスクトップレイアウトやウィンドウマネージャの方針により要求と異なる場合がある.
+アプリケーションはあらゆるサイズのウィンドウを扱えるように準備すべきである.
+</p>
+<p>
+これらのプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_ALWAYS_ON_TOP_BOOLEAN: ウィンドウを常に前面にするとき真
+<li>SDL_PROP_WINDOW_CREATE_BORDERLESS_BOOLEAN: ウィンドウの枠をなくすとき真
+<li>SDL_PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEAN: "tooltip"と"menu"ウィンドウならば, 自動的にディスプレイに全体が収まるようにするとき真(デフォルト), 位置を制約しない場合は偽
+<li>SDL_PROP_WINDOW_CREATE_EXTERNAL_GRAPHICS_CONTEXT_BOOLEAN: 外部で管理するグラフィックコンテキストを使用するウィンドウのとき真
+<li>SDL_PROP_WINDOW_CREATE_FOCUSABLE_BOOLEAN: ウィンドウがキー入力を受け入れるとき真(デフォルト)
+<li>SDL_PROP_WINDOW_CREATE_FULLSCREEN_BOOLEAN: ウィンドウがデスクトップの解像度のフルスクリーンで始まるとき真
+<li>SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER: ウィンドウの高さ
+<li>SDL_PROP_WINDOW_CREATE_HIDDEN_BOOLEAN: ウィンドウが見えない状態で始まるとき真
+<li>SDL_PROP_WINDOW_CREATE_HIGH_PIXEL_DENSITY_BOOLEAN: ウィンドウが可能ならば高ピクセル密度バッファを使用するとき真
+<li>SDL_PROP_WINDOW_CREATE_MAXIMIZED_BOOLEAN: ウィンドウが最大化された状態で始まるとき真
+<li>SDL_PROP_WINDOW_CREATE_MENU_BOOLEAN: ウィンドウがポップアップメニューのとき真
+<li>SDL_PROP_WINDOW_CREATE_METAL_BOOLEAN: ウィンドウがMetalレンダリングを使用するとき真
+<li>SDL_PROP_WINDOW_CREATE_MINIMIZED_BOOLEAN: ウィンドウが最小化された状態で始まるとき真
+<li>SDL_PROP_WINDOW_CREATE_MODAL_BOOLEAN: ウィンドウが親に対してモーダルのとき真
+<li>SDL_PROP_WINDOW_CREATE_MOUSE_GRABBED_BOOLEAN: ウィンドウがマウスをグラブした状態で始まるとき真
+<li>SDL_PROP_WINDOW_CREATE_OPENGL_BOOLEAN: ウィンドウがOpenGLレンダリングを使用するとき真
+<li>SDL_PROP_WINDOW_CREATE_PARENT_POINTER: このウィンドウの親の<a href="SDL_Window.html">SDL_Window</a>, ウィンドウは"tooltip", "menu", "modal"プロパティを持つウィンドウである必要がある
+<li>SDL_PROP_WINDOW_CREATE_RESIZABLE_BOOLEAN: ウィンドウのサイズを変えられるとき真
+<li>SDL_PROP_WINDOW_CREATE_TITLE_STRING: UTF-8でエンコードされたウィンドウのタイトル
+<li>SDL_PROP_WINDOW_CREATE_TRANSPARENT_BOOLEAN: α値が0の部分が透明のウィンドウのとき真
+<li>SDL_PROP_WINDOW_CREATE_TOOLTIP_BOOLEAN: ウィンドウがツールチップのとき真
+<li>SDL_PROP_WINDOW_CREATE_UTILITY_BOOLEAN: ウィンドウがユーティリティウィンドウのとき真, タスクバーにもウィンドウリストにも表示されない
+<li>SDL_PROP_WINDOW_CREATE_VULKAN_BOOLEAN: ウィンドウがVulkanレンダリングを使用するとき真
+<li>SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER: ウィンドウの幅
+<li>SDL_PROP_WINDOW_CREATE_X_NUMBER: ウィンドウのX座標, または<a href="SDL_WINDOWPOS_CENTERED.html">SDL_WINDOWPOS_CENTERED</a>, デフォルトは<a href="SDL_WINDOWPOS_UNDEFINED.html">SDL_WINDOWPOS_UNDEFINED</a>. "tooltip"または"menu"の場合は親ウィンドウからの相対位置
+<li>SDL_PROP_WINDOW_CREATE_Y_NUMBER: ウィンドウのY座標, または<a href="SDL_WINDOWPOS_CENTERED.html">SDL_WINDOWPOS_CENTERED</a>, デフォルトは<a href="SDL_WINDOWPOS_UNDEFINED.html">SDL_WINDOWPOS_UNDEFINED</a>. "tooltip"または"menu"の場合は親ウィンドウからの相対位置
+</ul>
+<p>
+macOSの場合, これらの追加のプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_COCOA_WINDOW_POINTER: 既存のウィンドウの (__unsafe_unretained) NSWindow. 既存のウィンドウをラップしたい場合に使用する
+<li>SDL_PROP_WINDOW_CREATE_COCOA_VIEW_POINTER: ウィンドウの (__unsafe_unretained) NSView. デフォルトは[window contentView]
+</ul>
+<p>
+Waylandの場合, これらの追加のプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_WAYLAND_SURFACE_ROLE_CUSTOM_BOOLEAN: アプリケーションがカスタムロールのためにWaylandサーフェイスを使用し, そしてそれをXDGトップレベルウィンドウに加えたくない場合は真
+カスタムサーフェイスの使用の詳細は<a href="https://wiki.libsdl.org/SDL3/README-wayland">README-wayland</a>を参照すること
+<li>SDL_PROP_WINDOW_CREATE_WAYLAND_CREATE_EGL_WINDOW_BOOLEAN: ウィンドウにOpenGLプロパティがない, またはSDL_WINDOW_OPENGLフラグが設定されていなくても, アプリケーションがwl_egl_windowオブジェクトを生成し, それを生成したウィンドウのものとする場合は真
+<li>SDL_PROP_WINDOW_CREATE_WAYLAND_WL_SURFACE_POINTER: 既存のウィンドウのwl_surface. 既存のウィンドウをラップしたい場合に使用する. 詳細はREADME-waylandを参照すること
+</ul>
+<p>
+Windowsの場合, これらの追加のプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_WIN32_HWND_POINTER: 既存のウィンドウのHWND. 既存のウィンドウをラップしたい場合に使用する
+<li>SDL_PROP_WINDOW_CREATE_WIN32_PIXEL_FORMAT_HWND_POINTER: 任意. ピクセル形式を共有する別のウィンドウ. OpenGLウィンドウの場合に有用
+</ul>
+<p>
+X11の場合, これらの追加のプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_X11_WINDOW_NUMBER: 既存のウィンドウのX11ウィンドウ. 既存のウィンドウをラップしたい場合に使用する
+</ul>
+<p>
+ウィンドウは明確に"hidden"プロパティを設定しない限り表示される.
+</p>
+<p>
+Emscriptenの場合, これらの追加のプロパティに対応している:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_CREATE_EMSCRIPTEN_CANVAS_ID_STRING: canvas要素のID. #記号で始まる必要がある
+<li>SDL_PROP_WINDOW_CREATE_EMSCRIPTEN_FILL_DOCUMENT_BOOLEAN: canvas要素をドキュメント全体とするとき真.
+ブラウザのウィンドウのサイズを変更したとき, サイズ変更イベントが発生し, canvasのサイズも調整される.
+canvasは, HTMLファイルのEmscriptenが提供するコントロールを含む全てを覆っている.
+ブラウザゲームの場合はそれが望ましい場合が多いが, 最小ウィンドウサイズやアスペクト比などは他の環境のSDLウィンドウとは同じようにならない可能性がある.
+デフォルトは偽
+<li>SDL_PROP_WINDOW_CREATE_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING: このcanvasのキーボード入力にバインドされた要素を上書きする.
+値は次の内の1つである:
+<ul>
+<li>"#window": javascript windowオブジェクト(デフォルト)
+<li>"#document": javascript documentオブジェクト
+<li>"#screen": javascript window.screenオブジェクト
+<li>"#canvas": WebGL canvas要素
+<li>"#none": バインドしない
+<li>その他の先頭が#でない文字列の場合は, ページ内のそのIDを持つ要素に適用される. "tooltip"と"menu"プロパティを持つウィンドウはポップアップウィンドウで, SDL_CreatePopupWindow()の説明の通りに動作する
+</ul>
+</ul>
+<p>
+SDL_Rendererを使用するウィンドウを生成する場合, SDLが内部で選択するため, グラフィックAPIを特定するプロパティ(SDL_PROP_WINDOW_CREATE_OPENGL_BOOLEAN等)を追加してはならない.
+しかし, SDLはこの時点でウィンドウを再生成する必要があるかもしれず, この場合はウィンドウが一瞬表示され, そして再生成されるときちらついて見える.
+SDL_PROP_WINDOW_CREATE_HIDDEN_BOOLEANプロパティを真にしてウィンドウを生成し, その後にレンダラを生成し, その後にSDL_ShowWindow()でウィンドウを表示するのは良い方法だろう.
+</p>
+<h2>スレッドセーフ</h2>
+<p>
+この関数を呼べるのはメインスレッドのみである.
+</p>
+<h2>バージョン</h2>
+<p>
+SDL 3.2.0以降
+</p>
+<h2>サンプルコード</h2>
+<p>
+<code>
+<pre>
+// サンプルプログラム:
+// SDL3でプロパティを指定してウィンドウを生成する
+
+#include &lt;SDL3/SDL_log.h&gt;
+#include &lt;SDL3/SDL_main.h&gt;
+#include &lt;SDL3/SDL_video.h&gt;
+
+int
+main(int argc, char** argv)
+{
+  if (!SDL_Init(SDL_INIT_VIDEO)) {
+    SDL_Log("SDLを初期化できなかった: %s", SDL_GetError());
+    return 0;
+  }
+
+  SDL_PropertiesID props = SDL_CreateProperties();
+  if(props == 0) {
+    SDL_Log("プロパティを生成できなかった: %s", SDL_GetError());
+    return 0;
+  }
+
+  // これらの呼び出しは成功するとみなす
+  SDL_SetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, "My Window");
+  SDL_SetBooleanProperty(props, SDL_PROP_WINDOW_CREATE_RESIZABLE_BOOLEAN, true);
+  SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER, 640);
+  SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER, 480);
+
+  SDL_Window *window = SDL_CreateWindowWithProperties(props);
+  if(window == NULL) {
+    SDL_Log("ウィンドウを生成できなかった: %s", SDL_GetError());
+    return 0;
+  }
+
+  // ここでゲームのループを行う
+
+  SDL_DestroyWindow(window);
+  SDL_DestroyProperties(props);
+
+  return 0;
+}
+</pre>
+</code>
+</p>
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_CreateProperties.html">SDL_CreateProperties</a>
+<li><a href="SDL_CreateWindow.html">SDL_CreateWindow</a>
+<li><a href="SDL_DestroyWindow.html">SDL_DestroyWindow</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">SDL_CreateWindowWithProperties - SDL Wiki</a>
+<hr>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_CreatePopupWindow</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_CreatePopupWindow
+<hr>
+<h1>SDL_CreatePopupWindow</h1>
+指定した親ウィンドウの子ポップアップウィンドウを生成する
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<code>SDL_Window * SDL_CreatePopupWindow(SDL_Window *parent, int offset_x, int offset_y, int w, int h, SDL_WindowFlags flags);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td><a href="SDL_Window.html">SDL_Window</a> *</td><td>parent</td><td>親ウィンドウ. NULLであってはならない</td></tr>
+<tr><td>int</td><td>offset_x</td><td>ウィンドウの親ウィンドウからの相対X座標</td></tr>
+<tr><td>int</td><td>offset_y</td><td>ウィンドウの親ウィンドウからの相対Y座標</td></tr>
+<tr><td>int</td><td>w</td><td>ウィンドウの幅</td></tr>
+<tr><td>int</td><td>h</td><td>ウィンドウの高さ</td></tr>
+<tr><td><a href="SDL_WindowFlags.html">SDL_WindowFlags</a></td><td>flags</td><td>SDL_WINDOW_TOOLTIPまたはSDL_WINDOW_POPUP_MENU. 0または論理和(OR)でSDL_WindowFlagsすることもできる</td></tr>
+</table>
+<h2>戻り値</h2>
+<p>
+(<a href="SDL_Window.html">SDL_Window</a> *) 生成されたウィンドウを戻す.
+失敗のときNULLを戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+</p>
+<h2>詳細</h2>
+<p>
+ウィンドウのサイズはデスクトップレイアウトやウィンドウマネージャの方針により要求と異なる場合がある.
+アプリケーションはあらゆるサイズのウィンドウを扱えるように準備すべきである.
+</p>
+<p>
+<code>flags</code>には, 次のプロパティの少なくとも1つが<strong>必ず</strong>必要である:
+</p>
+<ul>
+<li>SDL_WINDOW_TOOLTIP: ポップアップウィンドウはトールチップで, あらゆる入力イベントを受け付けない
+<li>SDL_WINDOW_POPUP_MENU: ポップアップウィンドウはポップアップメニューである. 最前面のポップアップメニューは自動的にキーボードフォーカスを得る
+</ul>
+<p>
+これらのフラグはポップアップウィンドウには無関係なもので無視される:
+</p>
+<ul>
+<li>SDL_WINDOW_MINIMIZED
+<li>SDL_WINDOW_MAXIMIZED
+<li>SDL_WINDOW_FULLSCREEN
+<li>SDL_WINDOW_BORDERLESS
+</ul>
+<p>
+これらのフラグはポップアップウィンドウには合わないもので, 生成は失敗する:
+</p>
+<ul>
+<li>SDL_WINDOW_UTILITY
+<li>SDL_WINDOW_MODAL
+</ul>
+<p>
+<code>parent</code>はNULLではない正常なウィンドウの必要がある.
+ポップアップウィンドウの親は, 通常, 最前面ウィンドウ, 他のポップアップウィンドウがありうる.
+</p>
+<p>
+ポップアップウィンドウは最小化, 最大化, フルスクリーン, 前面にする, フラッシュ, モーダルウィンドウ化, トップレベルウィンドウの親になる, マウスまたはキーボードのグラブができない.
+行おうとすると失敗する.
+</p>
+<p>
+ポップアップウィンドウは自動的に枠線/装飾がなくなり, タスクバー/ドックに現れず, ALT+TABメニューのようなウィンドウリストにも表れない.
+</p>
+<p>
+デフォルトでは, ポップアップウィンドウの位置はディスプレイの内部に収まるように自動的に調整される.
+この動作はSDL_PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEANプロパティで上書きできる.
+</p>
+<p>
+デフォルトでは, ポップアップメニューは現れたとき親ウィンドウから自動的にキーボードフォーカスをグラブする.
+この動作は, SDL_WINDOW_NOT_FOCUSABLEフラグを設定する, SDL_PROP_WINDOW_CREATE_FOCUSABLE_BOOLEANプロパティを偽にする, 生成後に<a href="SDL_SetWindowFocusable.html">SDL_SetWindowFocusable()</a>関数で変更することで上書きできる.
+</p>
+<p>
+親ウィンドウを見えなくする, または破棄すると, 子ポップアップウィンドウも再帰的に見えなくなる, または破棄される.
+子ポップアップウィンドウは, 明示的に見えないようにしていない限り, 親ウィンドウが再び見えるようになったとき元に戻る.
+</p>
+<h2>スレッドセーフ</h2>
+<p>
+この関数を呼べるのはメインスレッドのみである.
+</p>
+<h2>バージョン</h2>
+<p>
+SDL 3.2.0以降
+</p>
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_CreateWindow.html">SDL_CreateWindow</a>
+<li><a href="SDL_CreateWindowWithProperties.html">SDL_CreateWindowWithProperties</a>
+<li><a href="SDL_DestroyWindow.html">SDL_DestroyWindow</a>
+<li><a href="SDL_GetWindowParent.html">SDL_GetWindowParent</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_CreatePopupWindow">SDL_CreatePopupWindow - SDL Wiki</a>
+<hr>
+</body>
+</html>

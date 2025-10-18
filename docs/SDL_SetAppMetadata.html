@@ -19,7 +19,7 @@
 <h2>引数</h2>
 <table border="1">
 <tr><td>const char *</td><td>appname</td><td>アプリケーションの名前 ("My Game 2: Bad Guy's Revenge!")</td></tr>
-<tr><td>const char *</td><td>appversion</td><td>アプリケーションのバージョン ("1.0.0beta5" or a git hash, or whatever makes sense)</td></tr>
+<tr><td>const char *</td><td>appversion</td><td>アプリケーションのバージョン ("1.0.0beta5"やgitハッシュなど, 意味のあるものなら何でもよい)</td></tr>
 <tr><td>const char *</td><td>appidentifier</td><td>アプリケーションのドメイン名を逆から呼んだ形式のユニークな文字列 ("com.example.mygame2")</td></tr>
 </table>
 <h2>戻り値</h2>
@@ -45,6 +45,8 @@ SDLがメタデータを使用する箇所は複数ある(macOSの"About"ボッ�
 これは最も重要な情報のみの単純化されたインターフェースである.
 より詳細なメタデータは<a href="SDL_SetAppMetadataProperty.html">SDL_SetAppMetadataProperty()</a>で設定できる.
 </p>
+<h2>スレッドセーフ</h2>
+この関数はどのスレッドからも安全に呼べる.
 <h2>バージョン</h2>
 SDL 3.2.0以降
 <h2>関連項目</h2>
