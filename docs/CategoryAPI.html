@@ -21,7 +21,7 @@
 <li>SDL_AcquireGPUSwapchainTexture
 <li><a href="SDL_AddAtomicInt.html">SDL_AddAtomicInt</a> - アトミック変数に加算する
 <li>SDL_AddAtomicU32
-<li>SDL_AddEventWatch
+<li><a href="SDL_AddEventWatch.html">SDL_AddEventWatch</a> - イベントがキューに入った場合のコールバックを追加する
 <li>SDL_AddGamepadMapping
 <li>SDL_AddGamepadMappingsFromFile
 <li>SDL_AddGamepadMappingsFromIO
@@ -196,7 +196,7 @@
 <li><a href="SDL_DestroyWindowSurface.html">SDL_DestroyWindowSurface</a> - ウィンドウに関連付けられたサーフェイスを破棄する
 <li>SDL_DetachThread
 <li>SDL_DetachVirtualJoystick
-<li>SDL_DisableScreenSaver
+<li><a href="SDL_DisableScreenSaver.html">SDL_DisableScreenSaver</a> - スクリーンセーバーを無効にする
 <li>SDL_DispatchGPUCompute
 <li>SDL_DispatchGPUComputeIndirect
 <li>SDL_DownloadFromGPUBuffer
@@ -206,11 +206,11 @@
 <li>SDL_DrawGPUPrimitives
 <li>SDL_DrawGPUPrimitivesIndirect
 <li>SDL_DuplicateSurface
-<li>SDL_EGL_GetCurrentConfig
-<li>SDL_EGL_GetCurrentDisplay
-<li>SDL_EGL_GetProcAddress
-<li>SDL_EGL_GetWindowSurface
-<li>SDL_EGL_SetAttributeCallbacks
+<li><a href="SDL_EGL_GetCurrentConfig.html">SDL_EGL_GetCurrentConfig</a> - 現在のEGLコンフィグを得る
+<li><a href="SDL_EGL_GetCurrentDisplay.html">SDL_EGL_GetCurrentDisplay</a> - 現在のEGLディスプレイを得る
+<li><a href="SDL_EGL_GetProcAddress.html">SDL_EGL_GetProcAddress</a> - EGLライブラリ関数を得る
+<li><a href="SDL_EGL_GetWindowSurface.html">SDL_EGL_GetWindowSurface</a> - ウィンドウのEGLサーフェイスを得る
+<li><a href="SDL_EGL_SetAttributeCallbacks.html">SDL_EGL_SetAttributeCallbacks</a> - EGL初期化時のカスタムattribute配列を設定するのためのコールバックを設定する 
 <li>SDL_EnableScreenSaver
 <li>SDL_EndGPUComputePass
 <li>SDL_EndGPUCopyPass
@@ -219,21 +219,21 @@
 <li>SDL_EnumerateDirectory
 <li>SDL_EnumerateProperties
 <li>SDL_EnumerateStorageDirectory
-<li>SDL_EventEnabled
+<li><a href="SDL_EventEnabled.html">SDL_EventEnabled</a> - イベントの種類ごとの処理の有無を設定する
 <li>SDL_exp
 <li>SDL_expf
 <li>SDL_fabs
 <li>SDL_fabsf
 <li>SDL_FillSurfaceRect
 <li>SDL_FillSurfaceRects
-<li>SDL_FilterEvents
+<li><a href="SDL_FilterEvents.html">SDL_FilterEvents</a> - 現在のイベントキューに対して指定のフィルタ関数を実行する
 <li>SDL_FlashWindow
 <li>SDL_FlipSurface
 <li>SDL_floor
 <li>SDL_floorf
 <li>SDL_FlushAudioStream
-<li>SDL_FlushEvent
-<li>SDL_FlushEvents
+<li><a href="SDL_FlushEvent.html">SDL_FlushEvent</a> - イベントキューからイベントを消去する
+<li><a href="SDL_FlushEvents.html">SDL_FlushEvents</a> - イベントキューから複数のイベントを消去する
 <li>SDL_FlushIO
 <li>SDL_FlushRenderer
 <li>SDL_fmod
@@ -334,8 +334,8 @@
 <li>SDL_GetEnvironmentVariable
 <li>SDL_GetEnvironmentVariables
 <li><a href="SDL_GetError.html">SDL_GetError</a> - 現在のスレッドで最後に発生したエラーのメッセージを得る
-<li>SDL_GetEventDescription
-<li>SDL_GetEventFilter
+<li><a href="SDL_GetEventDescription.html">SDL_GetEventDescription</a> - イベントの人が読むことのできる記述を得る
+<li><a href="SDL_GetEventFilter.html">SDL_GetEventFilter</a> - 現在のイベントフィルタを得る
 <li>SDL_GetFloatProperty
 <li>SDL_GetFullscreenDisplayModes
 <li>SDL_GetGamepadAppleSFSymbolsNameForAxis
@@ -598,7 +598,7 @@
 <li>SDL_GetWindowBordersSize
 <li>SDL_GetWindowDisplayScale
 <li>SDL_GetWindowFlags
-<li>SDL_GetWindowFromEvent
+<li><a href="SDL_GetWindowFromEvent.html">SDL_GetWindowFromEvent</a> - イベントに関連付けられたウィンドウを得る
 <li>SDL_GetWindowFromID
 <li>SDL_GetWindowFullscreenMode
 <li>SDL_GetWindowICCProfile
@@ -656,8 +656,8 @@
 <li>SDL_HasAVX512F
 <li>SDL_HasClipboardData
 <li>SDL_HasClipboardText
-<li>SDL_HasEvent
-<li>SDL_HasEvents
+<li><a href="SDL_HasEvent.html">SDL_HasEvent</a> - キューに指定のイベントが存在するか調査する
+<li><a href="SDL_HasEvents.html">SDL_HasEvents</a> - キューに指定の範囲のイベントが存在するか調査する
 <li>SDL_HasExactlyOneBitSet32
 <li>SDL_HasGamepad
 <li>SDL_HasJoystick
@@ -838,7 +838,7 @@
 <li>SDL_PauseAudioDevice
 <li><a href="SDL_PauseAudioStreamDevice.html">SDL_PauseAudioStreamDevice</a> - オーディオデバイスに関連付けられたオーディオストリームの再生を一時停止する
 <li>SDL_PauseHaptic
-<li>SDL_PeepEvents
+<li><a href="SDL_PeepEvents.html">SDL_PeepEvents</a> - イベントキューのメッセージをチェックし, それらを戻す
 <li>SDL_PlayHapticRumble
 <li>SDL_PointInRect
 <li>SDL_PointInRectFloat
@@ -848,8 +848,8 @@
 <li>SDL_powf
 <li>SDL_PremultiplyAlpha
 <li>SDL_PremultiplySurfaceAlpha
-<li>SDL_PumpEvents
-<li>SDL_PushEvent
+<li><a href="SDL_PumpEvents.html">SDL_PumpEvents</a> - 入力デバイスから吸い出したイベントをイベントループに加える
+<li><a href="SDL_PushEvent.html">SDL_PushEvent</a> - イベントをキューに加える
 <li>SDL_PushGPUComputeUniformData
 <li>SDL_PushGPUDebugGroup
 <li>SDL_PushGPUFragmentUniformData
@@ -897,7 +897,7 @@
 <li>SDL_RectsEqualFloat
 <li>SDL_RectToFRect
 <li><a href="SDL_RegisterApp.html">SDL_RegisterApp</a> - SDLが使用するためにwin32ウィンドウクラスを登録する 
-<li>SDL_RegisterEvents
+<li><a href="SDL_RegisterEvents.html">SDL_RegisterEvents</a> - 複数のユーザ定義のイベントの領域を確保し, 先頭のイベントの番号を戻す
 <li>SDL_ReleaseCameraFrame
 <li>SDL_ReleaseGPUBuffer
 <li>SDL_ReleaseGPUComputePipeline
@@ -909,7 +909,7 @@
 <li>SDL_ReleaseGPUTransferBuffer
 <li>SDL_ReleaseWindowFromGPUDevice
 <li>SDL_ReloadGamepadMappings
-<li>SDL_RemoveEventWatch
+<li><a href="SDL_RemoveEventWatch.html">SDL_RemoveEventWatch</a> - SDL_AddEventWatch()で追加されたイベント監視コールバックを削除する
 <li><a href="SDL_RemoveHintCallback.html">SDL_RemoveHintCallback</a> - 指定のヒントを監視する関数を取り除く
 <li>SDL_RemovePath
 <li>SDL_RemoveStoragePath
@@ -1006,8 +1006,8 @@
 <li>SDL_SetEnvironmentVariable
 <li><a href="SDL_SetError.html">SDL_SetError</a> - 現在のスレッドのSDLエラーメッセージを設定する
 <li><a href="SDL_SetErrorV.html">SDL_SetErrorV</a> - 現在のスレッドのSDLエラーメッセージを設定する
-<li>SDL_SetEventEnabled
-<li>SDL_SetEventFilter
+<li><a href="SDL_SetEventEnabled.html">SDL_SetEventEnabled</a> - イベントの種類ごとの処理の有無を得る
+<li><a href="SDL_SetEventFilter.html">SDL_SetEventFilter</a> - 内部イベントキューに追加する前に全てのイベントを処理するフィルタを設定する
 <li>SDL_SetFloatProperty
 <li>SDL_SetGamepadEventsEnabled
 <li>SDL_SetGamepadLED
@@ -1254,8 +1254,8 @@
 <li>SDL_WaitAsyncIOResult
 <li>SDL_WaitCondition
 <li>SDL_WaitConditionTimeout
-<li>SDL_WaitEvent
-<li>SDL_WaitEventTimeout
+<li><a href="SDL_WaitEvent.html">SDL_WaitEvent</a> - 次のイベントが発生するまで無制限に待つ
+<li><a href="SDL_WaitEventTimeout.html">SDL_WaitEventTimeout</a> - 次のイベントが発生するまで指定の時間(ミリ秒)待つ
 <li>SDL_WaitForGPUFences
 <li>SDL_WaitForGPUIdle
 <li>SDL_WaitForGPUSwapchain
@@ -1332,16 +1332,16 @@
 <li><a href="SDL_WindowID.html">SDL_WindowID</a> - ウィンドウユニークID
 <li>SDL_DisplayModeData
 <li>SDL_EGLAttrib
-<li>SDL_EGLAttribArrayCallback
+<li><a href="SDL_EGLAttribArrayCallback.html">SDL_EGLAttribArrayCallback</a> - EGL環境初期化時の追加のattributeを得るコールバックの型
 <li>SDL_EGLConfig
 <li>SDL_EGLDisplay
 <li>SDL_EGLint
-<li>SDL_EGLIntArrayCallback
+<li><a href="SDL_EGLIntArrayCallback.html">SDL_EGLIntArrayCallback</a> - EGLサーフェイス/コンテキスト初期化時の追加のattributeを得るコールバックの型
 <li>SDL_EGLSurface
 <li>SDL_EnumerateDirectoryCallback
 <li>SDL_EnumeratePropertiesCallback
 <li>SDL_Environment
-<li>SDL_EventFilter
+<li><a href="SDL_EventFilter.html">SDL_EventFilter</a> - イベントキューを監視するためのコールバック関数の型
 <li>SDL_FingerID
 <li>SDL_free_func
 <li>SDL_FunctionPointer
@@ -1465,7 +1465,7 @@
 <li>SDL_Finger
 <li>SDL_FPoint
 <li>SDL_FRect
-<li><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a> - ゲームパッド動作イベントの構造体(event.gaxis.*)
+<li><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a> - ゲームパッド移動イベントの構造体(event.gaxis.*)
 <li>SDL_GamepadBinding
 <li><a href="SDL_GamepadButtonEvent.html">SDL_GamepadButtonEvent</a> - ゲームパッドボタンイベントの構造体(event.gbutton.*)
 <li><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a> - ゲームパッドデバイスイベントの構造体(event.gdevice.*)
@@ -1520,11 +1520,11 @@
 <li>SDL_hid_device_info
 <li>SDL_InitState
 <li>SDL_IOStreamInterface
-<li><a href="SDL_JoyAxisEvent.html">SDL_JoyAxisEvent</a> - ジョイスティック動作イベントの構造体(event.jaxis.*)
+<li><a href="SDL_JoyAxisEvent.html">SDL_JoyAxisEvent</a> - ジョイスティック移動イベントの構造体(event.jaxis.*)
 <li><a href="SDL_JoyBallEvent.html">SDL_JoyBallEvent</a> - ジョイスティックボールイベントの構造体(event.jball.*)
 <li><a href="SDL_JoyBatteryEvent.html">SDL_JoyBatteryEvent</a> - ジョイスティックバッテリー残量変化イベントの情報の構造体(event.jbattery.*)
 <li><a href="SDL_JoyButtonEvent.html">SDL_JoyButtonEvent</a> - ジョイスティックボタンイベントの構造体(event.jbutton.*)
-<li><a href="SDL_JoyDeviceEvent.html">SDL_JoyDeviceEvent</a> - ゲームコントローラー接続イベントの構造体(event.jdevice.*)
+<li><a href="SDL_JoyDeviceEvent.html">SDL_JoyDeviceEvent</a> - ジョイスティックデバイスイベントの構造体(event.jdevice.*)
 <li><a href="SDL_JoyHatEvent.html">SDL_JoyHatEvent</a> - ジョイスティックハットイベントの構造体(event.jhat.*)
 <li><a href="SDL_KeyboardDeviceEvent.html">SDL_KeyboardDeviceEvent</a> - キーボードデバイスイベントの構造体(event.kdevice.*)
 <li><a href="SDL_KeyboardEvent.html">SDL_KeyboardEvent</a> - キーボードイベントの構造体(event.key.*) 
@@ -1543,7 +1543,8 @@
 <li><a href="SDL_PenButtonEvent.html">SDL_PenButtonEvent</a> - 感圧式ペンボタンイベントの構造体(event.pbutton.*)
 <li><a href="SDL_PenMotionEvent.html">SDL_PenMotionEvent</a> - 感圧式ペン移動イベントの構造体(event.pmotion.*)
 <li><a href="SDL_PenProximityEvent.html">SDL_PenProximityEvent</a> - 感圧式ペン接近イベントの構造体(event.pproximity.*)
-<li><a href="SDL_PenTouchEvent.html">SDL_PenTouchEvent</a> - 感圧式ペンボタンタッチイベントの構造体(event.ptouch.*)
+<li><a href="SDL_PenTouchEvent.html">SDL_PenTouchEvent</a> - 感圧式ペンタッチイベントの構造体(event.ptouch.*)
+<li><a href="SDL_PinchFingerEvent.html">SDL_PinchFingerEvent</a> - ピンチイベントの構造体(event.pinch.*)
 <li>SDL_PixelFormatDetails
 <li>SDL_Point
 <li><a href="SDL_QuitEvent.html">SDL_QuitEvent</a> - 終了要求イベントの構造体(event.quit.*)
@@ -1556,8 +1557,8 @@
 <li><a href="SDL_TextEditingEvent.html">SDL_TextEditingEvent</a> - テキスト編集イベントの構造体(event.edit.*)
 <li><a href="SDL_TextInputEvent.html">SDL_TextInputEvent</a> - テキスト入力イベントの構造体(event.text.*)
 <li>SDL_Texture
-<li>SDL_TouchFingerEvent
-<li>SDL_UserEvent
+<li><a href="SDL_TouchFingerEvent.html">SDL_TouchFingerEvent</a> - タッチイベントの構造体(event.tfinger.*)
+<li><a href="SDL_UserEvent.html">SDL_UserEvent</a> - ユーザ定義イベントの構造体(event.user.*)
 <li>SDL_Vertex
 <li>SDL_VirtualJoystickDesc
 <li>SDL_VirtualJoystickSensorDesc

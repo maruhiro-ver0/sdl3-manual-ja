@@ -16,27 +16,27 @@
 <a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_events.h">SDL3/SDL_events.h</a>
 <h2>フィールド</h2>
 <table border="1">
-<tr><td>Uint32</td><td>type</td><td>イベントの種類, このフィールドは全種類のイベントで共用している. 型はUint32でSDL_EventType列挙体に存在しないユーザイベント値もありうる</td></tr>
+<tr><td>Uint32</td><td>type</td><td>イベントの種類, このフィールドは全種類のイベントで共用している. 型はUint32で<a href="SDL_EventType.html">SDL_EventType列挙体</a>に存在しないユーザイベント値もありうる</td></tr>
 <tr><td><a href="SDL_CommonEvent.html">SDL_CommonEvent</a></td><td>common</td><td>共通イベントの情報</td></tr>
 <tr><td><a href="SDL_DisplayEvent.html">SDL_DisplayEvent</a></td><td>display</td><td>ディスプレイイベントの情報</td></tr>
 <tr><td><a href="SDL_WindowEvent.html">SDL_WindowEvent</a></td><td>window</td><td>ウィンドウイベントの情報</td></tr>
 <tr><td><a href="SDL_KeyboardDeviceEvent.html">SDL_KeyboardDeviceEvent</a></td><td>kdevice</td><td>キーボードデバイス変更イベント</td></tr>
 <tr><td><a href="SDL_KeyboardEvent.html">SDL_KeyboardEvent</a></td><td>key</td><td>キーボードイベントの情報</td></tr>
 <tr><td><a href="SDL_TextEditingEvent.html">SDL_TextEditingEvent</a></td><td>edit</td><td>テキスト編集イベントの情報</td></tr>
-<tr><td><a href="DL_TextEditingCandidatesEvent.html">SDL_TextEditingCandidatesEvent</a></td><td>edit_candidates</td><td>テキスト編集変換候補イベント</td></tr>
+<tr><td><a href="SDL_TextEditingCandidatesEvent.html">SDL_TextEditingCandidatesEvent</a></td><td>edit_candidates</td><td>IME変換候補候補イベント</td></tr>
 <tr><td><a href="SDL_TextInputEvent.html">SDL_TextInputEvent</a></td><td>text</td><td>テキスト入力イベントの情報</td></tr>
 <tr><td><a href="SDL_MouseDeviceEvent.html">SDL_MouseDeviceEvent</a></td><td>mdevice</td><td>マウスデバイス変更イベント</td></tr>
 <tr><td><a href="SDL_MouseMotionEvent.html">SDL_MouseMotionEvent</a></td><td>motion</td><td>マウス移動イベントの情報</td></tr>
 <tr><td><a href="SDL_MouseButtonEvent.html">SDL_MouseButtonEvent</a></td><td>button</td><td>マウスボタンイベントの情報</td></tr>
 <tr><td><a href="SDL_MouseWheelEvent.html">SDL_MouseWheelEvent</a></td><td>wheel</td><td>マウスホイールイベントの情報</td></tr>
-<tr><td><a href="SDL_JoyDeviceEvent.html">SDL_JoyDeviceEvent</a></td><td>jdevice</td><td>ジョイスティックデバイス変更イベントの情報</td></tr>
-<tr><td><a href="SDL_JoyAxisEvent.html">SDL_JoyAxisEvent</a></td><td>jaxis</td><td>ジョイスティック方向イベントの情報</td></tr>
+<tr><td><a href="SDL_JoyDeviceEvent.html">SDL_JoyDeviceEvent</a></td><td>jdevice</td><td>ジョイスティックデバイスイベントの情報</td></tr>
+<tr><td><a href="SDL_JoyAxisEvent.html">SDL_JoyAxisEvent</a></td><td>jaxis</td><td>ジョイスティック移動イベントの情報</td></tr>
 <tr><td><a href="SDL_JoyBallEvent.html">SDL_JoyBallEvent</a></td><td>jball</td><td>ジョイスティックボールイベントの情報</td></tr>
 <tr><td><a href="SDL_JoyHatEvent.html">SDL_JoyHatEvent</a></td><td>jhat</td><td>ジョイスティックハットイベントの情報</td></tr>
 <tr><td><a href="SDL_JoyButtonEvent.html">SDL_JoyButtonEvent</a></td><td>jbutton</td><td>ジョイスティックボタンイベントの情報</td></tr>
 <tr><td><a href="SDL_JoyBatteryEvent.html">SDL_JoyBatteryEvent</a></td><td>jbattery</td><td>ジョイスティックバッテリーイベントの情報</td></tr>
-<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a></td><td>gdevice</td><td>ゲームパッドイベントの情報</td></tr>
-<tr><td><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a></td><td>gaxis</td><td>ゲームパッド方向イベントの情報</td></tr>
+<tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a></td><td>gdevice</td><td>ゲームパッドデバイスイベントの情報</td></tr>
+<tr><td><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a></td><td>gaxis</td><td>ゲームパッド移動イベントの情報</td></tr>
 <tr><td><a href="SDL_GamepadButtonEvent.html">SDL_GamepadButtonEvent</a></td><td>gbutton</td><td>ゲームパッドボタンイベントの情報</td></tr>
 <tr><td><a href="SDL_GamepadTouchpadEvent.html">SDL_GamepadTouchpadEvent</a></td><td>gtouchpad</td><td>ゲームパッドタッチパッドイベントの情報</td></tr>
 <tr><td><a href="SDL_GamepadSensorEvent.html">SDL_GamepadSensorEvent</a></td><td>gsensor</td><td>ゲームパッドセンサーイベントの情報</td></tr>
@@ -45,14 +45,15 @@
 <tr><td><a href="SDL_SensorEvent.html">SDL_SensorEvent</a></td><td>sensor</td><td>センサーイベントの情報</td></tr>
 <tr><td><a href="SDL_QuitEvent.html">SDL_QuitEvent</a></td><td>quit</td><td>終了要求イベントの情報</td></tr>
 <tr><td><a href="SDL_UserEvent.html">SDL_UserEvent</a></td><td>user</td><td>カスタムイベントの情報</td></tr>
-<tr><td><a href="SDL_TouchFingerEvent.html">SDL_TouchFingerEvent</a></td><td>tfinger</td><td>指タッチイベントの情報</td></tr>
-<tr><td><a href="SDL_PenProximityEvent.html">SDL_PenProximityEvent</a></td><td>pproximity</td><td>ペン接近イベントの情報</td></tr>
-<tr><td><a href="SDL_PenTouchEvent.html">SDL_PenTouchEvent</a></td><td>ptouch</td><td>ペンタッチイベントの情報</td></tr>
-<tr><td><a href="SDL_PenMotionEvent.html">SDL_PenMotionEvent</a></td><td>pmotion</td><td>ペン移動イベントの情報</td></tr>
-<tr><td><a href="SDL_PenButtonEvent.html">SDL_PenButtonEvent</a></td><td>pbutton</td><td>ペンボタンイベントの情報</td></tr>
-<tr><td><a href="SDL_PenAxisEvent.html">SDL_PenAxisEvent</a></td><td>paxis</td><td>ペン方向イベントの情報</td></tr>
-<tr><td><a href="SDL_RenderEvent.html">SDL_RenderEvent</a></td><td>render</td><td>レンダーイベントの情報</td></tr>
-<tr><td><a href="SDL_DropEvent.html">SDL_DropEvent</a></td><td>drop</td><td>ドラッグ&amp;ドロップイベントの情報</td></tr>
+<tr><td><a href="SDL_TouchFingerEvent.html">SDL_TouchFingerEvent</a></td><td>tfinger</td><td>タッチイベントの情報</td></tr>
+<tr><td><a href="SDL_PinchFingerEvent.html">SDL_PinchFingerEvent</a></td><td>pinch</td><td>ピンチイベントの情報</td></tr>
+<tr><td><a href="SDL_PenProximityEvent.html">SDL_PenProximityEvent</a></td><td>pproximity</td><td>感圧式ペン接近イベントの情報</td></tr>
+<tr><td><a href="SDL_PenTouchEvent.html">SDL_PenTouchEvent</a></td><td>ptouch</td><td>感圧式ペンタッチイベントの情報</td></tr>
+<tr><td><a href="SDL_PenMotionEvent.html">SDL_PenMotionEvent</a></td><td>pmotion</td><td>感圧式ペン移動イベントの情報</td></tr>
+<tr><td><a href="SDL_PenButtonEvent.html">SDL_PenButtonEvent</a></td><td>pbutton</td><td>感圧式ペンボタンイベントの情報</td></tr>
+<tr><td><a href="SDL_PenAxisEvent.html">SDL_PenAxisEvent</a></td><td>paxis</td><td>感圧式ペン筆圧/角度イベントの情報</td></tr>
+<tr><td><a href="SDL_RenderEvent.html">SDL_RenderEvent</a></td><td>render</td><td>レンダライベントの情報</td></tr>
+<tr><td><a href="SDL_DropEvent.html">SDL_DropEvent</a></td><td>drop</td><td>ドロップイベントの情報</td></tr>
 <tr><td><a href="SDL_ClipboardEvent.html">SDL_ClipboardEvent</a></td><td>clipboard</td><td>クリップボードイベントの情報</td></tr>
 </table>
 <h2>詳細</h2>
@@ -168,13 +169,14 @@ SDL_EVENT_USERはSDLが使用しないイベント番号の先頭に過ぎない
 <tr><td>SDL_EVENT_CAMERA_DEVICE_ADDED<br>SDL_EVENT_CAMERA_DEVICE_REMOVED<br>SDL_EVENT_CAMERA_DEVICE_APPROVED<br>SDL_EVENT_CAMERA_DEVICE_DENIED</td><td><a href="SDL_CameraDeviceEvent.html">SDL_CameraDeviceEvent</a></td><td>cdevice</td></tr>
 <tr><td>SDL_EVENT_CLIPBOARD_UPDATE</td><td><a href="SDL_ClipboardEvent.html">SDL_ClipboardEvent</a></td><td>clipboard</td></tr>
 <tr><td>SDL_EVENT_DISPLAY_ORIENTATION<br>SDL_EVENT_DISPLAY_ADDED<br>SDL_EVENT_DISPLAY_REMOVED<br>SDL_EVENT_DISPLAY_MOVED<br>SDL_EVENT_DISPLAY_DESKTOP_MODE_CHANGED<br>SDL_EVENT_DISPLAY_CURRENT_MODE_CHANGED<br>SDL_EVENT_DISPLAY_CONTENT_SCALE_CHANGED<br>SDL_EVENT_DISPLAY_USABLE_BOUNDS_CHANGED</td><td><a href="SDL_DisplayEvent.html">SDL_DisplayEvent</a></td><td>display</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_ADDED<br>SDL_EVENT_GAMEPAD_REMOVED<br>SDL_EVENT_GAMEPAD_REMAPPED<br>など</td><td><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a></td><td>gdevice</td></tr>
+<tr><td>SDL_EVENT_GAMEPAD_ADDED<br>SDL_EVENT_GAMEPAD_REMOVED<br>SDL_EVENT_GAMEPAD_REMAPPED<br>SDL_EVENT_GAMEPAD_UPDATE_COMPLETE<br>SDL_EVENT_GAMEPAD_STEAM_HANDLE_UPDATED</td><td><a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a></td><td>gdevice</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_AXIS_MOTION</td><td><a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a></td><td>gaxis</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_BUTTON_DOWN<br>SDL_EVENT_GAMEPAD_BUTTON_UP</td><td><a href="SDL_GamepadButtonEvent.html">SDL_GamepadButtonEvent</a></td><td>gbutton</td></tr>
-<tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_DOWN<br>SDL_EVENT_GAMEPAD_TOUCHPAD_MOTION<br>など</td><td><a href="SDL_GamepadTouchpadEvent.html">SDL_GamepadTouchpadEvent</a></td><td>gtouchpad</td></tr>
+<tr><td>SDL_EVENT_GAMEPAD_TOUCHPAD_DOWN<br>SDL_EVENT_GAMEPAD_TOUCHPAD_MOTION<br>SDL_EVENT_GAMEPAD_TOUCHPAD_UP</td><td><a href="SDL_GamepadTouchpadEvent.html">SDL_GamepadTouchpadEvent</a></td><td>gtouchpad</td></tr>
 <tr><td>SDL_EVENT_GAMEPAD_SENSOR_UPDATE</td><td><a href="SDL_GamepadSensorEvent.html">SDL_ControllerSensorEvent</a></td><td>gsensor</td></tr>
 <tr><td>SDL_EVENT_DROP_BEGIN<br>SDL_EVENT_DROP_FILE<br>SDL_EVENT_DROP_TEXT<br>SDL_EVENT_DROP_COMPLETE<br>SDL_EVENT_DROP_POSITION</td><td><a href="SDL_DropEvent.html">SDL_DropEvent</a></td><td>drop</td></tr>
 <tr><td>SDL_EVENT_FINGER_MOTION<br>SDL_EVENT_FINGER_DOWN<br>SDL_EVENT_FINGER_UP</td><td><a href="SDL_TouchFingerEvent.html">SDL_TouchFingerEvent</a></td><td>tfinger</td></tr>
+<tr><td>SDL_EVENT_PINCH_BEGIN<br>SDL_EVENT_PINCH_UPDATE<br>SDL_EVENT_PINCH_END</td><td><a href="SDL_PinchFingerEvent.html">SDL_PinchFingerEvent</a></td><td>pinch</td></tr>
 <tr><td>SDL_EVENT_KEYBOARD_ADDED<br>SDL_EVENT_KEYBOARD_REMOVED</td><td><a href="SDL_KeyboardDeviceEvent.html">SDL_KeyboardDeviceEvent</a></td><td>kdevice</td></tr>
 <tr><td>SDL_EVENT_KEY_DOWN<br>SDL_EVENT_KEY_UP</td><td><a href="SDL_KeyboardEvent.html">SDL_KeyboardEvent</a></td><td>key</td></tr>
 <tr><td>SDL_EVENT_JOYSTICK_ADDED<br>SDL_EVENT_JOYSTICK_REMOVED<br>SDL_EVENT_JOYSTICK_UPDATE_COMPLETE</td><td><a href="SDL_JoyDeviceEvent.html">SDL_JoyDeviceEvent</a></td><td>jdevice</td></tr>

@@ -78,7 +78,7 @@
 <tr><td>SDL_EVENT_KEYMAP_CHANGED</td><td></td><td>入力言語やキーボードレイアウトの変更のようなシステムイベントが原因でキーマップが変わった</th></tr>
 <tr><td><a href="SDL_KeyboardDeviceEvent.html">SDL_EVENT_KEYBOARD_ADDED</a></td><td></td><td>キーボードがシステムに接続された</th></tr>
 <tr><td><a href="SDL_KeyboardDeviceEvent.html">SDL_EVENT_KEYBOARD_REMOVED</a></td><td></td><td>キーボードがシステムから切断された</th></tr>
-<tr><td>SDL_EVENT_TEXT_EDITING_CANDIDATES</td><td></td><td>テキストの変換候補を選択している</th></tr>
+<tr><td><a href="SDL_TextEditingCandidatesEvent.html">SDL_EVENT_TEXT_EDITING_CANDIDATES</a></td><td></td><td>テキストの変換候補を選択している</th></tr>
 <tr><td>SDL_EVENT_SCREEN_KEYBOARD_SHOWN</td><td></td><td>スクリーンキーボードが表示された</th></tr>
 <tr><td>SDL_EVENT_SCREEN_KEYBOARD_HIDDEN</td><td></td><td>スクリーンキーボードが非表示になった</th></tr>
 <tr><th colspan="3" align="center">マウスのイベント</th></tr>
@@ -112,19 +112,19 @@
 <tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_UPDATE_COMPLETE</a></td><td></td><td>ゲームパッドの更新が完了した</td></tr>
 <tr><td><a href="SDL_GamepadDeviceEvent.html">SDL_EVENT_GAMEPAD_STEAM_HANDLE_UPDATED</a></td><td></td><td>ゲームパッドのSteamハンドラが変わった</td></tr>
 <tr><th colspan="3" align="center">タッチのイベント</th></tr>
-<tr><td>SDL_EVENT_FINGER_DOWN</td><td>0x700</td><td>デバイスに指をつけた</td></tr>
-<tr><td>SDL_EVENT_FINGER_UP</td><td></td><td>デバイスから指を離した</td></tr>
-<tr><td>SDL_EVENT_FINGER_MOTION</td><td></td><td>デバイス上で指を動かした</td></tr>
-<tr><td>SDL_EVENT_FINGER_CANCELED</td><td></td><td></td></tr>
+<tr><td><a href="SDL_TouchFingerEvent.html">SDL_EVENT_FINGER_DOWN</a></td><td>0x700</td><td>デバイスに指をつけた</td></tr>
+<tr><td><a href="SDL_TouchFingerEvent.html">SDL_EVENT_FINGER_UP</a></td><td></td><td>デバイスから指を離した</td></tr>
+<tr><td><a href="SDL_TouchFingerEvent.html">SDL_EVENT_FINGER_MOTION</a></td><td></td><td>デバイス上で指を動かした</td></tr>
+<tr><td><a href="SDL_TouchFingerEvent.html">SDL_EVENT_FINGER_CANCELED</a></td><td></td><td></td></tr>
 <tr><th colspan="3" align="center">ピンチ(つまみ操作)のイベント</th></tr>
-<tr><td>SDL_EVENT_PINCH_BEGIN</td><td>0x710</td><td>ピンチジェスチャが始まった</td></tr>
-<tr><td>SDL_EVENT_PINCH_UPDATE</td><td></td><td>ピンチジェスチャが変わった</td></tr>
-<tr><td>SDL_EVENT_PINCH_END</td><td></td><td>ピンチジェスチャが終わった</td></tr>
+<tr><td><a href="SDL_PinchFingerEvent.html">SDL_EVENT_PINCH_BEGIN</a></td><td>0x710</td><td>ピンチジェスチャが始まった</td></tr>
+<tr><td><a href="SDL_PinchFingerEvent.html">SDL_EVENT_PINCH_UPDATE</a></td><td></td><td>ピンチジェスチャが変わった</td></tr>
+<tr><td><a href="SDL_PinchFingerEvent.html">SDL_EVENT_PINCH_END</a></td><td></td><td>ピンチジェスチャが終わった</td></tr>
 <tr><td></td><td>0x800</td><td>SDL2ではSDL_DOLLARGESTUREだった. sdl2-compatのために予約されている</td></tr>
 <tr><td></td><td>0x801</td><td>SDL2ではSDL_DOLLARRECORDだった. sdl2-compatのために予約されている</td></tr>
 <tr><td></td><td>0x802</td><td>SDL2ではSDL_MULTIGESTUREだった. sdl2-compatのために予約されている</td></tr>
 <tr><th colspan="3" align="center">クリップボードのイベント</th></tr>
-<tr><td>SDL_EVENT_CLIPBOARD_UPDATE</td><td>0x900</td><td>クリップボードが変わった</td></tr>
+<tr><td><a href="SDL_ClipboardEvent.html">SDL_EVENT_CLIPBOARD_UPDATE</a></td><td>0x900</td><td>クリップボードが変わった</td></tr>
 <tr><th colspan="3" align="center">ドラッグ&amp;ドロップのイベント</th></tr>
 <tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_FILE</a></td><td>0x1000</td><td>システムがファイルのオープンを要求している</td></tr>
 <tr><td><a href="SDL_DropEvent.html">SDL_EVENT_DROP_TEXT</a></td><td></td><td>text/plainのドラッグアンドドロップイベント</td></tr>
@@ -161,9 +161,9 @@
 <tr><td>SDL_EVENT_PRIVATE2</td><td></td></td><td></tr>
 <tr><td>SDL_EVENT_PRIVATE3</td><td></td></td><td></tr>
 <tr><th colspan="3" align="center">内部予約イベント</th></tr>
-<tr><td>SDL_EVENT_POLL_SENTINEL</td><td>0x7F00</td><td>イベントポーリングサイクルの終了</td></tr>
+<tr><td>SDL_EVENT_POLL_SENTINEL</td><td>0x7F00</td><td>イベントポーリングサイクルの終端</td></tr>
 <tr><th colspan="3" align="center">ユーザ定義のイベント <a href="SDL_RegisterEvents.html">SDL_RegisterEvents()</a>で確保する必要がある</th></tr>
-<tr><td>SDL_EVENT_USER</td><td>0x8000</td><td>ユーザ固有のイベント</td></tr>
+<tr><td><a href="SDL_UserEvent.html">SDL_EVENT_USER</a></td><td>0x8000</td><td>ユーザ固有のイベント</td></tr>
 <tr><th colspan="3" align="center">-</th></tr>
 <tr><td>SDL_EVENT_LAST</td><td>0xFFFF</td><td>内部の配列の終端のみのため</td></tr>
 <tr><td>SDL_EVENT_ENUM_PADDING</td><td>0x7FFFFFFF</td><td>この列挙体はUint32のサイズとするため</td></tr>

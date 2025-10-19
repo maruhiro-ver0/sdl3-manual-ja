@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryEvents.html" title="1つ上">
+<title>SDL_UserEvent</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryEvents.html">イベント処理</a> - SDL_UserEvent
+<hr>
+<h1>SDL_UserEvent</h1>
+ユーザ定義イベントの構造体(event.user.*)
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_events.h">SDL3/SDL_events.h</a>
+<h2>フィールド</h2>
+<table border="1">
+<tr><td>Uint32</td><td>type</td><td>SDL_EVENT_USERからSDL_EVENT_LASTまでの値. Uint32なのはSDL_EventType列挙体に存在しないため</td></tr>
+<tr><td>Uint32</td><td>reserved</td><td>予約</td></tr>
+<tr><td>Uint64</td><td>timestamp</td><td>イベントのナノ秒単位のタイムスタンプ. SDL_GetTicksNS()で設定</td></tr>
+<tr><td><a href="SDL_WindowID.html">SDL_WindowID</a></td><td>windowID</td><td>関連するウィンドウ (存在すれば)</td></tr>
+<tr><td>Sint32</td><td>code</td><td>ユーザ定義のイベントコード</td></tr>
+<tr><td>void *</td><td>data1</td><td>ユーザ定義のデータポインタ</td></tr>
+<tr><td>void *</td><td>data2</td><td>ユーザ定義のデータポインタ</td></tr>
+</table>
+<h2>詳細</h2>
+<p>
+このイベントは特別で, SDLは決して発することはなく, アプリケーションのみが発する.
+イベントはSDL_PushEvent()でイベントキューにプッシュできる.
+構造体のメンバは完全に作成者次第であり, 必要なことは<code>type</code>をSDL_RegisterEvents()から得ることのみである.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>サンプルコード</h2>
+<p>
+<code>
+<pre>
+extern Sint32 my_event_code;
+extern void *significant_data;
+extern void *some_other_data;
+
+const Uint32 myEventType = SDL_RegisterEvents(1);
+if (myEventType != 0) {
+    SDL_Event event;
+    SDL_zero(event);
+    event.type = myEventType;
+    event.user.code = my_event_code;
+    event.user.data1 = significant_data;
+    event.user.data2 = some_other_data;
+    SDL_PushEvent(&amp;event);
+}
+</pre>
+</code>
+</p>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_UserEvent">SDL_UserEvent - SDL Wiki</a><br>
+<hr>
+</body>
+</html>

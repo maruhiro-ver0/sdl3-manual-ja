@@ -529,32 +529,32 @@ SDL3では, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">この�
 <a href="SDL_CommonEvent.html">SDL_Event構造体のtimestampメンバ</a>は, <a href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">SDL_GetTicksNS()</a>で設定されるナノ秒単位となった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_SensorEvent">センサーイベント</a>のtimestamp_usメンバの名前はsensor_timestampに変更され, ナノ秒単位となった.
+<a href="SDL_SensorEvent.html">センサーイベント</a>のtimestamp_usメンバの名前はsensor_timestampに変更され, ナノ秒単位となった.
 この値は可能ならばハードウェアによって設定されるため, <a href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">SDL_GetTicksNS()</a>で得た値とは恐らく同期しない.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_PushEvent">SDL_PushEvent()</a>にイベントを渡す前にevent.common.timestampメンバを設定する必要がある.
+<a href="SDL_PushEvent.html">SDL_PushEvent()</a>にイベントを渡す前にevent.common.timestampメンバを設定する必要がある.
 timestampが0ならば, SDL_GetTicksNS()で値が設定される.
 </p>
 <p>
 イベントのメモリはSDLが管理するようになった.
-そのため, <a href="https://wiki.libsdl.org/SDL3/SDL_DropEvent">SDL_EVENT_DROP_FILEイベント</a>の<code>data</code>は解放してはならない.
-また, <a href="https://wiki.libsdl.org/SDL3/SDL_TextEditingEvent">SDL_EVENT_TEXT_EDITINGイベント</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_TextInputEvent">SDL_EVENT_TEXT_INPUTイベント</a>の<code>text</code>を保持したい場合はコピーしなければならない.
+そのため, <a href="SDL_DropEvent.html">SDL_EVENT_DROP_FILEイベント</a>の<code>data</code>は解放してはならない.
+また, <a href="SDL_TextEditingEvent.html">SDL_EVENT_TEXT_EDITINGイベント</a>と<a href="SDL_TextInputEvent.html">SDL_EVENT_TEXT_INPUTイベント</a>の<code>text</code>を保持したい場合はコピーしなければならない.
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_TEXTINPUTEVENT_TEXT_SIZE.html">SDL_TEXTINPUTEVENT_TEXT_SIZE</a>は不要となったため削除された.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_MouseMotionEvent">マウスイベント</a>はマウス座標と相対移動量として浮動小数点を使用するようになった.
+<a href="SDL_MouseMotionEvent.html">マウスイベント</a>はマウス座標と相対移動量として浮動小数点を使用するようになった.
 これにより, 環境やディスプレイの拡大縮小によってはサブピクセルを扱えるようになった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_EventType">SDL_DISPLAYEVENT_*の各イベント</a>はそれぞれトップレベルのイベントになり, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DisplayEvent.html">SDL_DISPLAYEVENT</a>は削除された.
+<a href="SDL_EventType.html">SDL_DISPLAYEVENT_*の各イベント</a>はそれぞれトップレベルのイベントになり, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DisplayEvent.html">SDL_DISPLAYEVENT</a>は削除された.
 一般的にはこの変更により, 初めにSDL_DISPLAYEVENTをチェックしてその後にイベント内容をチェックする代わりに, 単にそれぞれのイベントをチェックするようになる.
-<a href="https://wiki.libsdl.org/SDL3/SDL_DisplayEvent">ディスプレイイベント</a>であるかチェックする必要がある場合は, SDL_EVENT_DISPLAY_FIRST≦type≦SDL_EVENT_DISPLAY_LASTの比較で行える.
+<a href="SDL_DisplayEvent.html">ディスプレイイベント</a>であるかチェックする必要がある場合は, SDL_EVENT_DISPLAY_FIRST≦type≦SDL_EVENT_DISPLAY_LASTの比較で行える.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_EventType">SDL_WINDOWEVENT_*の各イベント</a>はそれぞれトップレベルのイベントになり, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_WindowEvent.html">SDL_WINDOWEVENT</a>は削除された.
+<a href="SDL_EventType.html">SDL_WINDOWEVENT_*の各イベント</a>はそれぞれトップレベルのイベントになり, <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_WindowEvent.html">SDL_WINDOWEVENT</a>は削除された.
 一般的にはこの変更により, 初めにSDL_WINDOWEVENTチェックしてその後にイベント内容をチェックする代わりに, 単にそれぞれのイベントをチェックするようになる.
-<a href="https://wiki.libsdl.org/SDL3/SDL_WindowEvent">ウィンドウイベント</a>であるかチェックする必要がある場合は, SDL_EVENT_WINDOW_FIRST≦type≦SDL_EVENT_WINDOW_LASTの比較で行える.
+<a href="SDL_WindowEvent.html">ウィンドウイベント</a>であるかチェックする必要がある場合は, SDL_EVENT_WINDOW_FIRST≦type≦SDL_EVENT_WINDOW_LASTの比較で行える.
 </p>
 <p>
 <a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_SetWindowSize.html">SDL_SetWindowSize()</a>の結果であってもSDL_EVENT_WINDOW_RESIZEDイベントは常に発生するようになった.
@@ -588,26 +588,26 @@ SDL_EVENT_WINDOW_SIZE_CHANGEDは削除された.
 SDL_Eventのゲームパッドイベントの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_Event.html">caxis, cbutton, cdevice, ctouchpad, csensor</a>メンバの名前は, <a href="SDL_Event.html">gaxis, gbutton, gdevice, gtouchpad, gsensor</a>に変更された.
 </p>
 <p>
-SDL_TouchFingerEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_TouchFingerEvent.html">touchId, fingerId</a>メンバの名前は, <a href="https://wiki.libsdl.org/SDL3/SDL_TouchFingerEvent">touchID, fingerID</a>に変更された.
+SDL_TouchFingerEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_TouchFingerEvent.html">touchId, fingerId</a>メンバの名前は, <a href="SDL_TouchFingerEvent.html">touchID, fingerID</a>に変更された.
 </p>
 <p>
-SDL_JoyBatteryEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_JoyBatteryEvent.html">level</a>メンバは, <a href="https://wiki.libsdl.org/SDL3/SDL_JoyBatteryEvent">stateとpercent</a>に分けられた.
+SDL_JoyBatteryEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_JoyBatteryEvent.html">level</a>メンバは, <a href="SDL_JoyBatteryEvent.html">stateとpercent</a>に分けられた.
 </p>
 <p>
-SDL_AudioDeviceEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioDeviceEvent.html">iscapture</a>メンバの名前は, <a href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">recording</a>に変更された.
+SDL_AudioDeviceEventの<a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_AudioDeviceEvent.html">iscapture</a>メンバの名前は, <a href="SDL_AudioDeviceEvent.html">recording</a>に変更された.
 </p>
 <p>
 SDL_QUERY, SDL_IGNORE, SDL_ENABLE, SDL_DISABLEは削除された.
-イベント処理状態の設定と確認は, <a href="https://wiki.libsdl.org/SDL3/SDL_SetEventEnabled">SDL_SetEventEnabled()</a>と<a href="https://wiki.libsdl.org/SDL3/SDL_EventEnabled">SDL_EventEnabled()</a>で行える.
+イベント処理状態の設定と確認は, <a href="SDL_SetEventEnabled.html">SDL_SetEventEnabled()</a>と<a href="SDL_EventEnabled.html">SDL_EventEnabled()</a>で行える.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_AddEventWatch">SDL_AddEventWatch()</a>は, メモリが足りずにイベント監視コールバックを追加できないときSDL_FALSEを戻すようになった.
+<a href="SDL_AddEventWatch.html">SDL_AddEventWatch()</a>は, メモリが足りずにイベント監視コールバックを追加できないとき偽を戻すようになった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_RegisterEvents">SDL_RegisterEvents()</a>は, これ以上ユーザイベントを確保できないとき0を戻すようになった.
+<a href="SDL_RegisterEvents.html">SDL_RegisterEvents()</a>は, これ以上ユーザイベントを確保できないとき0を戻すようになった.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_EventFilter">SDL_EventFilter()</a>はbool値を戻すようになった.
+<a href="SDL_EventFilter.html">SDL_EventFilter()</a>はbool値を戻すようになった.
 </p>
 <p>
 以下のシンボルの名前は次の様に変更された:
@@ -680,30 +680,30 @@ SDL_QUERY, SDL_IGNORE, SDL_ENABLE, SDL_DISABLEは削除された.
 以下の構造体の名前は次の様に変更された:
 </p>
 <ul>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerAxisEvent.html">SDL_ControllerAxisEvent</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">SDL_GamepadAxisEvent</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerButtonEvent.html">SDL_ControllerButtonEvent</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GamepadButtonEvent">SDL_GamepadButtonEvent</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerDeviceEvent.html">SDL_ControllerDeviceEvent</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GamepadDeviceEvent">SDL_GamepadDeviceEvent</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerSensorEvent.html">SDL_ControllerSensorEvent</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEvent">SDL_GamepadSensorEvent</a>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerTouchpadEvent.html">SDL_ControllerTouchpadEvent</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_GamepadTouchpadEvent">SDL_GamepadTouchpadEvent</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerAxisEvent.html">SDL_ControllerAxisEvent</a> → <a href="SDL_GamepadAxisEvent.html">SDL_GamepadAxisEvent</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerButtonEvent.html">SDL_ControllerButtonEvent</a> → <a href="SDL_GamepadButtonEvent.html">SDL_GamepadButtonEvent</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerDeviceEvent.html">SDL_ControllerDeviceEvent</a> → <a href="SDL_GamepadDeviceEvent.html">SDL_GamepadDeviceEvent</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerSensorEvent.html">SDL_ControllerSensorEvent</a> → <a href="SDL_GamepadSensorEvent.html">SDL_GamepadSensorEvent</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_ControllerTouchpadEvent.html">SDL_ControllerTouchpadEvent</a> → <a href="SDL_GamepadTouchpadEvent.html">SDL_GamepadTouchpadEvent</a>
 </ul>
 <p>
 以下の関数は削除された:
 </p>
 <ul>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_EventState.html">SDL_EventState()</a> - <a href="https://wiki.libsdl.org/SDL3/SDL_SetEventEnabled">SDL_SetEventEnabled()</a>に置き換えられた
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_GetEventState.html">SDL_GetEventState()</a> - <a href="https://wiki.libsdl.org/SDL3/SDL_EventEnabled">SDL_EventEnabled()</a>に置き換えられた
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_EventState.html">SDL_EventState()</a> - <a href="SDL_SetEventEnabled.html">SDL_SetEventEnabled()</a>に置き換えられた
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_GetEventState.html">SDL_GetEventState()</a> - <a href="SDL_EventEnabled.html">SDL_EventEnabled()</a>に置き換えられた
 </ul>
 <p>
 以下の列挙体の名前は次の様に変更された:
 </p>
 <ul>
-<li>SDL_eventaction → SDL_EventAction
+<li>SDL_eventaction → <a href="SDL_EventAction.html">SDL_EventAction</a>
 </ul>
 <p>
 以下の関数の名前は次の様に変更された:
 </p>
 <ul>
-<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DelEventWatch.html">SDL_DelEventWatch()</a> → <a href="https://wiki.libsdl.org/SDL3/SDL_RemoveEventWatch">SDL_RemoveEventWatch()</a>
+<li><a href="https://maruhiro-ver0.github.io/sdl2manual-ja/SDL_DelEventWatch.html">SDL_DelEventWatch()</a> → <a href="SDL_RemoveEventWatch.html">SDL_RemoveEventWatch()</a>
 </ul>
 <h2><a name="#sdl_gamecontrollerh">SDL_gamecontroller.h (ゲームコントローラー)</a></h2>
 <p>
