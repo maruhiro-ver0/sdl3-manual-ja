@@ -34,7 +34,7 @@
 </p>
 <h2>スレッドセーフ</h2>
 <p>
-この関数はどのスレッドからも安全に呼べるが, 戻されたデータは保護されておらず, 別のスレッドから同じプロパティに対して<a href="SDL_SetPointerProperty.html">SDL_SetPointerProperty()</a>や<a href="SDL_ClearProperty.html">SDL_ClearProperty()</a>を呼んで解放されてしまう可能性がある.
+この関数はどのスレッドからも安全に呼べるが, 戻されたデータは保護されておらず, 別のスレッドから同じプロパティに対して<a href="SDL_SetPointerProperty.html">SDL_SetPointerProperty()</a>や<a href="SDL_ClearProperty.html">SDL_ClearProperty()</a>が呼ばれて解放されてしまう可能性がある.
 これを防ぐためには, <a href="SDL_LockProperties.html">SDL_LockProperties()</a>と<a href="SDL_UnlockProperties.html">SDL_UnlockProperties()</a>を使ってロックする必要がある.
 </p>
 <h2>バージョン</h2>
