@@ -336,7 +336,7 @@
 <li><a href="SDL_GetError.html">SDL_GetError</a> - 現在のスレッドで最後に発生したエラーのメッセージを得る
 <li><a href="SDL_GetEventDescription.html">SDL_GetEventDescription</a> - イベントの人が読むことのできる記述を得る
 <li><a href="SDL_GetEventFilter.html">SDL_GetEventFilter</a> - 現在のイベントフィルタを得る
-<li><a href="SDL_GetFloatProperty.html">SDL_GetFloatProperty</a> - プロパティグループから浮動小数点プロパティを得る
+<li><a href="SDL_GetFloatProperty.html">SDL_GetFloatProperty</a> - プロパティグループから浮動小数点型プロパティを得る
 <li>SDL_GetFullscreenDisplayModes
 <li>SDL_GetGamepadAppleSFSymbolsNameForAxis
 <li>SDL_GetGamepadAppleSFSymbolsNameForButton
@@ -460,7 +460,7 @@
 <li>SDL_GetNaturalDisplayOrientation
 <li>SDL_GetNumAllocations
 <li>SDL_GetNumAudioDrivers
-<li><a href="SDL_GetNumberProperty.html">SDL_GetNumberProperty</a> - プロパティグループから数値プロパティを得る
+<li><a href="SDL_GetNumberProperty.html">SDL_GetNumberProperty</a> - プロパティグループから整数型プロパティを得る
 <li>SDL_GetNumCameraDrivers
 <li>SDL_GetNumGamepadTouchpadFingers
 <li>SDL_GetNumGamepadTouchpads
@@ -481,8 +481,8 @@
 <li>SDL_GetPixelFormatForMasks
 <li>SDL_GetPixelFormatFromGPUTextureFormat
 <li>SDL_GetPixelFormatName
-<li>SDL_GetPlatform
-<li><a href="SDL_GetPointerProperty.html">SDL_GetPointerProperty</a> - プロパティグループからポインタプロパティを得る
+<li><a href="SDL_GetPlatform.html">SDL_GetPlatform</a> - 環境の名前を得る
+<li><a href="SDL_GetPointerProperty.html">SDL_GetPointerProperty</a> - プロパティグループからポインタ型プロパティを得る
 <li>SDL_GetPowerInfo
 <li>SDL_GetPreferredLocales
 <li>SDL_GetPrefPath
@@ -549,7 +549,7 @@
 <li>SDL_GetStorageFileSize
 <li>SDL_GetStoragePathInfo
 <li>SDL_GetStorageSpaceRemaining
-<li><a href="SDL_GetStringProperty.html">SDL_GetStringProperty</a> - プロパティグループから文字列プロパティを得る
+<li><a href="SDL_GetStringProperty.html">SDL_GetStringProperty</a> - プロパティグループから文字列型プロパティを得る
 <li>SDL_GetSurfaceAlphaMod
 <li>SDL_GetSurfaceBlendMode
 <li>SDL_GetSurfaceClipRect
@@ -646,7 +646,7 @@
 <li>SDL_GPUTextureFormatTexelBlockSize
 <li>SDL_GPUTextureSupportsFormat
 <li>SDL_GPUTextureSupportsSampleCount
-<li>SDL_GUIDToString
+<li><a href="SDL_GUIDToString.html">SDL_GUIDToString</a> - SDL_GUIDからASCII文字列を得る
 <li>SDL_HapticEffectSupported
 <li>SDL_HapticRumbleSupported
 <li>SDL_HasAltiVec
@@ -832,7 +832,7 @@
 <li>SDL_OpenSensor
 <li>SDL_OpenStorage
 <li>SDL_OpenTitleStorage
-<li>SDL_OpenURL
+<li><a href="SDL_OpenURL.html">SDL_OpenURL</a> - ブラウザ等の外部アプリケーションでURL/URIを開く
 <li>SDL_OpenUserStorage
 <li><a href="SDL_OutOfMemory.html">SDL_OutOfMemory</a> - メモリの確保に失敗したことを表すエラーを設定する
 <li>SDL_PauseAudioDevice
@@ -996,7 +996,7 @@
 <li>SDL_SetAudioStreamInputChannelMap
 <li>SDL_SetAudioStreamOutputChannelMap
 <li>SDL_SetAudioStreamPutCallback
-<li><a href="SDL_SetBooleanProperty.html">SDL_SetBooleanProperty</a> - プロパティグループのブール値プロパティを設定する
+<li><a href="SDL_SetBooleanProperty.html">SDL_SetBooleanProperty</a> - プロパティグループのブール型プロパティを設定する
 <li>SDL_SetClipboardData
 <li>SDL_SetClipboardText
 <li>SDL_SetCurrentThreadPriority
@@ -1008,7 +1008,7 @@
 <li><a href="SDL_SetErrorV.html">SDL_SetErrorV</a> - 現在のスレッドのSDLエラーメッセージを設定する
 <li><a href="SDL_SetEventEnabled.html">SDL_SetEventEnabled</a> - イベントの種類ごとの処理の有無を得る
 <li><a href="SDL_SetEventFilter.html">SDL_SetEventFilter</a> - 内部イベントキューに追加する前に全てのイベントを処理するフィルタを設定する
-<li><a href="SDL_SetFloatProperty.html">SDL_SetFloatProperty</a> - プロパティグループの浮動小数点プロパティを設定する
+<li><a href="SDL_SetFloatProperty.html">SDL_SetFloatProperty</a> - プロパティグループの浮動小数点型プロパティを設定する
 <li>SDL_SetGamepadEventsEnabled
 <li>SDL_SetGamepadLED
 <li>SDL_SetGamepadMapping
@@ -1048,9 +1048,9 @@
 <li><a href="SDL_SetMainReady.html">SDL_SetMainReady</a> - SDL_Main()を使わないときSDL_Init()の失敗を回避する
 <li>SDL_SetMemoryFunctions
 <li>SDL_SetModState
-<li><a href="SDL_SetNumberProperty.html">SDL_SetNumberProperty</a> - プロパティグループの数値プロパティを設定する
+<li><a href="SDL_SetNumberProperty.html">SDL_SetNumberProperty</a> - プロパティグループの整数型プロパティを設定する
 <li>SDL_SetPaletteColors
-<li><a href="SDL_SetPointerProperty.html">SDL_SetPointerProperty</a> - プロパティグループのポインタプロパティを設定する
+<li><a href="SDL_SetPointerProperty.html">SDL_SetPointerProperty</a> - プロパティグループのポインタ型プロパティを設定する
 <li>SDL_SetPointerPropertyWithCleanup
 <li>SDL_SetPrimarySelectionText
 <li>SDL_SetRelativeMouseTransform
@@ -1067,7 +1067,7 @@
 <li>SDL_SetRenderViewport
 <li>SDL_SetRenderVSync
 <li>SDL_SetScancodeName
-<li><a href="SDL_SetStringProperty.html">SDL_SetStringProperty</a> - プロパティグループの文字列プロパティを設定する
+<li><a href="SDL_SetStringProperty.html">SDL_SetStringProperty</a> - プロパティグループの文字列型プロパティを設定する
 <li>SDL_SetSurfaceAlphaMod
 <li>SDL_SetSurfaceBlendMode
 <li>SDL_SetSurfaceClipRect
@@ -1157,7 +1157,7 @@
 <li>SDL_strcmp
 <li>SDL_strdup
 <li>SDL_StretchSurface
-<li>SDL_StringToGUID
+<li><a href="SDL_StringToGUID.html">SDL_StringToGUID</a> - GUID文字列をSDL_GUID構造体に変換する
 <li>SDL_strlcat
 <li>SDL_strlcpy
 <li>SDL_strlen
@@ -1447,7 +1447,7 @@
 <li>SDL_AssertData
 <li>SDL_AsyncIOOutcome
 <li><a href="SDL_AtomicInt.html">SDL_AtomicInt</a> - アトミック整数値を表す構造体
-<li>SDL_AtomicU32
+<li><a href="SDL_AtomicU32.html">SDL_AtomicU32</a> - アトミックな符号付き32ビット整数値を表す構造体
 <li><a href="SDL_AudioDeviceEvent.html">SDL_AudioDeviceEvent</a> - オーディオデバイスイベントの構造体(event.adevice.*)
 <li><a href="SDL_AudioSpec.html">SDL_AudioSpec</a> - オーディオデータの形式を表す構造体
 <li><a href="SDL_CameraDeviceEvent.html">SDL_CameraDeviceEvent</a> - カメラデバイスイベントの構造体(event.cdevice.*)
@@ -1508,7 +1508,7 @@
 <li>SDL_GPUVertexBufferDescription
 <li>SDL_GPUVertexInputState
 <li>SDL_GPUViewport
-<li>SDL_GUID
+<li><a href="SDL_GUID.html">SDL_GUID</a> - 128ビットの識別子の構造体
 <li>SDL_HapticCondition
 <li>SDL_HapticConstant
 <li>SDL_HapticCustom
@@ -1645,7 +1645,7 @@
 <li>SDL_PowerState
 <li>SDL_ProcessIO
 <li>SDL_ProgressState
-<li>SDL_PropertyType
+<li><a href="SDL_PropertyType.html">SDL_PropertyType</a> - SDLプロパティ型の列挙体
 <li>SDL_RendererLogicalPresentation
 <li>SDL_Sandbox
 <li>SDL_ScaleMode
