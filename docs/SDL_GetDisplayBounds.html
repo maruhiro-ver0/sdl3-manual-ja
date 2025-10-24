@@ -18,7 +18,7 @@
 <code>bool SDL_GetDisplayBounds(SDL_DisplayID displayID, SDL_Rect *rect);</code>
 <h2>引数</h2>
 <table border="1">
-<tr><td><a href="SDL_DisplayID.html">SDL_DisplayID</a></td><td>displayIndex</td><td>調査するディスプレイの番号</td></tr>
+<tr><td><a href="SDL_DisplayID.html">SDL_DisplayID</a></td><td>displayID</td><td>調査するディスプレイのインスタンスID</td></tr>
 <tr><td><a href="SDL_Rect.html">SDL_Rect</a> *</td><td>rect</td><td>ディスプレイの表示領域を代入する<a href="SDL_Rect.html">SDL_Rect</a>ポインタ</td></tr>
 </table>
 <h2>戻り値</h2>
@@ -26,9 +26,7 @@
 <a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
 <h2>詳細</h2>
 <p>
-<p>
 主ディスプレイの位置は(0,0)であることが多いが, モニタのレイアウトによっては異なる場合もある.
-</p>
 </p>
 <h2>スレッドセーフ</h2>
 <p>
