@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_GetFullscreenDisplayModes</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_GetFullscreenDisplayModes
+<hr>
+<h1>SDL_GetFullscreenDisplayModes</h1>
+利用可能なフルスクリーンディスプレイモードの一覧を得る
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<code>SDL_DisplayMode ** SDL_GetFullscreenDisplayModes(SDL_DisplayID displayID, int *count);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td><a href="SDL_DisplayID.html">SDL_DisplayID</a></td><td>displayID</td><td>調査するディスプレイのインスタンスID</td></tr>
+<tr><td>int *</td><td>count</td><td>戻されたフルスクリーンディスプレイモードの数の代入先へのポインタ. NULLも可</td></tr>
+</table>
+<h2>戻り値</h2>
+(<a href="SDL_DisplayMode.html">SDL_DisplayMode</a> **) NULL終端のディスプレイモードの配列を戻す. 失敗のときNULLを戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+これは1回のメモリ確保を行っているため, 不要になったとき<a href="SDL_free.html">SDL_free()</a>で解放する必要がある.
+<h2>詳細</h2>
+<p>
+ディスプレイモードは次の優先順でソートされている:
+</p>
+<ul>
+<li>w → 最大から最小
+<li>h → 最大から最小
+<li>ピクセルあたりのビット数 → 最多から最小
+<li>詰められた(パックされた)ピクセルレイアウト → 最大から最小
+<li>垂直同期 → 最高から最低
+<li>ピクセル密度 → 最低から最高
+</ul>
+<h2>スレッドセーフ</h2>
+<p>
+この関数を呼べるのはメインスレッドのみである.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_GetDisplays.html">SDL_GetDisplays</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">SDL_GetFullscreenDisplayModes - SDL Wiki</a>
+<hr>
+</body>
+</html>
