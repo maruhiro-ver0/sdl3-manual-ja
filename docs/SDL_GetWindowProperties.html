@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_GetWindowProperties</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_GetWindowProperties
+<hr>
+<h1>SDL_GetWindowProperties</h1>
+ウィンドウのプロパティを得る
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<code>SDL_PropertiesID SDL_GetWindowProperties(SDL_Window *window);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td><a href="SDL_Window.html">SDL_Window</a> *</td><td>window</td><td>調査するウィンドウ</td></tr>
+</table>
+<h2>戻り値</h2>
+(<a href="SDL_PropertiesID.html">SDL_PropertiesID</a>) プロパティグループIDを戻す. 失敗のとき0を戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+<h2>詳細</h2>
+<p>
+SDLから次の読取専用プロパティが提供されている:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_SHAPE_POINTER: 矩形ウィンドウのサーフェイス
+<li>SDL_PROP_WINDOW_HDR_ENABLED_BOOLEAN: 真のときウィンドウにSDRホワイトポイント以上のHDRヘッドルームがある. このプロパティはSDL_EVENT_WINDOW_HDR_STATE_CHANGEDイベントが送られたとき動的に変化しうる
+<li>SDL_PROP_WINDOW_SDR_WHITE_LEVEL_FLOAT: SDL_COLORSPACE_SRGB_LINEAR色空間のSDRホワイトの値. WindowsではscRGB色空間と関連しており, Apple環境ではEDRでは常に1.0である. このプロパティはSDL_EVENT_WINDOW_HDR_STATE_CHANGEDが送られたとき動的に変化しうる
+<li>SDL_PROP_WINDOW_HDR_HEADROOM_FLOAT: SDRホワイトポイントからの表示可能な追加のハイダイナミックレンジ. HDRが有効でなければ1.0である. このプロパティはSDL_EVENT_WINDOW_HDR_STATE_CHANGEDが送られたとき動的に変化しうる
+</ul>
+<p>
+Androidの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_ANDROID_WINDOW_POINTER: ウィンドウのANativeWindow
+<li>SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER: ウィンドウのEGLSurface
+</ul>
+<p>
+iOSの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_UIKIT_WINDOW_POINTER: ウィンドウの(__unsafe_unretained) UIWindow
+<li>SDL_PROP_WINDOW_UIKIT_METAL_VIEW_TAG_NUMBER: ウィンドウのmetal viewのNSIntegerタグ
+<li>SDL_PROP_WINDOW_UIKIT_OPENGL_FRAMEBUFFER_NUMBER: OpenGLビューのframebufferオブジェクト. OpenGLを使ってスクリーンにレンダリングする場合はバインドされているはずである
+<li>SDL_PROP_WINDOW_UIKIT_OPENGL_RENDERBUFFER_NUMBER: OpenGLのrenderbufferオブジェクト. SDL_GL_SwapWindowが呼ばれたときバインドされるはずである
+<li>SDL_PROP_WINDOW_UIKIT_OPENGL_RESOLVE_FRAMEBUFFER_NUMBER: MSAAを使用している場合, OpenGLビューのresolve framebuffer
+</ul>
+<p>
+KMS/DRMの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_KMSDRM_DEVICE_INDEX_NUMBER: ウィンドウのデバイスのインデックス番号 (例: /dev/dri/cardXのX)
+<li>SDL_PROP_WINDOW_KMSDRM_DRM_FD_NUMBER: ウィンドウのDRM FD
+<li>SDL_PROP_WINDOW_KMSDRM_GBM_DEVICE_POINTER: ウィンドウのGBMデバイス
+</ul>
+<p>
+macOSの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_COCOA_WINDOW_POINTER: ウィンドウの(__unsafe_unretained) NSWindow
+<li>SDL_PROP_WINDOW_COCOA_METAL_VIEW_TAG_NUMBER: ウィンドウのmetal viewのNSIntegerタグ
+</ul>
+<p>
+OpenVRの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_OPENVR_OVERLAY_ID_NUMBER: オーバーレイウィンドウのOpenVRオーバーレイハンドルID
+</ul>
+<p>
+Vivanteの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_VIVANTE_DISPLAY_POINTER: ウィンドウのEGLNativeDisplayType
+<li>SDL_PROP_WINDOW_VIVANTE_WINDOW_POINTER: ウィンドウのEGLNativeWindowType
+<li>SDL_PROP_WINDOW_VIVANTE_SURFACE_POINTER: ウィンドウのEGLSurface
+</ul>
+<p>
+On Windows:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_WIN32_HWND_POINTER: ウィンドウのHWND
+<li>SDL_PROP_WINDOW_WIN32_HDC_POINTER: ウィンドウのHDC
+<li>SDL_PROP_WINDOW_WIN32_INSTANCE_POINTER: ウィンドウのHINSTANCE
+</ul>
+<p>
+Waylandの場合:
+</p>
+<p>
+注意: xdg_*ウィンドウオブジェクトは内部ではウィンドウの表示/非表示の呼び出しに渡って継続しない.
+ウィンドウが非表示のときnullとなり, 表示のたびに再獲得する必要がある.
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_WAYLAND_DISPLAY_POINTER: ウィンドウのwl_display
+<li>SDL_PROP_WINDOW_WAYLAND_SURFACE_POINTER: ウィンドウのwl_surface
+<li>SDL_PROP_WINDOW_WAYLAND_VIEWPORT_POINTER: ウィンドウのwp_viewport
+<li>SDL_PROP_WINDOW_WAYLAND_EGL_WINDOW_POINTER: ウィンドウのwl_egl_window
+<li>SDL_PROP_WINDOW_WAYLAND_XDG_SURFACE_POINTER: ウィンドウのxdg_surface
+<li>SDL_PROP_WINDOW_WAYLAND_XDG_TOPLEVEL_POINTER: ウィンドウのxdg_toplevel role
+<li>SDL_PROP_WINDOW_WAYLAND_XDG_TOPLEVEL_EXPORT_HANDLE_STRING: ウィンドウのexport handle
+<li>SDL_PROP_WINDOW_WAYLAND_XDG_POPUP_POINTER: ウィンドウのxdg_popup role
+<li>SDL_PROP_WINDOW_WAYLAND_XDG_POSITIONER_POINTER: ポップアップモード時のウィンドウのxdg_positioner
+</ul>
+<p>
+X11の場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_X11_DISPLAY_POINTER: ウィンドウのX11 Display
+<li>SDL_PROP_WINDOW_X11_SCREEN_NUMBER: ウィンドウのスクリーン番号
+<li>SDL_PROP_WINDOW_X11_WINDOW_NUMBER: ウィンドウのX11 Window
+</ul>
+<p>
+Emscriptenの場合:
+</p>
+<ul>
+<li>SDL_PROP_WINDOW_EMSCRIPTEN_CANVAS_ID_STRING: canvas要素のid
+<li>SDL_PROP_WINDOW_EMSCRIPTEN_FILL_DOCUMENT_BOOLEAN: 真のときcanvasはブラウザウィンドウ全体を占めていて, 一部のSDLウィンドウ機能を回避する
+<li>SDL_PROP_WINDOW_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING: このウィンドウのキーボード入力にバインドされたキーボード要素
+</ul>
+<h2>スレッドセーフ</h2>
+<p>
+この関数を呼べるのはメインスレッドのみである.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">SDL_GetWindowProperties - SDL Wiki</a>
+<hr>
+</body>
+</html>
