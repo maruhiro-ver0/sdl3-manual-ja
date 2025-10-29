@@ -20,9 +20,9 @@
 これは, Windowsならば"DLL"と呼ばれ, Linuxならば「共有ライブラリ」と呼ばれる.
 </p>
 <p>
-共有オブジェクトを使うには, そのようなライブラリを作成し, これに対してSDL_LoadObject()を呼ぶ.
-読み込んだ後は, オブジェクトにSDL_LoadFunction()を使用して外部に出されたシンボルのアドレスを見つける.
-オブジェクトを使い終えたら, SDL_UnloadObject()で破棄する.
+共有オブジェクトを使うには, そのようなライブラリを作成し, これに対して<a href="SDL_LoadObject.html">SDL_LoadObject()</a>を呼ぶ.
+読み込んだ後は, オブジェクトに<a href="SDL_LoadFunction.html">SDL_LoadFunction()</a>を使用して外部に出されたシンボルのアドレスを見つける.
+オブジェクトを使い終えたら, <a href="SDL_UnloadObject.html">SDL_UnloadObject()</a>で破棄する.
 </p>
 <p>
 いくつか注意する必要がある:
@@ -35,19 +35,19 @@
 <li>名前空間の衝突を避けること.
 ライブラリからシンボルを読み込むとき, それが既に定義されていてもいなくても, アプリケーションのグローバルな名前空間のシンボルとなる.
 もし, シンボルがアプリケーションまたは他の共有ライブラリと衝突すると, 予期しない結果となる.
-<li>ライブラリが破棄されると, SDL_LoadFunction()の戻り値に含まれる全てのポインタは, 後で再読み込みした場合でも無効になる.
+<li>ライブラリが破棄されると, <a href="SDL_LoadFunction.html">SDL_LoadFunction()</a>の戻り値に含まれる全てのポインタは, 後で再読み込みした場合でも無効になる.
 以後にポインタを使う可能性がある場合は, ライブラリを破棄してはならない.
 特にatexit()でこれらのポインタを使っている場合は, ライブラリを破棄した後にポインタを呼ばないように注意する必要がある.
 </ul>
 <h2>関数</h2>
 <ol>
-<li>SDL_LoadFunction
-<li>SDL_LoadObject
-<li>SDL_UnloadObject
+<li><a href="SDL_LoadFunction.html">SDL_LoadFunction</a> - 共有オブジェクトから名前で関数のアドレスを検索しそれを戻す
+<li><a href="SDL_LoadObject.html">SDL_LoadObject</a> - 共有オブジェクトを動的に読み込む
+<li><a href="SDL_UnloadObject.html">SDL_UnloadObject</a> - 共有オブジェクトを解放する
 </ol>
 <h2>型</h2>
 <ol>
-<li>SDL_SharedObject
+<li><a href="SDL_SharedObject.html">SDL_SharedObject</a> - 読み込まれた共通オブジェクトを表す不透明型
 </ol>
 <h2>SDL Wikiへのリンク</h2>
 <a href="https://wiki.libsdl.org/SDL3/CategorySharedObject">SDL3/CategorySharedObject - SDL Wiki</a>
