@@ -1441,17 +1441,17 @@ SDL_Keycodeの取りうる値であることを明確にするため, SDLK_*は�
 </ul>
 <h2><a name="#sdl_loadsoh">SDL_loadso.h (共有オブジェクト読込と関数検索)</a></h2>
 <p>
-共有オブジェクトハンドルはvoid *から不透明型の<a href="https://wiki.libsdl.org/SDL3/SDL_SharedObject">SDL_SharedObject</a> *となった.
+共有オブジェクトハンドルはvoid *から不透明型の<a href="SDL_SharedObject.html">SDL_SharedObject</a> *となった.
 これは型安全性のためで, 機能は変わらない.
 </p>
 <p>
-<a href="https://wiki.libsdl.org/SDL3/SDL_LoadFunction">SDL_LoadFunction()</a>の戻り値はvoid *から<a href="https://wiki.libsdl.org/SDL3/SDL_FunctionPointer">SDL_FunctionPointer</a>となり, 関数の本来の型へのキャストが必要になった.
+<a href="SDL_LoadFunction.html">SDL_LoadFunction()</a>の戻り値はvoid *から<a href="SDL_FunctionPointer.html">SDL_FunctionPointer</a>となり, 関数の本来の型へのキャストが必要になった.
 SDL_FUNCTION_POINTER_IS_VOID_POINTERを定義して旧来の動作と同じ動作にすることもできる.
 </p>
 <h2><a name="#sdl_logh">SDL_log.h (ログ処理)</a></h2>
 <p>
 <a href="SDL_Log.html">SDL_Log()</a>はSDL_LOG_PRIORITY_INFO以下の場合は接頭辞(prefix)を表示しないようになった.
-ログの接頭辞は<a href="https://wiki.libsdl.org/SDL3/SDL_SetLogPriorityPrefix">SDL_SetLogPriorityPrefix()</a>で編集できる.
+ログの接頭辞は<a href="SDL_SetLogPriorityPrefix.html">SDL_SetLogPriorityPrefix()</a>で編集できる.
 </p>
 <p>
 以下のマクロは削除された:

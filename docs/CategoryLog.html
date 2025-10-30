@@ -22,7 +22,7 @@
 SDL自身のログはデフォルトの優先度未満のため, デフォルトでは出力されない.
 </p>
 <p>
-ログの詳細さはプログラム内で<a href="SDL_SetLogPriority.html">SDL_SetLogPriority()</a>またはSDL_SetHint(SDL_HINT_LOGGING, ...)を使用するか, 環境変数"SDL_LOGGING"で変更できる.
+ログの詳細さはプログラム内で<a href="SDL_SetLogPriority.html">SDL_SetLogPriority()</a>または<a href="SDL_SetHint.html">SDL_SetHint</a>(<a href="SDL_HINT_LOGGING.html">SDL_HINT_LOGGING</a>, ...)を使用するか, 環境変数"SDL_LOGGING"で変更できる.
 環境変数はコンマで区切った 分類=レベル でSDLアプリケーションのデフォルトログレベルを設定する.
 </p>
 <p>
@@ -58,7 +58,7 @@ app=info,assert=warn,test=verbose,*=error
 </p>
 <h2>関数</h2>
 <ol>
-<li>SDL_GetDefaultLogOutputFunction
+<li><a href="SDL_GetDefaultLogOutputFunction.html">SDL_GetDefaultLogOutputFunction</a> - デフォルトログ出力関数を得る
 <li><a href="SDL_GetLogOutputFunction.html">SDL_GetLogOutputFunction</a> - 現在のログ出力関数を得る
 <li><a href="SDL_GetLogPriority.html">SDL_GetLogPriority</a> - ログの分類の重要度を得る
 <li><a href="SDL_Log.html">SDL_Log</a> - SDL_LOG_CATEGORY_APPLICATION分類ログをSDL_LOG_PRIORITY_INFOの重要度で出力する
@@ -75,7 +75,7 @@ app=info,assert=warn,test=verbose,*=error
 <li><a href="SDL_SetLogOutputFunction.html">SDL_SetLogOutputFunction</a> - ログ出力関数を置き換える
 <li><a href="SDL_SetLogPriorities.html">SDL_SetLogPriorities</a> - 全ての分類の重要度を設定する
 <li><a href="SDL_SetLogPriority.html">SDL_SetLogPriority</a> - 分類の重要度を設定する
-<li>SDL_SetLogPriorityPrefix
+<li><a href="SDL_SetLogPriorityPrefix.html">SDL_SetLogPriorityPrefix</a> - 優先度ごとのログメッセージの接頭辞を設定する
 </ol>
 <h2>型</h2>
 <ol>
