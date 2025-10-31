@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="Simple Directmedia Layer SDL3.0">
+<link rel="top" href="index.html" title="ホーム">
+<link rel="parent" href="CategoryVideo.html" title="1つ上">
+<title>SDL_MaximizeWindow</title>
+</head>
+<body>
+<a href="index.html">目次</a> - <a href="ApiByCategory.html">SDL 3.0 API(機能別)</a> - <a href="CategoryVideo.html">ディスプレイとウィンドウ</a> - SDL_MaximizeWindow
+<hr>
+<h1>SDL_MaximizeWindow</h1>
+ウィンドウの最大化を要求する
+<h2>ヘッダ</h2>
+<a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h">SDL3/SDL_video.h</a>
+<h2>構文</h2>
+<code>bool SDL_MaximizeWindow(SDL_Window *window);</code>
+<h2>引数</h2>
+<table border="1">
+<tr><td><a href="SDL_Window.html">SDL_Window</a> *</td><td>window</td><td>最大化させるウィンドウ</td></tr>
+</table>
+<h2>戻り値</h2>
+(bool) 成功のとき真, 失敗のとき偽を戻す.
+<a href="SDL_GetError.html">SDL_GetError()</a>を呼んで詳細を知ることができる.
+<h2>詳細</h2>
+<p>
+サイズ変更できないウィンドウは最大化できない.
+ウィンドウは<code>SDL_WINDOW_RESIZABLE</code>フラグが設定されている必要がある. そうでない場合は効果がない.
+</p>
+<p>
+一部のウィンドウシステムでは, この要求は非同期で, この関数から戻っても新しいウィンドウの状態は即座には適応されない.
+即座に変更したい場合は, <a href="SDL_SyncWindow.html">SDL_SyncWindow()</a>を呼んで変更されるまでブロックすること.
+</p>
+<p>
+ウィンドウの状態が変わると, SDL_EVENT_WINDOW_MAXIMIZEDイベントが発生する.
+これは単に要求するだけであり, ウィンドウシステムは状態の変更を遅らせる可能性があるので注意すること.
+</p>
+<p>
+ウィンドウを最大化するとき, <a href="SDL_SetWindowMaximumSize.html">SDL_SetWindowMaximumSize()</a>で設定した制約の扱いは, ウィンドウマネージャの方針に依存する.
+Win32とmacOSでは制約され, X11とWaylandでは異なる場合がある.
+</p>
+<h2>スレッドセーフ</h2>
+<p>
+この関数を呼べるのはメインスレッドのみである.
+</p>
+<h2>バージョン</h2>
+SDL 3.2.0以降
+<h2>関連項目</h2>
+<ul>
+<li><a href="SDL_MinimizeWindow.html">SDL_MinimizeWindow</a>
+<li><a href="SDL_RestoreWindow.html">SDL_RestoreWindow</a>
+<li><a href="SDL_SyncWindow.html">SDL_SyncWindow</a>
+</ul>
+<h2>SDL Wikiへのリンク</h2>
+<a href="https://wiki.libsdl.org/SDL3/SDL_MaximizeWindow">SDL_MaximizeWindow - SDL Wiki</a>
+<hr>
+</body>
+</html>

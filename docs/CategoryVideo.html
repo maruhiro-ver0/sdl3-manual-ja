@@ -61,7 +61,7 @@ SDLはウィンドウのレンダリングのために簡単に使える2D API�
 <li><a href="SDL_GetPrimaryDisplay.html">SDL_GetPrimaryDisplay</a> - メインディスプレイを得る
 <li><a href="SDL_GetSystemTheme.html">SDL_GetSystemTheme</a> - 現在のシステムテーマを得る
 <li><a href="SDL_GetVideoDriver.html">SDL_GetVideoDriver</a> - 組み込まれたビデオドライバの一覧から名前を得る
-<li><a href="SDL_GetWindowAspectRatio.html">SDL_GetWindowAspectRatio</a> - ウィンドウのクライアント領域のアスペクト比を得る
+<li><a href="SDL_GetWindowAspectRatio.html">SDL_GetWindowAspectRatio</a> - ウィンドウのクライアント領域の縦横比を得る
 <li><a href="SDL_GetWindowBordersSize.html">SDL_GetWindowBordersSize</a> - ウィンドウのクライアント領域の周りにある枠(装飾)のサイズを得る
 <li><a href="SDL_GetWindowDisplayScale.html">SDL_GetWindowDisplayScale</a> - ウィンドウのピクセルサイズに対するディスプレイの表示拡大率を得る
 <li><a href="SDL_GetWindowFlags.html">SDL_GetWindowFlags</a> - ウィンドウのフラグを得る
@@ -91,32 +91,32 @@ SDLはウィンドウのレンダリングのために簡単に使える2D API�
 <li><a href="SDL_GetWindowTitle.html">SDL_GetWindowTitle</a> - ウィンドウのタイトルを得る
 <li><a href="SDL_GL_CreateContext.html">SDL_GL_CreateContext</a> - OpenGLウィンドウで使うためにOpenGLコンテキストを生成し, カレントコンテキストにする
 <li><a href="SDL_GL_DestroyContext.html">SDL_GL_DestroyContext</a> - OpenGLコンテキストを削除する
-<li>SDL_GL_ExtensionSupported
-<li>SDL_GL_GetAttribute
-<li>SDL_GL_GetCurrentContext
-<li>SDL_GL_GetCurrentWindow
-<li>SDL_GL_GetProcAddress
-<li>SDL_GL_GetSwapInterval
-<li>SDL_GL_LoadLibrary
-<li>SDL_GL_MakeCurrent
-<li>SDL_GL_ResetAttributes
-<li>SDL_GL_SetAttribute
-<li>SDL_GL_SetSwapInterval
-<li>SDL_GL_SwapWindow
-<li>SDL_GL_UnloadLibrary
-<li>SDL_HideWindow
-<li>SDL_MaximizeWindow
-<li>SDL_MinimizeWindow
-<li>SDL_RaiseWindow
-<li>SDL_RestoreWindow
-<li>SDL_ScreenSaverEnabled
-<li>SDL_SetWindowAlwaysOnTop
-<li>SDL_SetWindowAspectRatio
-<li>SDL_SetWindowBordered
-<li>SDL_SetWindowFocusable
-<li>SDL_SetWindowFullscreen
-<li>SDL_SetWindowFullscreenMode
-<li>SDL_SetWindowHitTest
+<li><a href="SDL_GL_ExtensionSupported.html">SDL_GL_ExtensionSupported</a> - カレントコンテキストでOpenGL拡張に対応しているか否かをチェックする
+<li><a href="SDL_GL_GetAttribute.html">SDL_GL_GetAttribute</a> - カレントコンテキストの属性の現在の値を得る
+<li><a href="SDL_GL_GetCurrentContext.html">SDL_GL_GetCurrentContext</a> - 動作中のカレントコンテキストを得る
+<li><a href="SDL_GL_GetCurrentWindow.html">SDL_GL_GetCurrentWindow</a> - 動作中のOpenGLウィンドウを得る
+<li><a href="SDL_GL_GetProcAddress.html">SDL_GL_GetProcAddress</a> - 名前でOpenGLの関数を得る
+<li><a href="SDL_GL_GetSwapInterval.html">SDL_GL_GetSwapInterval</a> - カレントコンテキストの交換インターバルを得る
+<li><a href="SDL_GL_LoadLibrary.html">SDL_GL_LoadLibrary</a> - OpenGLライブラリを動的に読み込む
+<li><a href="SDL_GL_MakeCurrent.html">SDL_GL_MakeCurrent</a> - OpenGLコンテキストをOpenGLウィンドウにレンダリングするように設定する
+<li><a href="SDL_GL_ResetAttributes.html">SDL_GL_ResetAttributes</a> - OpenGLコンテキストの属性を全て元の値にリセットする
+<li><a href="SDL_GL_SetAttribute.html">SDL_GL_SetAttribute</a> - ウィンドウを生成する前にOpenGLウィンドウの属性を設定する
+<li><a href="SDL_GL_SetSwapInterval.html">SDL_GL_SetSwapInterval</a> - カレントコンテキストの交換インターバルを設定する
+<li><a href="SDL_GL_SwapWindow.html">SDL_GL_SwapWindow</a> - OpenGLレンダリングでウィンドウを更新する
+<li><a href="SDL_GL_UnloadLibrary.html">SDL_GL_UnloadLibrary</a> - SDL_GL_LoadLibrary()で読み込んだOpenGLライブラリを解放する
+<li><a href="SDL_HideWindow.html">SDL_HideWindow</a> - ウィンドウを隠す
+<li><a href="SDL_MaximizeWindow.html">SDL_MaximizeWindow</a> - ウィンドウの最大化を要求する
+<li><a href="SDL_MinimizeWindow.html">SDL_MinimizeWindow</a> - ウィンドウを最小化してアイコン化する
+<li><a href="SDL_RaiseWindow.html">SDL_RaiseWindow</a> - ウィンドウを他のウィンドウよりも前面にして入力フォーカスを与えるように要求する
+<li><a href="SDL_RestoreWindow.html">SDL_RestoreWindow</a> - 最小化または最大化されたウィンドウの位置とサイズを戻すように要求する
+<li><a href="SDL_ScreenSaverEnabled.html">SDL_ScreenSaverEnabled</a> - スクリーンセーバーを有効にする
+<li><a href="SDL_SetWindowAlwaysOnTop.html">SDL_SetWindowAlwaysOnTop</a> - ウィンドウを常に他のウィンドウより上にする
+<li><a href="SDL_SetWindowAspectRatio.html">SDL_SetWindowAspectRatio</a> - ウィンドウのクライアント領域の縦横比の設定を要求する
+<li><a href="SDL_SetWindowBordered.html">SDL_SetWindowBordered</a> - ウィンドウの枠の状態を設定する
+<li><a href="SDL_SetWindowFocusable.html">SDL_SetWindowFocusable</a> - ウィンドウが入力フォーカスを得られるかを設定する
+<li><a href="SDL_SetWindowFullscreen.html">SDL_SetWindowFullscreen</a> - ウィンドウのフルスクリーン状態の設定を要求する
+<li><a href="SDL_SetWindowFullscreenMode.html">SDL_SetWindowFullscreenMode</a> - ウィンドウが可視状態かつフルスクリーンのときに使用するディスプレイモードを設定する
+<li><a href="SDL_SetWindowHitTest.html">SDL_SetWindowHitTest</a> - ウィンドウの領域が特別な機能を持っているかを決めるコールバック関数を設定する
 <li>SDL_SetWindowIcon
 <li>SDL_SetWindowKeyboardGrab
 <li>SDL_SetWindowMaximumSize
@@ -143,20 +143,20 @@ SDLはウィンドウのレンダリングのために簡単に使える2D API�
 </ol>
 <h2>型</h2>
 <ol>
-<li><a href="SDL_DisplayID.html">SDL_DisplayID</a> - 現在システムに接続されているディスプレイのユニークID
-<li>SDL_DisplayModeData
-<li>SDL_EGLAttrib
+<li><a href="SDL_DisplayID.html">SDL_DisplayID</a> - 現在システムに接続されているディスプレイのユニークIDの型
+<li><a href="SDL_DisplayModeData.html">SDL_DisplayModeData</a> - ディスプレイモードの内部データ型
+<li><a href="SDL_EGLAttrib.html">SDL_EGLAttrib</a> - EGLコンテキストを生成するとき使われるEGL attributeの型
 <li><a href="SDL_EGLAttribArrayCallback.html">SDL_EGLAttribArrayCallback</a> - EGL環境初期化時の追加のattributeを得るコールバックの型
-<li>SDL_EGLConfig
-<li>SDL_EGLDisplay
-<li>SDL_EGLint
+<li><a href="SDL_EGLConfig.html">SDL_EGLConfig</a> - EGLコンフィグの不透明型
+<li><a href="SDL_EGLDisplay.html">SDL_EGLDisplay</a> - EGLディスプレイの不透明型
+<li><a href="SDL_EGLint.html">SDL_EGLint</a> - EGLサーフェイスを生成するとき使われるEGLint型
 <li><a href="SDL_EGLIntArrayCallback.html">SDL_EGLIntArrayCallback</a> - EGLサーフェイス/コンテキスト初期化時の追加のattributeを得るコールバックの型
-<li>SDL_EGLSurface
-<li>SDL_GLContext
-<li>SDL_GLContextFlag
-<li>SDL_GLContextReleaseFlag
-<li>SDL_GLContextResetNotification
-<li>SDL_GLProfile
+<li><a href="SDL_EGLSurface.html">SDL_EGLSurface</a> - EGLサーフェイスの不透明型
+<li><a href="SDL_GLContext.html">SDL_GLContext</a> - OpenGLコンテキストの不透明ハンドル型
+<li><a href="SDL_GLContextFlag.html">SDL_GLContextFlag</a> - SDL_GL_CONTEXT_FLAGSで設定可能なフラグの型
+<li><a href="SDL_GLContextReleaseFlag.html">SDL_GLContextReleaseFlag</a> - SDL_GL_CONTEXT_RELEASE_BEHAVIORで設定可能なフラグの型
+<li><a href="SDL_GLContextResetNotification.html">SDL_GLContextResetNotification</a> - SDL_GL_CONTEXT_RESET_NOTIFICATIONで設定可能なフラグの型
+<li><a href="SDL_GLProfile.html">SDL_GLProfile</a> - SDL_GL_CONTEXT_PROFILE_MASKで設定可能なフラグの型
 <li>SDL_HitTest
 <li><a href="SDL_Window.html">SDL_Window</a> - ウィンドウを識別する不透明型 
 <li><a href="SDL_WindowFlags.html">SDL_WindowFlags</a> - ウィンドウ状態フラグの型
@@ -168,9 +168,9 @@ SDLはウィンドウのレンダリングのために簡単に使える2D API�
 </ol>
 <h2>列挙体</h2>
 <ol>
-<li>SDL_DisplayOrientation
-<li>SDL_FlashOperation
-<li>SDL_GLAttr
+<li><a href="SDL_DisplayOrientation.html">SDL_DisplayOrientation</a> - ディスプレイの向きを表す列挙体
+<li><a href="SDL_FlashOperation.html">SDL_FlashOperation</a> - ウィンドウのフラッシュ方法の列挙体
+<li><a href="SDL_GLAttr.html">SDL_GLAttr</a> - OpenGLの属性の列挙体
 <li>SDL_HitTestResult
 <li>SDL_ProgressState
 <li>SDL_SystemTheme
